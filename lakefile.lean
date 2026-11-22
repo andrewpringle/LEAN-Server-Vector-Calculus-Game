@@ -68,7 +68,6 @@ require "leanprover-community" / mathlib @ git leanVersion
  -/
 
 -- require "leanprover-community" / mathlib @ git leanVersion
-
 /-!
 # PACKAGE CONFIGURATION
 
