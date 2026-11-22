@@ -1,9 +1,10 @@
-import Game.Levels.HelloWorld
+import Game.Levels.Vectors
 
-Title "Game Skeleton"
+
+Title "LEAN Vector Calculus Game"
 Introduction
 "
-This is the introduction text of the game.
+Welcome
 "
 
 Conclusion
@@ -21,10 +22,10 @@ Use **markdown**.
 "
 
 Languages "en" "de"
-CaptionShort "A small template game."
-CaptionLong "You should use this game as a template for your own game and add your own levels. `lean`"
+CaptionShort "Calc III, but in Lean. Simple enough."
+CaptionLong "If you're learning, already a master, or just bored, learn all of Vector Calculus in Lean! `lean`"
 -- Prerequisites "NNG4" -- add this if your game builds on other games
-CoverImage "images/cover.png"
+CoverImage "images/leangame_cover.png"
 
 /-! Build the game. Show's warnings if it found a problem with your game. -/
 MakeGame
