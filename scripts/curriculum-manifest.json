@@ -1,0 +1,194 @@
+[
+  {
+    "id": "Vectors",
+    "title": "Vector Workshop",
+    "levels": [
+      "Coordinates",
+      "Adding and scaling",
+      "The dot product",
+      "Orthogonality and length",
+      "Crossing directions",
+      "Boss: resolve a vector"
+    ]
+  },
+  {
+    "id": "SpaceExplorer",
+    "title": "Space Explorer",
+    "levels": [
+      "A point on a line",
+      "A plane from a normal",
+      "Line meets plane",
+      "Distance to a plane",
+      "A paraboloid and its traces",
+      "Boss: three points"
+    ]
+  },
+  {
+    "id": "CurveNavigator",
+    "title": "Curve Navigator",
+    "levels": [
+      "Endpoints of a curve",
+      "Differentiate a curve",
+      "Motion at an instant",
+      "Arc length of a segment",
+      "Turning on the circle",
+      "Boss: the helix"
+    ]
+  },
+  {
+    "id": "MultivariableLandscapes",
+    "title": "Multivariable Landscapes",
+    "levels": [
+      "A constrained domain",
+      "A level set",
+      "Polynomial continuity",
+      "A limit from continuity",
+      "Two paths disagree",
+      "Boss: repair the origin"
+    ]
+  },
+  {
+    "id": "PartialDerivativeLab",
+    "title": "Partial Derivative Lab",
+    "levels": [
+      "Hold y fixed",
+      "Hold x fixed",
+      "Second derivatives",
+      "Mixed partials agree",
+      "A tangent approximation",
+      "Boss: an implicit tangent plane"
+    ]
+  },
+  {
+    "id": "GradientMountain",
+    "title": "Gradient Mountain",
+    "levels": [
+      "Assemble a gradient",
+      "A unit direction",
+      "Along a parametrized path",
+      "A Jacobian matrix",
+      "The ascent bound",
+      "Boss: tangent to a level set"
+    ]
+  },
+  {
+    "id": "OptimizationArena",
+    "title": "Optimization Arena",
+    "levels": [
+      "A critical point",
+      "Positive second variation",
+      "Saddle witnesses",
+      "Interior and boundary",
+      "Lagrange equations",
+      "Boss: a global constrained optimum"
+    ]
+  },
+  {
+    "id": "DoubleIntegralValley",
+    "title": "Double Integral Valley",
+    "levels": [
+      "A rectangle",
+      "A triangular region",
+      "Reverse the order",
+      "Area and volume",
+      "A lamina centroid",
+      "Boss: a triangular lamina"
+    ]
+  },
+  {
+    "id": "TripleIntegralCaverns",
+    "title": "Triple Integral Caverns",
+    "levels": [
+      "A rectangular box",
+      "Bounds for a solid",
+      "Volume below a roof",
+      "Variable density",
+      "A first moment",
+      "Boss: the center of a solid"
+    ]
+  },
+  {
+    "id": "CoordinatePortal",
+    "title": "Coordinate Portal",
+    "levels": [
+      "Polar identities",
+      "Polar area factor",
+      "Cylindrical volume",
+      "Spherical volume",
+      "A nonpolar Jacobian",
+      "Boss: an absolute Jacobian"
+    ]
+  },
+  {
+    "id": "VectorFieldObservatory",
+    "title": "Vector Field Observatory",
+    "levels": [
+      "Compare two fields",
+      "Recognize a gradient",
+      "Divergence",
+      "Curl",
+      "Two differential identities",
+      "Boss: construct a potential"
+    ]
+  },
+  {
+    "id": "PathIntegralTrails",
+    "title": "Path Integral Trails",
+    "levels": [
+      "Choose an orientation",
+      "A weighted wire",
+      "Work along a curve",
+      "Reverse orientation",
+      "Apply the endpoint theorem",
+      "Boss: path independence"
+    ]
+  },
+  {
+    "id": "GreensGarden",
+    "title": "Green’s Garden",
+    "levels": [
+      "A positive boundary",
+      "Circulation by edges",
+      "The interior integrand",
+      "Green for a shear field",
+      "Green in flux form",
+      "Boss: area from the boundary"
+    ]
+  },
+  {
+    "id": "SurfaceExpedition",
+    "title": "Surface Expedition",
+    "levels": [
+      "Parametrize a surface",
+      "Tangents and normal",
+      "Area factor",
+      "A scalar surface integral",
+      "Oriented flux",
+      "Boss: reverse the patch"
+    ]
+  },
+  {
+    "id": "StokesSummit",
+    "title": "Stokes Summit",
+    "levels": [
+      "The boundary of a patch",
+      "Match orientations",
+      "Curl through a patch",
+      "The boundary calculation",
+      "Apply Stokes: square patch",
+      "Boss: choose a simpler surface"
+    ]
+  },
+  {
+    "id": "GaussCitadel",
+    "title": "Gauss Citadel",
+    "levels": [
+      "An outward closed boundary",
+      "Divergence in the solid",
+      "Flux by boundary pieces",
+      "Apply Gauss on a cube",
+      "Recover a missing face",
+      "Final boss: three integral bridges"
+    ]
+  }
+]

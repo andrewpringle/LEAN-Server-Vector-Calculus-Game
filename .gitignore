@@ -3,3 +3,6 @@
 # Lean
 **/.lake
 **/.i18n/**/*.mo
+
+# Locally generated server-import artifact
+/game.zip

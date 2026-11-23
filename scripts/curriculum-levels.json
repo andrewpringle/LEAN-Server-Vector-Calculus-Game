@@ -1,0 +1,1554 @@
+[
+  {
+    "id": "Vectors",
+    "title": "Vector Workshop",
+    "prerequisites": "Real arithmetic; vectors in three-dimensional space.",
+    "levels": [
+      {
+        "title": "Coordinates",
+        "objective": "Construct a vector and extract its components.",
+        "explanation": "`![a,b,c]` is a spatial vector, with coordinates numbered 0, 1, and 2. Here index 1 selects the middle entry. The type `ℝ` means real numbers; `Vec` keeps the same three-coordinate representation throughout the game. Lean can read a specified coordinate directly, so the familiar `rfl` finishes this first calculation.\n\nWorked example: `(![5,6,7] : Vec) 0 = 5` follows by `rfl`: index 0 selects the first entry.",
+        "statement": ": (![2, -1, 3] : Vec) 1 = -1",
+        "proof": "rfl",
+        "hints": [
+          "Which entry has index 1?",
+          "The selected entry is -1 on both sides.",
+          "Use `rfl`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The second component of the vector is -1."
+      },
+      {
+        "title": "Adding and scaling",
+        "objective": "Compute a linear combination coordinate by coordinate.",
+        "explanation": "Addition and scalar multiplication act on each coordinate. Use `apply vector_eq` to turn one vector equality into three real equalities. The three bullets `·` handle those goals in order. This proved rule lets you compare coordinates without learning how Lean implements finite functions. `norm_num` checks concrete arithmetic; it does not choose the vector operation for you.\n\nWorked example: For u=(2,0,1) and v=(1,1,0), u+v=(3,1,1). After `apply vector_eq`, check the three scalar sums under separate bullets.",
+        "statement": ": (![1, 2, 0] : Vec) + (2 : ℝ) • ![0, -1, 3] = ![1, 0, 6]",
+        "proof": "apply vector_eq\n· norm_num\n· norm_num\n· norm_num",
+        "hints": [
+          "Apply `vector_eq` to compare the three coordinates.",
+          "Lean now asks for the x, y, and z calculations separately.",
+          "Use `norm_num` under each of the three bullets."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The vector sum is (1,0,6), verified in all three coordinates."
+      },
+      {
+        "title": "The dot product",
+        "objective": "Evaluate the coordinate formula for an inner product.",
+        "explanation": "The dot product multiplies matching components and adds the results. `rw [dot]` opens that coordinate formula, just as rewriting opened definitions in the Natural Number Game. Then use the numerical arithmetic tool from the preceding level.",
+        "statement": ": dot ![1, 2, -1] ![3, 0, 4] = -1",
+        "proof": "rw [dot]\nnorm_num",
+        "hints": [
+          "Start with the coordinate formula for the dot product.",
+          "Use `rw [dot]` to expand that formula.",
+          "Use `norm_num` to check 3 + 0 - 4 = -1."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The dot product is 3+0-4=-1."
+      },
+      {
+        "title": "Orthogonality and length",
+        "objective": "Check perpendicularity and a squared Euclidean length.",
+        "explanation": "Orthogonal vectors have dot product zero. Squared length is the dot product of a vector with itself. The symbol `∧` asks for both statements: `constructor` splits them into two goals, which you solve under separate bullets. Each calculation then uses a formula you know.",
+        "statement": ": dot ![1, 1, 0] ![1, -1, 0] = 0 ∧ lengthSq ![1, 1, 0] = 2",
+        "proof": "constructor\n· rw [dot]\n  norm_num\n· rw [lengthSq, dot]\n  norm_num",
+        "hints": [
+          "Use `constructor` to separate orthogonality and squared length.",
+          "Rewrite the first goal with `dot`.",
+          "Rewrite the second with `lengthSq` and `dot`, then calculate."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The vectors are orthogonal, and the squared length of (1,1,0) is 2."
+      },
+      {
+        "title": "Crossing directions",
+        "objective": "Compute a cross product and verify perpendicularity.",
+        "explanation": "The right-hand rule fixes the order in a cross product. Compute its three components using `vector_eq` and the definition `cross`. For perpendicularity, apply the proved rule `dot_cross_left`: any vector is perpendicular to its cross product with another vector.",
+        "statement": ": cross ![1, 0, 0] ![0, 1, 0] = (![0, 0, 1] : Vec) ∧ dot ![1, 0, 0] (cross ![1, 0, 0] ![0, 1, 0]) = 0",
+        "proof": "constructor\n· apply vector_eq\n  · norm_num [cross]\n  · norm_num [cross]\n  · norm_num [cross]\n· apply dot_cross_left",
+        "hints": [
+          "Split the cross-product calculation from the perpendicularity claim.",
+          "Use `vector_eq`; `norm_num [cross]` checks each component.",
+          "For the second goal, apply `dot_cross_left`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The cross product is (0,0,1) and is perpendicular to its first input."
+      },
+      {
+        "title": "Boss: resolve a vector",
+        "objective": "Compute a projection and show its remainder is orthogonal.",
+        "explanation": "Project v=(3,1,2) onto the nonzero direction n=(1,1,0). Its squared length is 2, so the projection coefficient (v·n)/(n·n) is 4/2. Name the resulting vector equality with `have`, then reuse it when calculating the remainder. The challenge combines coordinate comparison, dot products, and projection; no new tactic is needed.",
+        "statement": ": projection ![3, 1, 2] ![1, 1, 0] = (![2, 2, 0] : Vec) ∧ dot (![3, 1, 2] - projection ![3, 1, 2] ![1, 1, 0]) ![1, 1, 0] = 0",
+        "proof": "have projected : projection ![3,1,2] ![1,1,0] = (![2,2,0] : Vec) := by\n  apply vector_eq\n  · norm_num [projection, lengthSq, dot]\n  · norm_num [projection, lengthSq, dot]\n  · norm_num [projection, lengthSq, dot]\nconstructor\n· exact projected\n· rw [projected, dot]\n  norm_num",
+        "hints": [
+          "First prove and name the projected vector using `vector_eq`.",
+          "Expand `projection`, `lengthSq`, and `dot` in its three components.",
+          "Reuse the named equality in the remainder, then calculate its dot product."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The projection is (2,2,0); the remainder is orthogonal to (1,1,0)."
+      }
+    ]
+  },
+  {
+    "id": "SpaceExplorer",
+    "title": "Space Explorer",
+    "prerequisites": "Vector Workshop; parametric lines, normals, and quadratic equations.",
+    "levels": [
+      {
+        "title": "A point on a line",
+        "objective": "Supply a parameter witnessing line membership.",
+        "explanation": "`onLine p v q` says that q=p+t v for some real parameter t. As in an existence proof in NNG, `use 2` supplies a witness. Then compare the three coordinates with the vector rule from Vector Workshop. A correct parameter must satisfy every coordinate.\n\nWorked example: The line p=(0,0,0)+t(1,0,0) contains (3,0,0), witnessed by t=3.",
+        "statement": ": onLine ![1, 0, 2] ![1, 2, -1] ![3, 4, 0]",
+        "proof": "use 2\napply vector_eq\n· norm_num\n· norm_num\n· norm_num",
+        "hints": [
+          "Solve the first coordinate for the parameter.",
+          "Supply the witness with `use 2`.",
+          "Apply `vector_eq` and check all three coordinates."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Parameter 2 places the proposed point on the line."
+      },
+      {
+        "title": "A plane from a normal",
+        "objective": "Verify a plane equation from its point-normal definition.",
+        "explanation": "A point q lies in the plane through p with normal n when n·(q-p)=0. The normal (0,0,2) is nonzero. The symbol `↔` asks for both directions of an equivalence: use `constructor`, then `intro h` in each direction. After expanding the plane equation, `linarith` combines linear real equations; here it turns 2(q₂-3)=0 into q₂=3.\n\nWorked example: With normal (0,0,1) and base height 5, the point-normal equation is q₂-5=0, equivalent to q₂=5. A scaled nonzero normal describes the same plane.",
+        "statement": "(q : Vec) : onPlane ![0, 0, 2] ![0, 0, 3] q ↔ q 2 = 3",
+        "proof": "constructor\n· intro h\n  norm_num [onPlane, dot] at h\n  linarith\n· intro h\n  norm_num [onPlane, dot, h]",
+        "hints": [
+          "Use `constructor` and introduce the hypothesis in each direction.",
+          "In the forward direction, use `norm_num [onPlane, dot] at h`, then `linarith`.",
+          "In the reverse direction, substitute the given coordinate with `norm_num [onPlane, dot, h]`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The point-normal equation describes precisely the plane z=3."
+      },
+      {
+        "title": "Line meets plane",
+        "objective": "Find a point satisfying both geometric constraints.",
+        "explanation": "A line-plane intersection must satisfy two geometric conditions. The vertical line reaches height 3 at parameter 3. Supply that witness for line membership, then independently check the plane equation. This is an application of existence, vector comparison, and dot products.",
+        "statement": ": onLine ![0, 0, 0] ![0, 0, 1] ![0, 0, 3] ∧ onPlane ![0, 0, 1] ![0, 0, 3] ![0, 0, 3]",
+        "proof": "constructor\n· use 3\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\n· rw [onPlane, dot]\n  norm_num",
+        "hints": [
+          "Separate line membership and plane membership.",
+          "For the line, supply parameter 3 and compare components.",
+          "For the plane, open `onPlane` and `dot`; the displacement is zero."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The chosen point belongs to both the line and the plane."
+      },
+      {
+        "title": "Distance to a plane",
+        "objective": "Evaluate the normal-distance formula with a nonzero normal.",
+        "explanation": "Distance from q to a plane is |n·(q-p)| divided by the Euclidean length of its nonzero normal. For the plane z=1, choose n=(0,0,1), whose length is 1. Absolute value makes this a nonnegative distance, independent of the side of the plane.",
+        "statement": ": planeDistance ![0, 0, 1] ![0, 0, 1] ![2, -3, 4] = 3",
+        "proof": "rw [planeDistance, length, lengthSq, dot]\nnorm_num [dot]",
+        "hints": [
+          "Rewrite `planeDistance` and the length definitions.",
+          "The displacement has normal component 4-1.",
+          "Evaluate the absolute value and the unit-normal denominator."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The point is distance 3 from the plane z=1."
+      },
+      {
+        "title": "A paraboloid and its traces",
+        "objective": "Recognize an elliptic paraboloid and compute two traces.",
+        "explanation": "The surface z=x²+y² is an elliptic paraboloid. Setting y=0 gives a parabola; setting z=1 gives a circle. `simp` removes routine identities such as 0²=0. It is useful after choosing the mathematical substitution. `eq_comm` states that an equality can be read in either direction.",
+        "statement": "(x y z : ℝ) : (z = x^2 + (0:ℝ)^2 ↔ z = x^2) ∧ ((1:ℝ) = x^2 + y^2 ↔ x^2 + y^2 = 1)",
+        "proof": "constructor\n· simp\n· exact eq_comm",
+        "hints": [
+          "Separate the two trace statements.",
+          "The first trace simplifies because the omitted coordinate is zero.",
+          "For the second trace, use the symmetry of equality, `eq_comm`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two substitutions produce a parabolic trace and a circular trace."
+      },
+      {
+        "title": "Boss: three points",
+        "objective": "Build a nondegenerate plane through three points.",
+        "explanation": "Use the edges AB and AC to compute a normal to the plane through the three specified points. Show the cross product is nonzero by its z component, using `vector_ne_zero`. Then verify the point-normal equation for B and C; A is already the base point. A nonzero cross product also establishes that the three points are not collinear.",
+        "statement": ": cross (![1,0,0] - ![0,0,0]) (![0,1,0] - ![0,0,0]) = (![0,0,1] : Vec) ∧ (![0,0,1] : Vec) ≠ 0 ∧ onPlane ![0,0,1] ![0,0,0] ![1,0,0] ∧ onPlane ![0,0,1] ![0,0,0] ![0,1,0]",
+        "proof": "constructor\n· apply vector_eq\n  · norm_num [cross]\n  · norm_num [cross]\n  · norm_num [cross]\n· constructor\n  · apply vector_ne_zero 2\n    norm_num\n  · constructor\n    · rw [onPlane, dot]\n      norm_num\n    · rw [onPlane, dot]\n      norm_num",
+        "hints": [
+          "Separate the four claims with repeated `constructor`.",
+          "Compute the cross product, and use `vector_ne_zero 2` for its nonzero component.",
+          "Check B and C in `onPlane` using the normal you found."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "A nonzero cross product supplies a plane normal for the three noncollinear points."
+      }
+    ]
+  },
+  {
+    "id": "CurveNavigator",
+    "title": "Curve Navigator",
+    "prerequisites": "Vector algebra; single-variable differentiation and integration.",
+    "levels": [
+      {
+        "title": "Endpoints of a curve",
+        "objective": "Evaluate a polynomial curve at its parameter endpoints.",
+        "explanation": "`fun t => ...` describes a function of the parameter t. A curve assigns a spatial point to each t in its parameter interval. Here the endpoints come from substituting 0 and 1. Use the same component-comparison method as for vector addition.\n\nWorked example: For c(t)=(t,2t,1) on [0,1], substitute t=0 and t=1 to find (0,0,1) and (1,2,1).",
+        "statement": ": (fun t : ℝ => (![t,t^2,0] : Vec)) 0 = ![0,0,0] ∧ (fun t : ℝ => (![t,t^2,0] : Vec)) 1 = ![1,1,0]",
+        "proof": "constructor\n· apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\n· apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num",
+        "hints": [
+          "Separate the initial and final endpoint.",
+          "Apply `vector_eq` in each part.",
+          "Substitute the parameter and calculate each coordinate."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The parametrization has the stated initial and final points."
+      },
+      {
+        "title": "Differentiate a curve",
+        "objective": "Compute the component derivatives of a vector curve.",
+        "explanation": "Velocity differentiates the three scalar component functions. The proved rule `velocity_components` displays those three derivatives. `deriv_pow_field` is the ordinary power rule; Lean already knows the derivatives of the identity and constant functions. Apply these rules coordinate by coordinate.\n\nWorked example: For c(t)=(t³,0,0), the component power rule gives velocity (3t²,0,0). Each output coordinate is differentiated separately.",
+        "statement": "(t : ℝ) : velocity (fun s => ![s,s^2,0]) t = (![1,2*t,0] : Vec)",
+        "proof": "rw [velocity_components]\napply vector_eq\n· norm_num [deriv_pow_field]\n· norm_num [deriv_pow_field]\n· norm_num [deriv_pow_field]",
+        "hints": [
+          "Rewrite with `velocity_components`.",
+          "Use `vector_eq` to compare the three derivative values.",
+          "Use `norm_num [deriv_pow_field]` for each scalar derivative."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Each curve component has the stated derivative."
+      },
+      {
+        "title": "Motion at an instant",
+        "objective": "Calculate velocity, acceleration, and speed at a regular point.",
+        "explanation": "Acceleration is the velocity of the velocity curve. First name the velocity formula for an arbitrary time. `velocity_congr` lets you differentiate a curve after replacing it by a proved equal formula. Speed is the Euclidean length of velocity; it is not another component derivative.",
+        "statement": ": velocity (fun s => ![s,s^2,0]) 0 = (![1,0,0] : Vec) ∧ velocity (velocity (fun s => ![s,s^2,0])) 0 = (![0,2,0] : Vec) ∧ speed (fun s => ![s,s^2,0]) 0 = 1",
+        "proof": "have vel (t : ℝ) : velocity (fun s => ![s,s^2,0]) t = (![1,2*t,0] : Vec) := by\n  rw [velocity_components]\n  apply vector_eq\n  · norm_num [deriv_pow_field]\n  · norm_num [deriv_pow_field]\n  · norm_num [deriv_pow_field]\nconstructor\n· norm_num [vel]\n· constructor\n  · rw [velocity_congr vel, velocity_components]\n    apply vector_eq\n    · norm_num [deriv_const_mul_id]\n    · norm_num [deriv_const_mul_id]\n    · norm_num [deriv_const_mul_id]\n  · rw [speed, vel 0]\n    norm_num [length, lengthSq, dot]",
+        "hints": [
+          "Name the component velocity formula for every time t.",
+          "Replace the velocity curve using `velocity_congr`, then differentiate again.",
+          "For speed at zero, rewrite with the named velocity and evaluate its length."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Velocity, acceleration, and Euclidean speed at the chosen instant are verified separately."
+      },
+      {
+        "title": "Arc length of a segment",
+        "objective": "Integrate the speed of a regular curve on ordered bounds.",
+        "explanation": "For increasing bounds, arc length integrates the nonnegative speed. This segment is regular and has constant speed 1. Prove that speed formula first. `integral_values` replaces an integrand by a pointwise equal function, and `constant_integral` integrates a constant as interval length times value.",
+        "statement": ": arcLength (fun t => ![t,0,0]) 0 3 = 3",
+        "proof": "have unitSpeed (t : ℝ) : speed (fun s => ![s,0,0]) t = 1 := by\n  rw [speed, velocity_components]\n  norm_num [length, lengthSq, dot]\nrw [arcLength, integral_values unitSpeed, constant_integral]\nnorm_num",
+        "hints": [
+          "Prove that speed equals 1 for every parameter value.",
+          "Rewrite `arcLength`, then replace its integrand with `integral_values unitSpeed`.",
+          "Apply `constant_integral` and evaluate the interval length."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The segment has constant unit speed and arc length 3."
+      },
+      {
+        "title": "Turning on the circle",
+        "objective": "Compute a unit tangent and curvature at a circle point.",
+        "explanation": "On a regular curve, divide velocity by speed to obtain a unit tangent. Curvature is |v×a|/|v|³. At parameter zero on the unit circle, velocity is (0,1,0), acceleration is (-1,0,0), and speed is 1. Name these ingredients, then substitute them into the two geometric formulas.",
+        "statement": ": unitTangent circle 0 = (![0,1,0] : Vec) ∧ curvature circle 0 = 1",
+        "proof": "have vel (s : ℝ) : velocity circle s = (![-Real.sin s,Real.cos s,0] : Vec) := by\n  have coordinates (t : ℝ) : circle t = (![Real.cos t,Real.sin t,0] : Vec) := by rfl\n  rw [velocity_congr coordinates, velocity_components]\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\nhave acc : velocity (velocity circle) 0 = (![-1,0,0] : Vec) := by\n  rw [velocity_congr vel, velocity_components]\n  apply vector_eq\n  · norm_num [deriv_neg]\n  · norm_num [deriv_neg]\n  · norm_num [deriv_neg]\nhave sp : speed circle 0 = 1 := by\n  rw [speed, vel 0]\n  norm_num [length, lengthSq, dot]\nconstructor\n· rw [unitTangent, sp, vel 0]\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\n· rw [curvature, sp, vel 0, acc]\n  norm_num [length, lengthSq, dot, cross]",
+        "hints": [
+          "Name velocity, acceleration at zero, and speed at zero.",
+          "Substitute those facts into `unitTangent`.",
+          "Substitute them into `curvature` and compute the cross-product length."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The circle has the stated unit tangent and curvature 1 at parameter zero."
+      },
+      {
+        "title": "Boss: the helix",
+        "objective": "Combine endpoints, velocity, and speed for a spatial curve.",
+        "explanation": "The helix adds uniform vertical motion to a circle. Assemble its initial point, velocity at any parameter, and squared speed. The familiar identity sin²t+cos²t=1 supplies the final calculation. Use the existing linear-arithmetic tool to combine that identity with the additional vertical contribution 1.",
+        "statement": "(t : ℝ) : helix 0 = (![1,0,0] : Vec) ∧ velocity helix t = (![-Real.sin t, Real.cos t, 1] : Vec) ∧ lengthSq (velocity helix t) = 2",
+        "proof": "have vel (s : ℝ) : velocity helix s = (![-Real.sin s,Real.cos s,1] : Vec) := by\n  have coordinates (t : ℝ) : helix t = (![Real.cos t,Real.sin t,t] : Vec) := by rfl\n  rw [velocity_congr coordinates, velocity_components]\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\nconstructor\n· apply vector_eq\n  · norm_num [helix]\n  · norm_num [helix]\n  · norm_num [helix]\n· constructor\n  · exact vel t\n  · rw [vel t]\n    norm_num [lengthSq, dot]\n    linarith [Real.sin_sq_add_cos_sq t]",
+        "hints": [
+          "Name the velocity formula using component derivatives.",
+          "Check the initial point and reuse the velocity formula.",
+          "Expand squared length and combine the sine-cosine identity with the vertical component."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The helix has the stated starting point and velocity, with squared speed 2 everywhere."
+      }
+    ]
+  },
+  {
+    "id": "MultivariableLandscapes",
+    "title": "Multivariable Landscapes",
+    "prerequisites": "Domains, level sets, single-variable limits and continuity.",
+    "levels": [
+      {
+        "title": "A constrained domain",
+        "objective": "Express and verify a domain with explicit inequalities.",
+        "explanation": "For √(4-x²-y²)/(x-y), a real-valued geometric domain requires x²+y²≤4 and x-y≠0. At (1,0), these are two concrete checks. `∧` collects the independent restrictions. Lean defines division and square root on all real inputs, so recording the intended domain is part of the mathematics.\n\nWorked example: For √(9-x²-y²)/(x+y), the point (2,1) meets 2²+1²≤9 and 2+1≠0. Both domain checks are necessary.",
+        "statement": ": (1:ℝ)^2 + 0^2 ≤ 4 ∧ (1:ℝ) ≠ 0",
+        "proof": "constructor\n· norm_num\n· norm_num",
+        "hints": [
+          "Separate the radicand restriction from the denominator restriction.",
+          "Substitute x=1 and y=0.",
+          "Check each numerical condition."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The proposed point meets both the square-root and denominator domain restrictions."
+      },
+      {
+        "title": "A level set",
+        "objective": "Verify that a point lies on a specified level surface.",
+        "explanation": "A level set consists of points where a scalar function has one fixed value. For x²+y²+z²=9, substitute the proposed point into `squarePotential`. This verifies membership in the sphere, rather than a bound on its interior.\n\nWorked example: At (2,0,0), the sum-of-squares field has value 4, so that point belongs to its level set f=4.",
+        "statement": ": squarePotential ![1,2,2] = 9",
+        "proof": "rw [squarePotential]\nnorm_num",
+        "hints": [
+          "Open the formula for `squarePotential`.",
+          "Substitute the three coordinates.",
+          "Add their squares."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The point lies on the level surface x²+y²+z²=9."
+      },
+      {
+        "title": "Polynomial continuity",
+        "objective": "Prove joint continuity of a polynomial in three variables.",
+        "explanation": "`Continuous f` means joint continuity in all coordinates. The rule `continuous_sum_squares` says that squaring and adding three continuous scalar functions preserves continuity. Apply it and supply continuity of each coordinate projection with `continuous_apply 0`, `1`, and `2`. No filter manipulation is needed.",
+        "statement": ": Continuous squarePotential",
+        "proof": "apply continuous_sum_squares\n· exact continuous_apply 0\n· exact continuous_apply 1\n· exact continuous_apply 2",
+        "hints": [
+          "Apply `continuous_sum_squares` to the three coordinate functions.",
+          "This creates one continuity goal per coordinate.",
+          "Use `exact continuous_apply 0`, and similarly for coordinates 1 and 2."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Continuity follows from continuity of the coordinate functions and polynomial operations."
+      },
+      {
+        "title": "A limit from continuity",
+        "objective": "Evaluate a multivariable limit using continuity.",
+        "explanation": "`LimitAtOrigin f L` is a readable name for the actual full neighborhood limit of f at the origin. The proved theorem `limit_of_continuous` asks for continuity and the value f(0)=L. Reuse the continuity method and calculate the value separately. This is the standard continuity method for evaluating a multivariable limit.",
+        "statement": ": LimitAtOrigin squarePotential 0",
+        "proof": "apply limit_of_continuous\n· apply continuous_sum_squares\n  · exact continuous_apply 0\n  · exact continuous_apply 1\n  · exact continuous_apply 2\n· norm_num [squarePotential]",
+        "hints": [
+          "Apply `limit_of_continuous`.",
+          "Prove continuity using the sum-of-squares rule.",
+          "Evaluate the function at the origin."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Continuity and the origin value establish the actual multivariable limit."
+      },
+      {
+        "title": "Two paths disagree",
+        "objective": "Disprove a common limit by uniqueness along two paths.",
+        "explanation": "For f=xy/(x²+y²), the horizontal and diagonal paths approach the punctured origin. `PuncturedLimit` and `PathLimit` keep those punctured limits precise. Prove each path has a constant value away from zero. A hypothetical multivariable limit must restrict to both paths; uniqueness would force its value to be both 0 and 1/2. `rw [not_exists]` rewrites the claim as: every proposed limit fails. You can then introduce an arbitrary limit value and its claimed property.",
+        "statement": ": ¬ ∃ L : ℝ, PuncturedLimit pathRatio L",
+        "proof": "rw [not_exists]\nintro L assumed\nhave horizontal : PathLimit (fun t => pathRatio ![t,0,0]) 0 := by\n  apply path_limit_of_values\n  intro t ht\n  rw [ratio_horizontal]\nhave diagonal : PathLimit (fun t => pathRatio ![t,t,0]) (1/2) := by\n  apply path_limit_of_values\n  intro t ht\n  rw [ratio_diagonal t ht]\nhave first : (0 : ℝ) = L := path_limit_unique horizontal (limit_horizontal assumed)\nhave second : (1/2 : ℝ) = L := path_limit_unique diagonal (limit_diagonal assumed)\nlinarith",
+        "hints": [
+          "Rewrite with `not_exists`, then use `intro L assumed` to consider an arbitrary proposed limit.",
+          "Use `path_limit_of_values` with `ratio_horizontal` and `ratio_diagonal` to establish the two path limits.",
+          "Compare each with the restriction of `assumed` using `path_limit_unique`; the resulting real equations contradict one another."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two punctured paths force incompatible limit values, so no multivariable limit exists."
+      },
+      {
+        "title": "Boss: repair the origin",
+        "objective": "Prove continuity of a separately defined extension at the origin.",
+        "explanation": "Filling in an exceptional point preserves continuity only when its assigned value matches the continuous extension. Apply `continuous_fill_origin`: you must prove that the polynomial is continuous and that its value at the origin is exactly the proposed replacement 0. The support rule handles the equality of the piecewise function, not these mathematical checks.",
+        "statement": ": Continuous (fun p : Vec => if p = 0 then 0 else squarePotential p)",
+        "proof": "apply continuous_fill_origin\n· apply continuous_sum_squares\n  · exact continuous_apply 0\n  · exact continuous_apply 1\n  · exact continuous_apply 2\n· norm_num [squarePotential]",
+        "hints": [
+          "Apply `continuous_fill_origin`.",
+          "Supply joint continuity of the underlying polynomial.",
+          "Verify that the assigned origin value matches the polynomial."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The assigned origin value matches the polynomial extension, making the piecewise function continuous."
+      }
+    ]
+  },
+  {
+    "id": "PartialDerivativeLab",
+    "title": "Partial Derivative Lab",
+    "prerequisites": "Joint continuity; scalar derivatives; planes and normals.",
+    "levels": [
+      {
+        "title": "Hold y fixed",
+        "objective": "Compute the first x partial derivative.",
+        "explanation": "`partialX f x y` is `deriv (fun t => f t y) x`: vary x while holding y fixed. Rewrite that definition, remove the constant y² with `deriv_add_const`, and apply the power rule. A partial derivative here is a scalar rate, distinct from the total derivative linear map.\n\nWorked example: For f(x,y)=x³+y, holding y fixed gives the x partial 3x². The added y is constant in this derivative.",
+        "statement": "(x y : ℝ) : partialX (fun s t => s^2 + t^2) x y = 2*x",
+        "proof": "rw [partialX, deriv_add_const, deriv_pow_field]\nnorm_num",
+        "hints": [
+          "Open `partialX`.",
+          "Remove the term that is constant in the varying coordinate.",
+          "Apply `deriv_pow_field`, then simplify the numerical exponent."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Holding y fixed gives the x partial 2x."
+      },
+      {
+        "title": "Hold x fixed",
+        "objective": "Compute the first y partial derivative.",
+        "explanation": "Now hold x fixed and vary y. The same power rule gives 2y, written here as y+y. `ring` proves polynomial identities such as 2y=y+y; it does not decide which variable to differentiate. Use it after applying the calculus rules.\n\nWorked example: For f(x,y)=xy, holding x fixed gives the y partial x. Switching the varying coordinate changes which factor is constant.",
+        "statement": "(x y : ℝ) : partialY (fun s t => s^2+t^2) x y = y+y",
+        "proof": "rw [partialY, deriv_const_add, deriv_pow_field]\nring",
+        "hints": [
+          "Open `partialY` and remove the fixed x² term.",
+          "Apply the power rule to the varying y².",
+          "Use `ring` to write the result as y+y."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Holding x fixed gives the y partial y+y, equivalently 2y."
+      },
+      {
+        "title": "Second derivatives",
+        "objective": "Differentiate an already computed first partial.",
+        "explanation": "A second partial differentiates an already computed first partial. For x²+y² the first x partial is 2x. Differentiating it again in x gives 2, while differentiating it in y gives 0. `simp only [rules]` applies just the displayed derivative rules, including under the inner function; this is the explicit-rule form of the simplification tool already learned.",
+        "statement": "(x y : ℝ) : partialX (fun s t => partialX (fun a b => a^2+b^2) s t) x y = 2 ∧ partialY (fun s t => partialX (fun a b => a^2+b^2) s t) x y = 0",
+        "proof": "constructor\n· simp only [partialX, partialY, deriv_add_const, deriv_const_add, deriv_pow_field, deriv_const_mul_id]\n  norm_num\n· simp only [partialX, partialY, deriv_add_const, deriv_const_add, deriv_pow_field, deriv_const_mul_id, deriv_const]",
+        "hints": [
+          "Separate the xx derivative from the yx derivative.",
+          "Simplify the inner partial using the rules from the preceding levels.",
+          "Differentiate 2x in the requested variable using `deriv_const_mul_id` or `deriv_const`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The xx partial is 2 and the yx partial is zero."
+      },
+      {
+        "title": "Mixed partials agree",
+        "objective": "Verify mixed partial equality for an explicitly smooth polynomial.",
+        "explanation": "For the smooth polynomial xy, the first partials are y and x. Differentiating in the other variable gives 1 in both orders. This calculation proves equality for this smooth example, without assuming a general interchange theorem. Identify the fixed factor before choosing the multiplication rule.",
+        "statement": "(x y : ℝ) : partialY (fun s t => partialX (fun a b => a*b) s t) x y = partialX (fun s t => partialY (fun a b => a*b) s t) x y",
+        "proof": "simp only [partialX, partialY, deriv_mul_const_field, deriv_const_mul_field]\nnorm_num",
+        "hints": [
+          "Write down the first partial in each variable.",
+          "Use `deriv_mul_const_field` and `deriv_const_mul_field` for fixed factors.",
+          "Both remaining derivatives are derivatives of the identity function."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two mixed partials of the smooth product xy are equal."
+      },
+      {
+        "title": "A tangent approximation",
+        "objective": "Construct the affine approximation and bound its exact error.",
+        "explanation": "At (1,1), the linear approximation to x²+y² is 2+2h+2k. Subtract it from the exact value at (1+h,1+k). The remaining h²+k² measures the approximation error and has no constant or linear terms. The polynomial tool introduced earlier now verifies this identity.",
+        "statement": "(h k : ℝ) : (1+h)^2 + (1+k)^2 - (2 + 2*h + 2*k) = h^2+k^2",
+        "proof": "ring",
+        "hints": [
+          "Expand around (1,1) using displacements h and k.",
+          "Remove the value and the two linear terms.",
+          "Use `ring` to verify that only h²+k² remains."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The linear approximation leaves exactly the quadratic error h²+k²."
+      },
+      {
+        "title": "Boss: an implicit tangent plane",
+        "objective": "Use a regular gradient to identify a tangent plane.",
+        "explanation": "For the unit sphere at (1,0,0), verify the point lies on the surface, calculate its gradient, prove that gradient is nonzero, and identify its point-normal tangent plane. `gradient_components` displays the three partials; `partial_sum_squares` supplies the squared-coordinate power rule. Regularity is the nonzero-gradient check, which must not be omitted.",
+        "statement": "(q : Vec) : squarePotential ![1,0,0] = 1 ∧ gradient squarePotential ![1,0,0] = (![2,0,0] : Vec) ∧ (![2,0,0] : Vec) ≠ 0 ∧ (onPlane ![2,0,0] ![1,0,0] q ↔ q 0 = 1)",
+        "proof": "constructor\n· rw [squarePotential]\n  norm_num\n· constructor\n  · rw [gradient_components]\n    apply vector_eq\n    · norm_num [partial_sum_squares]\n    · norm_num [partial_sum_squares]\n    · norm_num [partial_sum_squares]\n  · constructor\n    · apply vector_ne_zero 0\n      norm_num\n    · constructor\n      · intro h\n        norm_num [onPlane, dot] at h\n        linarith\n      · intro h\n        norm_num [onPlane, dot, h]",
+        "hints": [
+          "Separate surface membership, gradient, nonzero normal, and plane equation.",
+          "Use the component gradient rule and the partial derivatives of the sum of squares.",
+          "Use a nonzero component for regularity; solve the point-normal equation as in Space Explorer."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The sphere point is regular and its gradient determines the stated tangent plane."
+      }
+    ]
+  },
+  {
+    "id": "GradientMountain",
+    "title": "Gradient Mountain",
+    "prerequisites": "Partial derivatives; unit directions; chain rule and matrices.",
+    "levels": [
+      {
+        "title": "Assemble a gradient",
+        "objective": "Compute a gradient from coordinate partial derivatives.",
+        "explanation": "The gradient collects the scalar partial derivatives in coordinate order. Open it using `gradient_components`. The rule `partial_coordinate` says that differentiating a coordinate with respect to itself gives 1, while the other coordinate derivatives are zero.\n\nWorked example: For f(x,y,z)=3x, the three partials are 3, 0, and 0, assembled in that order into the gradient.",
+        "statement": "(p : Vec) : gradient (fun q => q 0) p = (![1,0,0] : Vec)",
+        "proof": "rw [gradient_components]\napply vector_eq\n· norm_num [partial_coordinate]\n· norm_num [partial_coordinate]\n· norm_num [partial_coordinate]",
+        "hints": [
+          "Display the gradient components.",
+          "Compare vectors with `vector_eq`.",
+          "Apply `partial_coordinate` in each component."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The first coordinate has gradient (1,0,0)."
+      },
+      {
+        "title": "A unit direction",
+        "objective": "Compute a total directional derivative with a unit-direction assumption.",
+        "explanation": "A directional derivative applies the total derivative to the direction u. The general coordinate-projection rule `directional_coordinate` computes it without asking you to construct a continuous linear map. The hypothesis `lengthSq u = 1` specifies a unit direction, so the answer is a rate per unit distance. The underlying derivative identity also holds for nonunit vectors.\n\nWorked example: For the scalar field f(x,y,z)=x and unit direction (0,1,0), the directional rate is zero: moving in y does not change x.",
+        "statement": "(p u : Vec) (hu : lengthSq u = 1) : directional (fun q => q 0) p u = u 0",
+        "proof": "rw [directional_coordinate]",
+        "hints": [
+          "Recognize the scalar function as the first coordinate projection.",
+          "Choose `directional_coordinate` with coordinate index 0.",
+          "Rewrite with that rule; the unit hypothesis provides the geometric interpretation."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "In a unit direction, the coordinate rate is the direction’s first component."
+      },
+      {
+        "title": "Along a parametrized path",
+        "objective": "Apply the scalar chain rule to a composite along a path.",
+        "explanation": "For the composite (t²)², evaluate the derivative of the outer square at the inner value t². Name the two scalar derivative facts. `derivative_chain` multiplies them, and `derivative_value` lets you finish by proving the product equals the requested polynomial. This keeps the chain-rule choice separate from algebra. The named arguments `f := ...` and `g := ...` specify the outer and inner functions explicitly so Lean need not infer a function from one of its values.",
+        "statement": "(t : ℝ) : HasDerivAt (fun s : ℝ => (s^2)^2) (4*t^3) t",
+        "proof": "have outer : HasDerivAt (fun s : ℝ => s^2) (2*(t^2)) (t^2) := by\n  have rule := hasDerivAt_pow 2 (t^2)\n  norm_num at rule\n  exact rule\nhave innerValue : HasDerivAt (fun s : ℝ => s^2) (2*t) t := by\n  have rule := hasDerivAt_pow 2 t\n  norm_num at rule\n  exact rule\napply derivative_value (derivative_chain (f := fun s : ℝ => s^2) (g := fun s : ℝ => s^2) outer innerValue)\nring",
+        "hints": [
+          "Name the outer square derivative at t² and the inner square derivative at t.",
+          "Combine them with `derivative_chain`.",
+          "Use `derivative_value`, then `ring`, to obtain 4t³."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The composite has derivative 4t³ by the chain rule."
+      },
+      {
+        "title": "A Jacobian matrix",
+        "objective": "Compute entries of the derivative matrix of a vector map.",
+        "explanation": "The Jacobian entry in row i and column j is the j partial of output component i. For the identity map, matching coordinates give 1 and the other entries give 0. The proved rule `matrix_eq` asks for the nine entries in row order, so no matrix-extensionality tactic is needed.",
+        "statement": "(p : Vec) : jacobian (fun q => ![q 0,q 1,q 2]) p = (1 : Matrix (Fin 3) (Fin 3) ℝ)",
+        "proof": "apply matrix_eq\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]\n· norm_num [jacobian, partial_coordinate, Matrix.one_apply]",
+        "hints": [
+          "Apply `matrix_eq` to compare the nine entries in row order.",
+          "Open each entry using `jacobian` and `partial_coordinate`.",
+          "Compare with the corresponding entry of the identity matrix."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The identity map has the identity Jacobian matrix."
+      },
+      {
+        "title": "The ascent bound",
+        "objective": "Prove a sharp bound for a gradient dotted with a unit direction.",
+        "explanation": "For gradient (3,4,0), the unit-direction rate cannot exceed 5. The supplied algebraic identity `ascent_squares` decomposes 25|u|² into the squared rate and two nonnegative terms. Use the unit assumption and nonnegativity to bound the squared rate, then `le_of_sq_le_sq` with nonnegative upper bound 5. You choose and combine the estimates.",
+        "statement": "(u : Vec) (hu : lengthSq u = 1) : dot ![3,4,0] u ≤ 5",
+        "proof": "have identity := ascent_squares u\nhave perpendicular : 0 ≤ (4*u 0-3*u 1)^2 := sq_nonneg _\nhave vertical : 0 ≤ (u 2)^2 := sq_nonneg _\nrw [hu] at identity\nhave bound : (3*u 0+4*u 1)^2 ≤ (5:ℝ)^2 := by\n  linarith\nhave rate : 3*u 0+4*u 1 ≤ 5 := by\n  apply le_of_sq_le_sq bound\n  norm_num\nnorm_num [dot]\nexact rate",
+        "hints": [
+          "Use `ascent_squares u` and substitute the unit-length hypothesis.",
+          "The two additional squares are nonnegative, so the squared rate is at most 25.",
+          "Apply `le_of_sq_le_sq` with upper bound 5, then identify the dot product."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Every unit direction gives a rate at most 5 for gradient (3,4,0)."
+      },
+      {
+        "title": "Boss: tangent to a level set",
+        "objective": "Relate a level-set equation, its gradient, and tangent directions.",
+        "explanation": "For f(p)=p₀, the level surface f=2 is a plane. A tangent displacement has first coordinate zero, so it preserves the level equation. Compute the gradient and verify its dot product with the tangent direction is zero. This links an equation, a derivative, and geometry without introducing new proof tools.",
+        "statement": "(p v : Vec) (hp : p 0 = 2) (hv : v 0 = 0) : (p+v) 0 = 2 ∧ dot (gradient (fun q => q 0) p) v = 0",
+        "proof": "constructor\n· simp [hv, hp]\n· rw [gradient_components]\n  norm_num [dot, partial_coordinate, hv]",
+        "hints": [
+          "Use the level equation and the zero first component to check p+v.",
+          "Display the gradient of the first coordinate.",
+          "Calculate its dot product with v."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "A tangent displacement preserves the level plane and is perpendicular to its gradient."
+      }
+    ]
+  },
+  {
+    "id": "OptimizationArena",
+    "title": "Optimization Arena",
+    "prerequisites": "First and second partial derivatives; compact regions; elementary inequalities.",
+    "levels": [
+      {
+        "title": "A critical point",
+        "objective": "Find all critical points of a quadratic function.",
+        "explanation": "Find every critical point of x²+y² by setting both first partials equal to zero. The notation `h.1` and `h.2` retrieves the first and second facts of a conjunction h, just as reading components retrieves coordinates of a vector. Solve both directions: stationarity forces the origin, and the origin satisfies stationarity.\n\nWorked example: For f=(x-1)²+y², setting the two first partials to zero locates (1,0). Locating a critical point does not yet classify it.",
+        "statement": "(x y : ℝ) : (partialX (fun a b => a^2+b^2) x y = 0 ∧ partialY (fun a b => a^2+b^2) x y = 0) ↔ (x=0 ∧ y=0)",
+        "proof": "constructor\n· intro h\n  constructor\n  · have first := h.1\n    norm_num [partialX, deriv_add_const, deriv_pow_field] at first\n    exact first\n  · have second := h.2\n    norm_num [partialY, deriv_const_add, deriv_pow_field] at second\n    exact second\n· intro h\n  constructor\n  · norm_num [partialX, deriv_add_const, deriv_pow_field, h.1]\n  · norm_num [partialY, deriv_const_add, deriv_pow_field, h.2]",
+        "hints": [
+          "Compute both first partials before solving any equations.",
+          "Use `constructor` to prove both directions of the equivalence.",
+          "Read the two conditions as `h.1` and `h.2`; normalize each computed equation, then assemble the origin conditions."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The origin is the unique critical point of the quadratic."
+      },
+      {
+        "title": "Positive second variation",
+        "objective": "Classify the quadratic minimum using its positive second variation.",
+        "explanation": "The two diagonal second partials of x²+y² are 2. To justify strict positivity of its second variation, a nonzero displacement has at least one nonzero coordinate. `apply Or.elim nonzero` gives the two alternatives; introduce the nonzero coordinate in each branch. Combine a strictly positive square with the other nonnegative square. A Hessian calculation is accompanied by the needed sign justification.\n\nWorked example: For f=3x²+y² the Hessian is diag(6,2). On a nonzero x-axis displacement (h,0), its quadratic form 6h² is strictly positive.",
+        "statement": ": (partialX (fun x y => partialX (fun a b => a^2+b^2) x y) 0 0 = 2 ∧ partialY (fun x y => partialY (fun a b => a^2+b^2) x y) 0 0 = 2) ∧ ∀ h k : ℝ, (h≠0 ∨ k≠0) → 0 < h^2+k^2",
+        "proof": "constructor\n· constructor\n  · norm_num [partialX, partialY, deriv_add_const, deriv_const_add, deriv_pow_field, deriv_const_mul_id]\n  · norm_num [partialX, partialY, deriv_add_const, deriv_const_add, deriv_pow_field, deriv_const_mul_id]\n· intro h k nonzero\n  apply Or.elim nonzero\n  · intro hh\n    apply add_pos_of_pos_of_nonneg\n    · exact sq_pos_of_ne_zero hh\n    · exact sq_nonneg k\n  · intro hk\n    apply add_pos_of_nonneg_of_pos\n    · exact sq_nonneg h\n    · exact sq_pos_of_ne_zero hk",
+        "hints": [
+          "Calculate the two diagonal second partials.",
+          "For positivity, use `Or.elim` on the nonzero-coordinate alternative.",
+          "Apply the appropriate positive-plus-nonnegative addition rule and the square sign lemmas."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Positive second derivatives and a positive second variation justify the minimum classification."
+      },
+      {
+        "title": "Saddle witnesses",
+        "objective": "Exhibit both upward and downward directions arbitrarily near a saddle.",
+        "explanation": "For x²-y², the displacements (t,0) and (0,t) give t² and -t². For every nonzero t they lie on opposite sides of the critical value. Since t may be arbitrarily small, these witnesses explain the saddle behaviour. Begin by establishing the sign of t² once and reusing it.",
+        "statement": "(t : ℝ) (ht : t ≠ 0) : 0 < t^2-(0:ℝ)^2 ∧ (0:ℝ)^2-t^2 < 0",
+        "proof": "have positive : 0 < t^2 := sq_pos_of_ne_zero ht\nconstructor\n· norm_num\n  exact positive\n· norm_num\n  linarith",
+        "hints": [
+          "Name the fact that a nonzero real has positive square.",
+          "Substitute the first displacement and use that positivity.",
+          "Substitute the second displacement and negate the positive value."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Nonzero displacements on the two coordinate paths give opposite signs, witnessing a saddle."
+      },
+      {
+        "title": "Interior and boundary",
+        "objective": "Compare global values over a closed disk, including its boundary.",
+        "explanation": "On the closed disk x²+y²≤1, compare values at every feasible point. The lower bound follows from the nonnegativity of the two squares; the upper bound is the region constraint. The origin attains 0, and every point of the unit-circle boundary attains 1. Bounds for arbitrary feasible points provide the global justification.",
+        "statement": "(x y : ℝ) (h : x^2+y^2 ≤ 1) : 0 ≤ x^2+y^2 ∧ x^2+y^2 ≤ 1",
+        "proof": "constructor\n· apply add_nonneg\n  · exact sq_nonneg x\n  · exact sq_nonneg y\n· exact h",
+        "hints": [
+          "Separate the lower and upper bounds.",
+          "Prove the lower bound by adding two nonnegative squares.",
+          "Use the given feasibility inequality for the upper bound."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Every feasible disk point has objective value between 0 and 1."
+      },
+      {
+        "title": "Lagrange equations",
+        "objective": "Solve the Lagrange multiplier system and find both candidates.",
+        "explanation": "For x+y on x²+y²=2, the stationarity equations give 1=λ(2x) and 1=λ(2y). First show λ is nonzero, then cancel it using `mul_left_cancel₀`. The constraint gives x²=1 after x=y, and factoring produces the two signs. `left` and `right` select the candidate established in each branch. These stationary candidates still require a global comparison. `mul_eq_zero.mp factor` uses the forward direction of the product-zero equivalence to obtain the two factor alternatives.",
+        "statement": "(x y l : ℝ) (hx : 1=l*(2*x)) (hy : 1=l*(2*y)) (hc : x^2+y^2=2) : (x=1 ∧ y=1 ∧ l=1/2) ∨ (x = -1 ∧ y = -1 ∧ l = -1/2)",
+        "proof": "have multiplier : l ≠ 0 := by\n  intro zero\n  rw [zero] at hx\n  norm_num at hx\nhave same : l*(2*x) = l*(2*y) := by\n  rw [← hx, ← hy]\nhave twice : 2*x = 2*y := mul_left_cancel₀ multiplier same\nhave equal : x = y := by linarith\nhave square : x^2 = 1 := by\n  rw [← equal] at hc\n  linarith\nhave factor : (x-1)*(x+1) = 0 := by\n  have expansion : (x-1)*(x+1) = x^2-1 := by ring\n  rw [expansion, square]\n  norm_num\napply Or.elim (mul_eq_zero.mp factor)\n· intro plus\n  left\n  have xvalue : x = 1 := by linarith\n  constructor\n  · exact xvalue\n  · constructor\n    · rw [← equal]\n      exact xvalue\n    · rw [xvalue] at hx\n      linarith\n· intro minus\n  right\n  have xvalue : x = -1 := by linarith\n  constructor\n  · exact xvalue\n  · constructor\n    · rw [← equal]\n      exact xvalue\n    · rw [xvalue] at hx\n      linarith",
+        "hints": [
+          "Show the multiplier is nonzero and cancel it to obtain x=y.",
+          "Use the constraint to prove x²=1, then factor (x-1)(x+1).",
+          "Handle the two factors with `Or.elim`; recover y and λ for each sign."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The stationarity system and constraint yield exactly the two listed candidates."
+      },
+      {
+        "title": "Boss: a global constrained optimum",
+        "objective": "Prove a feasible point attains a global optimum.",
+        "explanation": "Verify the proposed optimizer (1,1) lies on the constraint and has value 2. For an arbitrary feasible point, the identity (x+y)²+(x-y)²=2(x²+y²) and a nonnegative square bound the objective by 2. This proves a global maximum, not merely a stationary candidate. Use the square-bound method from Gradient Mountain.",
+        "statement": ": ((1:ℝ)^2+1^2=2 ∧ (1:ℝ)+1=2) ∧ ∀ x y : ℝ, x^2+y^2=2 → x+y≤2",
+        "proof": "constructor\n· constructor\n  · norm_num\n  · norm_num\n· intro x y feasible\n  have identity : (x+y)^2+(x-y)^2 = 2*(x^2+y^2) := by ring\n  rw [feasible] at identity\n  have nonnegative : 0 ≤ (x-y)^2 := sq_nonneg _\n  have squared : (x+y)^2 ≤ (2:ℝ)^2 := by linarith\n  apply le_of_sq_le_sq squared\n  norm_num",
+        "hints": [
+          "Check feasibility and the attained objective value.",
+          "For arbitrary feasible x and y, use the sum-and-difference square identity.",
+          "Discard the nonnegative square and apply `le_of_sq_le_sq` with upper bound 2."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The feasible point (1,1) attains 2, and no feasible point has a larger value."
+      }
+    ]
+  },
+  {
+    "id": "DoubleIntegralValley",
+    "title": "Double Integral Valley",
+    "prerequisites": "Single-variable integration; planar regions; mass and moments.",
+    "levels": [
+      {
+        "title": "A rectangle",
+        "objective": "Evaluate an iterated integral on a rectangle.",
+        "explanation": "In an iterated integral, evaluate the innermost variable first. Here integrating 1 with respect to y on [0,3] gives 3. Name that result, substitute it into the x integral, and integrate the remaining constant on [0,2]. All bounds are ordered and the integrands are continuous. The result is the rectangle area.\n\nWorked example: On [0,4]×[0,2], first ∫₀²1 dy=2, then ∫₀⁴2 dx=8. Name the inner value and rewrite it in the outer integral.",
+        "statement": ": (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..3, (1:ℝ)) = 6",
+        "proof": "have innerValue : (∫ y : ℝ in 0..3, (1:ℝ)) = 3 := by\n  rw [constant_integral]\n  norm_num\nrw [innerValue, constant_integral]\nnorm_num",
+        "hints": [
+          "Name the inner integral and calculate it with `constant_integral`.",
+          "Rewrite the double integral using that named value.",
+          "Integrate the resulting constant 3 on [0,2]."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The iterated constant integral gives rectangle area 6."
+      },
+      {
+        "title": "A triangular region",
+        "objective": "Translate a triangular region into equivalent bounds.",
+        "explanation": "For the triangle 0≤y≤x≤1, the lower bound x≥0 follows from the other inequalities. Prove the two descriptions equivalent. For nested conjunctions, `.1` reads the first condition and `.2` reads the remaining conditions; repeat these selectors to reach later bounds. No new calculus tactic is involved.\n\nWorked example: For 0≤x≤y≤2, one may omit the separate y≥0 bound because 0≤x and x≤y imply it by transitivity.",
+        "statement": "(x y : ℝ) : (0≤x ∧ x≤1 ∧ 0≤y ∧ y≤x) ↔ (0≤y ∧ y≤x ∧ x≤1)",
+        "proof": "constructor\n· intro bounds\n  constructor\n  · exact bounds.2.2.1\n  · constructor\n    · exact bounds.2.2.2\n    · exact bounds.2.1\n· intro bounds\n  constructor\n  · exact le_trans bounds.1 bounds.2.1\n  · constructor\n    · exact bounds.2.2\n    · constructor\n      · exact bounds.1\n      · exact bounds.2.1",
+        "hints": [
+          "Use `constructor` to prove both implications.",
+          "Read the required bounds from the hypothesis using `.1` and `.2`.",
+          "In the reverse direction, use transitivity on 0≤y and y≤x to recover 0≤x."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two sets of inequalities describe the same triangular region."
+      },
+      {
+        "title": "Reverse the order",
+        "objective": "Verify reversed bounds by evaluating both integrals.",
+        "explanation": "The same triangle has bounds 0≤y≤x≤1 or 0≤y≤1 with y≤x≤1. For density 1, compute the inner integrals as x and 1-y. `integral_values` substitutes these pointwise formulas under the outer integrals. Splitting an integral of a difference requires integrability; continuity of 1 and y on this bounded interval supplies it. This is a directly verified order-reversal special case.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, (1:ℝ)) = ∫ y : ℝ in 0..1, ∫ x : ℝ in y..1, (1:ℝ)",
+        "proof": "have forward (x : ℝ) : (∫ y : ℝ in 0..x, (1:ℝ)) = x := by\n  rw [constant_integral]\n  ring\nhave backward (y : ℝ) : (∫ x : ℝ in y..1, (1:ℝ)) = 1-y := by\n  rw [constant_integral]\n  ring\nrw [integral_values forward, integral_values backward]\nrw [intervalIntegral.integral_sub (f := fun _ : ℝ => (1:ℝ)) (g := fun y : ℝ => y) (continuous_const.intervalIntegrable 0 1) (continuous_id.intervalIntegrable 0 1)]\nnorm_num [integral_id]",
+        "hints": [
+          "Name both inner integrals as functions of the outer variable.",
+          "Replace them with `integral_values`.",
+          "Use the difference rule with the displayed continuity-based integrability proofs, then `integral_id`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Both integration orders give the same area for this explicitly calculated triangle."
+      },
+      {
+        "title": "Area and volume",
+        "objective": "Compute area and the volume below a constant roof.",
+        "explanation": "Integrating 1 gives the rectangle area; integrating the nonnegative height 4 gives the volume below a constant roof. Calculate the inner constant integral and then the outer one in each case. The same bounds describe the two applications.",
+        "statement": ": (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..3, (1:ℝ)) = 6 ∧ (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..3, (4:ℝ)) = 24",
+        "proof": "constructor\n· rw [constant_integral, constant_integral]\n  norm_num\n· rw [constant_integral, constant_integral]\n  norm_num",
+        "hints": [
+          "Separate area and volume.",
+          "Apply `constant_integral` twice in each part.",
+          "Evaluate the side lengths and the height."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The rectangle has area 6 and volume 24 below height 4."
+      },
+      {
+        "title": "A lamina centroid",
+        "objective": "Compute mass and a normalized first moment.",
+        "explanation": "The uniform rectangle [0,2]×[0,1] has positive mass 2. Its centroid coordinates are the first moments divided by that mass. For the x moment, x is constant during the y integration. For the y moment, first integrate y over [0,1]. Keep these two different inner calculations separate.",
+        "statement": ": (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, (1:ℝ)) = 2 ∧ (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, x) / 2 = 1 ∧ (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, y) / 2 = 1/2",
+        "proof": "constructor\n· norm_num [constant_integral]\n· constructor\n  · have innerValue (x : ℝ) : (∫ y : ℝ in 0..1, x) = x := by\n      rw [constant_integral]\n      ring\n    rw [integral_values innerValue, integral_id]\n    norm_num\n  · have innerValue : (∫ y : ℝ in 0..1, y) = 1/2 := by\n      rw [integral_id]\n      norm_num\n    rw [innerValue, constant_integral]\n    norm_num",
+        "hints": [
+          "Calculate the mass, x moment, and y moment separately.",
+          "Use a pointwise inner-integral formula for the x moment.",
+          "Use `integral_id` for each variable moment, then divide by the positive mass."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Positive mass 2 and the two moments give centroid (1,1/2)."
+      },
+      {
+        "title": "Boss: a triangular lamina",
+        "objective": "Combine variable bounds, mass, and a first moment.",
+        "explanation": "For uniform density on 0≤y≤x≤1, derive the inner mass and moment integrals as x, x², and x²/2. Integrating these gives mass 1/2 and moments 1/3 and 1/6. Divide by the positive mass to obtain the full centroid (2/3,1/3). Reuse pointwise replacement and the power rule; the boss introduces no new proof syntax.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, (1:ℝ)) = 1/2 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, x) / (1/2) = 2/3 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, y) / (1/2) = 1/3",
+        "proof": "constructor\n· have innerValue (x : ℝ) : (∫ y : ℝ in 0..x, (1:ℝ)) = x := by\n    rw [constant_integral]\n    ring\n  rw [integral_values innerValue, integral_id]\n  norm_num\n· constructor\n  · have innerValue (x : ℝ) : (∫ y : ℝ in 0..x, x) = x^2 := by\n      rw [constant_integral]\n      ring\n    rw [integral_values innerValue, integral_pow]\n    norm_num\n  · have innerValue (x : ℝ) : (∫ y : ℝ in 0..x, y) = x^2/2 := by\n      rw [integral_id]\n      ring\n    rw [integral_values innerValue, intervalIntegral.integral_div, integral_pow]\n    norm_num",
+        "hints": [
+          "For each quantity, name its inner integral as a formula in x.",
+          "Use `integral_values` to replace it under the outer integral.",
+          "Use `integral_id` or `integral_pow`, and normalize the moments by mass 1/2."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The triangular lamina has mass 1/2 and centroid (2/3,1/3)."
+      }
+    ]
+  },
+  {
+    "id": "TripleIntegralCaverns",
+    "title": "Triple Integral Caverns",
+    "prerequisites": "Double integrals; solid bounds; density and moments.",
+    "levels": [
+      {
+        "title": "A rectangular box",
+        "objective": "Evaluate a triple iterated integral on a box.",
+        "explanation": "Evaluate a triple integral from the innermost variable outward. The z integral is 4; integrating that value over the y interval gives 12; the final x interval doubles it. The box has ordered bounds and continuous constant density. This is the three-variable version of the rectangle method.\n\nWorked example: A box with side lengths 2, 2, and 3 has constant-density integral 3, then 6, then 12 when integrated from the innermost variable outward.",
+        "statement": ": (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..3, ∫ z : ℝ in 0..4, (1:ℝ)) = 24",
+        "proof": "have innerValue : (∫ z : ℝ in 0..4, (1:ℝ)) = 4 := by\n  rw [constant_integral]\n  norm_num\nhave middle : (∫ y : ℝ in 0..3, (4:ℝ)) = 12 := by\n  rw [constant_integral]\n  norm_num\nrw [innerValue, middle, constant_integral]\nnorm_num",
+        "hints": [
+          "Name the z integral first.",
+          "Name the y integral of the resulting constant.",
+          "Substitute both values and finish the x integral."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The constant-density box integral equals its volume 24."
+      },
+      {
+        "title": "Bounds for a solid",
+        "objective": "Express a sloping-roof solid with explicit bounds.",
+        "explanation": "The solid has roof z=x, with 0≤z≤x≤1 and 0≤y≤1. Translate between the expanded bounds and the shorter nested description. As with triangular regions, x≥0 follows from 0≤z≤x. Read and assemble the inequalities explicitly; the task is choosing valid bounds for a solid.\n\nWorked example: For a roof z≤y with z≥0, the inequality y≥0 follows. A solid description must also state both bounds on the independent horizontal coordinate.",
+        "statement": "(x y z : ℝ) : (0≤x ∧ x≤1 ∧ 0≤y ∧ y≤1 ∧ 0≤z ∧ z≤x) ↔ (0≤z ∧ z≤x ∧ x≤1 ∧ 0≤y ∧ y≤1)",
+        "proof": "constructor\n· intro b\n  constructor\n  · exact b.2.2.2.2.1\n  · constructor\n    · exact b.2.2.2.2.2\n    · constructor\n      · exact b.2.1\n      · constructor\n        · exact b.2.2.1\n        · exact b.2.2.2.1\n· intro b\n  constructor\n  · exact le_trans b.1 b.2.1\n  · constructor\n    · exact b.2.2.1\n    · constructor\n      · exact b.2.2.2.1\n      · constructor\n        · exact b.2.2.2.2\n        · constructor\n          · exact b.1\n          · exact b.2.1",
+        "hints": [
+          "Prove both implications separately.",
+          "Reorder the listed bounds using conjunction selectors.",
+          "Recover x≥0 by transitivity of 0≤z and z≤x."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two descriptions specify the same sloping-roof solid."
+      },
+      {
+        "title": "Volume below a roof",
+        "objective": "Calculate volume using a variable upper bound.",
+        "explanation": "Integrate 1 over the sloping-roof solid. Its vertical section has height x. The unit y width leaves that section value unchanged, so the outer integral is ∫₀¹x dx. Prove the inner and middle formulas before evaluating the remaining one-variable integral.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..x, (1:ℝ)) = 1/2",
+        "proof": "have innerValue (x : ℝ) : (∫ z : ℝ in 0..x, (1:ℝ)) = x := by\n  rw [constant_integral]\n  ring\nhave crossSection (x : ℝ) : (∫ y : ℝ in 0..1, ∫ z : ℝ in 0..x, (1:ℝ)) = x := by\n  rw [innerValue, constant_integral]\n  ring\nrw [integral_values crossSection, integral_id]\nnorm_num",
+        "hints": [
+          "Calculate the vertical integral as x.",
+          "Calculate the unit-width y integral of that value.",
+          "Use `integral_values` and `integral_id` for the last integration."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The solid’s volume is 1/2."
+      },
+      {
+        "title": "Variable density",
+        "objective": "Compute mass from a nonconstant density.",
+        "explanation": "The density x² is nonnegative on the unit cube and varies with x. Treat it as constant while integrating over y and z. The section integral remains x²; only then apply the power integration rule in x. Vanishing density on one face does not make the total mass zero.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x^2) = 1/3",
+        "proof": "have crossSection (x : ℝ) : (∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x^2) = x^2 := by\n  rw [constant_integral, constant_integral]\n  ring\nrw [integral_values crossSection, integral_pow]\nnorm_num",
+        "hints": [
+          "Name the two-variable section integral for a fixed x.",
+          "Use the two unit side lengths to simplify that section.",
+          "Replace the section and apply `integral_pow`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The unit-cube density x² has positive total mass 1/3."
+      },
+      {
+        "title": "A first moment",
+        "objective": "Integrate position times density.",
+        "explanation": "The x first moment multiplies density x² by position x. After the y and z integrations, use algebra to express the section as x³, then apply the power integral. This distinguishes mass from the moment used in a center-of-mass numerator.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x*x^2) = 1/4",
+        "proof": "have crossSection (x : ℝ) : (∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x*x^2) = x^3 := by\n  rw [constant_integral, constant_integral]\n  ring\nrw [integral_values crossSection, integral_pow]\nnorm_num",
+        "hints": [
+          "Multiply position by density before integrating.",
+          "Prove that the section integral is x³ using constant integrals and `ring`.",
+          "Substitute that formula and integrate the cube."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The x first moment for density x² is 1/4."
+      },
+      {
+        "title": "Boss: the center of a solid",
+        "objective": "Compute positive mass and three normalized moments.",
+        "explanation": "The uniform unit cube is symmetric, suggesting center (1/2,1/2,1/2). Justify that prediction by computing positive mass 1 and all three coordinate moments. Each moment requires choosing the correct varying variable. Divide by the computed positive mass, rather than using symmetry as an unproved conclusion.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, (1:ℝ)) = 1 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x) / 1 = 1/2 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, y) / 1 = 1/2 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, z) / 1 = 1/2",
+        "proof": "constructor\n· norm_num [constant_integral]\n· constructor\n  · have crossSection (x : ℝ) : (∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, x) = x := by\n      rw [constant_integral, constant_integral]\n      ring\n    rw [integral_values crossSection, integral_id]\n    norm_num\n  · constructor\n    · have innerValue (y : ℝ) : (∫ z : ℝ in 0..1, y) = y := by\n        rw [constant_integral]\n        ring\n      have crossSection (x : ℝ) : (∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, y) = 1/2 := by\n        rw [integral_values innerValue, integral_id]\n        norm_num\n      rw [integral_values crossSection, constant_integral]\n      norm_num\n    · have innerValue : (∫ z : ℝ in 0..1, z) = 1/2 := by\n        rw [integral_id]\n        norm_num\n      rw [innerValue, constant_integral, constant_integral]\n      norm_num",
+        "hints": [
+          "Separate mass and the three normalized moments.",
+          "For each moment, identify which integration first involves a varying coordinate.",
+          "Use the constant and identity integral rules, then divide by mass 1."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Direct integration verifies the uniform cube’s positive mass and center (1/2,1/2,1/2)."
+      }
+    ]
+  },
+  {
+    "id": "CoordinatePortal",
+    "title": "Coordinate Portal",
+    "prerequisites": "Multiple integrals; determinants; trigonometric identities.",
+    "levels": [
+      {
+        "title": "Polar identities",
+        "objective": "Verify the radial identity for polar coordinates.",
+        "explanation": "Polar coordinates use x=r cos θ and y=r sin θ. Factor out r² and use sin²θ+cos²θ=1. The identity holds for all real r and θ; using polar coordinates as a single-cover region additionally requires r≥0 and an angular interval of length 2π, with the usual exceptional origin and boundary.\n\nWorked example: When r=2, (2 cos θ)²+(2 sin θ)²=4(sin²θ+cos²θ)=4. The variable-radius proof uses the same factorization.",
+        "statement": "(r t : ℝ) : (r*Real.cos t)^2+(r*Real.sin t)^2 = r^2",
+        "proof": "have factor : (r*Real.cos t)^2+(r*Real.sin t)^2 = r^2*(Real.sin t^2+Real.cos t^2) := by ring\nrw [factor, Real.sin_sq_add_cos_sq]\nring",
+        "hints": [
+          "Name the factorization of the two coordinate squares.",
+          "Rewrite the trigonometric factor with `Real.sin_sq_add_cos_sq`.",
+          "Finish the remaining polynomial identity."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The polar coordinate identity preserves squared radius."
+      },
+      {
+        "title": "Polar area factor",
+        "objective": "Derive the polar determinant and integrate the unit disk area density.",
+        "explanation": "Build the polar Jacobian from the actual partial derivatives of r cos θ and r sin θ, then use the 2×2 determinant rule. The sine-cosine identity simplifies the determinant to r. The assumption r≥0 permits replacing |r| by r. Finally integrate that radial area factor over the standard disk parameter domain. This evaluates the coordinate-side integral, not a general substitution theorem.\n\nWorked example: For T(u,v)=(3u,2v), compute derivative columns (3,0) and (0,2). Their 2×2 determinant is 6, so the area factor is |6|=6.",
+        "statement": "(r t : ℝ) (hr : 0≤r) : |Matrix.det (planarJacobian polarX polarY r t)| = r ∧ (∫ t : ℝ in 0..(2*Real.pi), ∫ r : ℝ in 0..1, r) = Real.pi",
+        "proof": "have determinant : Matrix.det (planarJacobian polarX polarY r t) = r := by\n  norm_num [planarJacobian, polarX, polarY, partialX, partialY, Matrix.det_fin_two, deriv_mul_const_field, deriv_const_mul_field]\n  apply Eq.trans (b := r*(Real.sin t^2+Real.cos t^2))\n  · ring\n  · rw [Real.sin_sq_add_cos_sq]\n    ring\nconstructor\n· rw [determinant, abs_of_nonneg hr]\n· have radial : (∫ r : ℝ in 0..1, r) = 1/2 := by\n    rw [integral_id]\n    norm_num\n  rw [radial, constant_integral]\n  ring",
+        "hints": [
+          "Compute the four partials and expand the 2×2 determinant.",
+          "Factor the result as r(sin²θ+cos²θ), then use r≥0 for its absolute value.",
+          "Integrate r on [0,1], then the resulting constant over [0,2π]."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The derived polar determinant has absolute factor r on r≥0, and the coordinate-side area integral is π."
+      },
+      {
+        "title": "Cylindrical volume",
+        "objective": "Evaluate a correctly weighted cylindrical-coordinate integral.",
+        "explanation": "For a unit-radius cylinder of height 2, the cylindrical volume factor is r on 0≤r≤1 and 0≤θ≤2π. Integrate the vertical coordinate first to get 2r, then the radial coordinate to get 1, then the angle. The factor is the nonnegative absolute Jacobian on this domain. The formal goal is the coordinate-side volume integral.",
+        "statement": ": (∫ t : ℝ in 0..(2*Real.pi), ∫ r : ℝ in 0..1, ∫ z : ℝ in 0..2, r) = 2*Real.pi",
+        "proof": "have vertical (r : ℝ) : (∫ z : ℝ in 0..2, r) = 2*r := by\n  rw [constant_integral]\n  ring\nhave radial : (∫ r : ℝ in 0..1, ∫ z : ℝ in 0..2, r) = 1 := by\n  rw [integral_values vertical, intervalIntegral.integral_const_mul, integral_id]\n  norm_num\nrw [radial, constant_integral]\nring",
+        "hints": [
+          "Calculate the vertical integral for a fixed radius.",
+          "Pull the constant 2 out of the radial integral and integrate r.",
+          "Integrate the resulting constant over the angular interval."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The cylindrical coordinate-side volume integral evaluates to 2π with its radial factor."
+      },
+      {
+        "title": "Spherical volume",
+        "objective": "Evaluate the spherical volume density on its standard domain.",
+        "explanation": "On 0≤r≤1, 0≤φ≤π, 0≤θ≤2π, the spherical factor is r² sin φ. First justify the absolute-value sign using nonnegativity of a square and of sine on [0,π]. Then perform the radial, polar-angle, and azimuth integrations in that order. This is a proved coordinate-integral calculation; identification with a Cartesian ball by a general substitution theorem remains deferred.",
+        "statement": ": (∀ r p : ℝ, 0≤p → p≤Real.pi → |r^2*Real.sin p| = r^2*Real.sin p) ∧ (∫ t : ℝ in 0..(2*Real.pi), ∫ p : ℝ in 0..Real.pi, ∫ r : ℝ in 0..1, r^2*Real.sin p) = 4*Real.pi/3",
+        "proof": "constructor\n· intro r p lower upper\n  apply abs_of_nonneg\n  apply mul_nonneg\n  · exact sq_nonneg r\n  · apply Real.sin_nonneg_of_mem_Icc\n    constructor\n    · exact lower\n    · exact upper\n· have radial (p : ℝ) : (∫ r : ℝ in 0..1, r^2*Real.sin p) = (1/3)*Real.sin p := by\n    rw [intervalIntegral.integral_mul_const, integral_pow]\n    norm_num\n  have polar : (∫ p : ℝ in 0..Real.pi, ∫ r : ℝ in 0..1, r^2*Real.sin p) = 2/3 := by\n    rw [integral_values radial, intervalIntegral.integral_const_mul, integral_sin]\n    norm_num\n  rw [polar, constant_integral]\n  ring",
+        "hints": [
+          "Prove the sign of the spherical factor from the stated polar-angle bounds.",
+          "Name the radial integral, treating sin φ as a constant.",
+          "Integrate sine on [0,π], then the constant on [0,2π]."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The spherical factor has the required sign, and its coordinate-side volume integral is 4π/3."
+      },
+      {
+        "title": "A nonpolar Jacobian",
+        "objective": "Compute a determinant for a linear coordinate transformation.",
+        "explanation": "The map T(u,v)=(2u,-3v) has derivative matrix diag(2,-3). Derive its entries from the coordinate partials before taking the determinant. Name the signed determinant and reuse it for the absolute determinant. The negative sign records orientation reversal; area scaling uses its positive magnitude.",
+        "statement": ": Matrix.det (planarJacobian (fun u _ => 2*u) (fun _ v => -3*v) 0 0) = -6 ∧ |Matrix.det (planarJacobian (fun u _ => 2*u) (fun _ v => -3*v) 0 0)| = 6",
+        "proof": "have determinant : Matrix.det (planarJacobian (fun u _ => 2*u) (fun _ v => -3*v) 0 0) = -6 := by\n  norm_num [planarJacobian, partialX, partialY, Matrix.det_fin_two, deriv_const_mul_id]\nconstructor\n· exact determinant\n· rw [determinant]\n  norm_num",
+        "hints": [
+          "Compute the derivative entries and the 2×2 determinant.",
+          "Name the signed determinant -6.",
+          "Reuse that equality when taking the absolute value."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The transformation reverses orientation with signed determinant -6 and area factor 6."
+      },
+      {
+        "title": "Boss: an absolute Jacobian",
+        "objective": "Verify a change-of-variables equality with an orientation-reversing map.",
+        "explanation": "The orientation-reversing map sends the unit square to [0,2]×[-3,0]. Compare the original constant-density integral with the transformed one using the absolute determinant 6. Calculate the rectangle integral and determinant independently, then combine them. This verifies the stated change-of-variables special case by direct integration.",
+        "statement": ": (∫ x : ℝ in 0..2, ∫ y : ℝ in (-3)..0, (1:ℝ)) = (∫ u : ℝ in 0..1, ∫ v : ℝ in 0..1, |Matrix.det (!![(2:ℝ),0;0,-3])|)",
+        "proof": "have determinant : |Matrix.det (!![(2:ℝ),0;0,-3])| = 6 := by\n  norm_num [Matrix.det_fin_two]\nhave original : (∫ x : ℝ in 0..2, ∫ y : ℝ in (-3)..0, (1:ℝ)) = 6 := by\n  norm_num [constant_integral]\nrw [original, determinant]\nnorm_num [constant_integral]",
+        "hints": [
+          "Compute the absolute determinant, retaining its positive sign.",
+          "Evaluate the original rectangle integral.",
+          "Substitute both values and check the transformed unit-square integral."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two directly evaluated integrals agree using the absolute determinant, verifying the stated substitution special case."
+      }
+    ]
+  },
+  {
+    "id": "VectorFieldObservatory",
+    "title": "Vector Field Observatory",
+    "prerequisites": "Gradients, partial derivatives, and three-dimensional vectors.",
+    "levels": [
+      {
+        "title": "Compare two fields",
+        "objective": "Evaluate and distinguish vector fields at a point.",
+        "explanation": "A vector field assigns a vector to each position. The radial field returns the position itself, while the rotational field rotates and scales its planar components. Evaluate both at the same point to compare their behaviour. Coordinate calculations now use only familiar vector methods.\n\nWorked example: For F(x,y,z)=(2x,y,0), substituting (1,3,0) gives (2,3,0). A field evaluation takes a position as input and returns a vector.",
+        "statement": ": radial ![2,0,0] = (![2,0,0] : Vec) ∧ rotation ![2,0,0] = (![0,1,0] : Vec)",
+        "proof": "constructor\n· rfl\n· apply vector_eq\n  · norm_num [rotation]\n  · norm_num [rotation]\n  · norm_num [rotation]",
+        "hints": [
+          "Separate the two field evaluations.",
+          "The radial-field identity is definitional.",
+          "Compare the rotational output by its three coordinates."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two vector fields give the stated different outputs at the same point."
+      },
+      {
+        "title": "Recognize a gradient",
+        "objective": "Verify that a field has a specified potential.",
+        "explanation": "For the globally defined scalar potential φ=xy, calculate its gradient as (y,x,0). Use the product partial rule `partial_xy` with the component gradient formula. Producing an actual potential proves this field is conservative on all of space; no curl-free domain shortcut is needed.\n\nWorked example: For φ=xz, holding the other coordinates fixed gives gradient (z,0,x). A proposed potential is verified by all three partial derivatives.",
+        "statement": "(p : Vec) : gradient (fun q => q 0*q 1) p = (![p 1,p 0,0] : Vec)",
+        "proof": "rw [gradient_components]\napply vector_eq\n· norm_num [partial_xy]\n· norm_num [partial_xy]\n· norm_num [partial_xy]",
+        "hints": [
+          "Display the gradient as three partial derivatives.",
+          "Use `vector_eq`.",
+          "Evaluate the three entries with `partial_xy`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The globally defined potential xy has gradient (y,x,0)."
+      },
+      {
+        "title": "Divergence",
+        "objective": "Compute a field divergence using the appropriate coordinate derivatives.",
+        "explanation": "Divergence adds only the matching-coordinate partials: ∂F₀/∂x₀, ∂F₁/∂x₁, and ∂F₂/∂x₂. For the radial field each is a coordinate derivative equal to 1. Choose those terms using the definition before calculating their sum.",
+        "statement": "(p : Vec) : divergence radial p = 3",
+        "proof": "rw [divergence]\nnorm_num [radial, partial_coordinate]",
+        "hints": [
+          "Open the sum in `divergence`.",
+          "Use the coordinate derivative rule on each matching entry.",
+          "Add the three ones."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The radial field has divergence 3."
+      },
+      {
+        "title": "Curl",
+        "objective": "Compute an oriented curl from coordinate partial derivatives.",
+        "explanation": "Curl uses the right-handed difference of cross-coordinate partials. For (-y/2,x/2,0), the only nonzero component is ∂(x/2)/∂x minus ∂(-y/2)/∂y. The rules `partial_div_const` and `partial_neg` express the familiar constant-factor and sign laws. Compute components without exposing coordinate updates.",
+        "statement": "(p : Vec) : curl rotation p = (![0,0,1] : Vec)",
+        "proof": "rw [curl]\napply vector_eq\n· norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]\n· norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]\n· norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]",
+        "hints": [
+          "Open `curl` and compare its components.",
+          "Use the coordinate, constant, negative, and constant-division partial rules.",
+          "The third component is 1/2 minus -1/2."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The rotational field has right-handed curl (0,0,1)."
+      },
+      {
+        "title": "Two differential identities",
+        "objective": "Verify curl-of-gradient and divergence-of-curl for explicit smooth fields.",
+        "explanation": "First compute the constant gradient of x and the constant curl of the rotational field. The rules `curl_congr` and `divergence_congr` allow replacement of equal fields. Derivatives of constant components then give zero. These are explicit smooth examples of the differential identities, not an assumption that mixed partials commute without regularity.",
+        "statement": "(p : Vec) : curl (gradient (fun q => q 0)) p = (0 : Vec) ∧ divergence (curl rotation) p = 0",
+        "proof": "have grad (q : Vec) : gradient (fun p => p 0) q = (![1,0,0] : Vec) := by\n  rw [gradient_components]\n  apply vector_eq\n  · norm_num [partial_coordinate]\n  · norm_num [partial_coordinate]\n  · norm_num [partial_coordinate]\nhave rotationCurl (q : Vec) : curl rotation q = (![0,0,1] : Vec) := by\n  rw [curl]\n  apply vector_eq\n  · norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]\n  · norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]\n  · norm_num [rotation, partial_div_const, partial_neg, partial_coordinate, partial_constant]\nconstructor\n· rw [curl_congr grad]\n  apply vector_eq\n  · norm_num [curl, partial_constant]\n  · norm_num [curl, partial_constant]\n  · norm_num [curl, partial_constant]\n· rw [divergence_congr rotationCurl, divergence]\n  norm_num [partial_constant]",
+        "hints": [
+          "Name the gradient of x and the curl of the rotational field.",
+          "Replace the corresponding fields using the congruence rules.",
+          "Every remaining partial derivative is a constant derivative."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Both differential identities hold for the stated explicit smooth examples."
+      },
+      {
+        "title": "Boss: construct a potential",
+        "objective": "Supply a potential and verify it globally.",
+        "explanation": "Construct a globally defined potential for (y,x,0) and normalize its value to zero at the origin. Supply the scalar function with `use`, check its value, then calculate its gradient at an arbitrary point. Reuse the product partial rule rather than inferring conservativity from curl alone.",
+        "statement": ": ∃ f : ScalarField, f ![0,0,0] = 0 ∧ ∀ p, gradient f p = (![p 1,p 0,0] : Vec)",
+        "proof": "use fun q => q 0*q 1\nconstructor\n· norm_num\n· intro p\n  rw [gradient_components]\n  apply vector_eq\n  · norm_num [partial_xy]\n  · norm_num [partial_xy]\n  · norm_num [partial_xy]",
+        "hints": [
+          "Integrate the first component y with respect to x to propose a potential.",
+          "Choose the additive constant so the origin value is zero.",
+          "For an arbitrary point, verify all three gradient components."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The supplied globally defined potential has the required gradient and normalization."
+      }
+    ]
+  },
+  {
+    "id": "PathIntegralTrails",
+    "title": "Path Integral Trails",
+    "prerequisites": "Regular parametrized curves; vector fields; the fundamental theorem of calculus.",
+    "levels": [
+      {
+        "title": "Choose an orientation",
+        "objective": "Parametrize a line segment with specified initial and final points.",
+        "explanation": "The segment (1-t)A+tB runs from A at parameter 0 to B at parameter 1. Its order gives the path orientation. Verify the endpoint identities using scalar-multiplication identities; `simp` removes the zero and unit coefficients.\n\nWorked example: The segment from (0,0,0) to (2,0,0) has midpoint (1,0,0) at t=1/2, start at t=0, and finish at t=1.",
+        "statement": "(A B : Vec) : (fun t : ℝ => (1-t) • A + t • B) 0 = A ∧ (fun t : ℝ => (1-t) • A + t • B) 1 = B",
+        "proof": "constructor\n· simp\n· simp",
+        "hints": [
+          "Separate the initial and final endpoint.",
+          "Substitute t=0 and simplify.",
+          "Substitute t=1 and simplify."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The segment parametrization runs from A to B in the stated orientation."
+      },
+      {
+        "title": "A weighted wire",
+        "objective": "Evaluate a scalar line integral with arc-length weight.",
+        "explanation": "A scalar line integral multiplies the scalar density by speed. For this unit-speed wire, the density along the path is t and the speed is 1. Prove the resulting integrand first, replace it in `scalarLineIntegral`, then perform the ordinary integral. Arc-length weight is always nonnegative on the increasing parameter interval.\n\nWorked example: A constant scalar density 1 on a path of speed 2, for 0≤t≤3, gives scalar line integral ∫₀³2 dt=6.",
+        "statement": ": scalarLineIntegral (fun p => p 0) (fun t => ![t,0,0]) 0 2 = 2",
+        "proof": "have integrand (t : ℝ) : (fun p : Vec => p 0) ![t,0,0] * speed (fun s => ![s,0,0]) t = t := by\n  rw [speed, velocity_components]\n  norm_num [length, lengthSq, dot]\nrw [scalarLineIntegral, integral_values integrand, integral_id]\nnorm_num",
+        "hints": [
+          "Compute the product of density along the path and speed.",
+          "Name that product as the scalar integrand t.",
+          "Rewrite the line integral and use `integral_id`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The scalar line integral includes the speed weight and has value 2."
+      },
+      {
+        "title": "Work along a curve",
+        "objective": "Integrate a vector field dotted with the curve velocity.",
+        "explanation": "Work integrates F(c(t))·c′(t). Substitute the path into the field, compute velocity, and take the dot product before integrating. This integrand has an orientation-sensitive velocity, unlike the speed factor in a scalar line integral.",
+        "statement": ": work (fun p => ![p 0,0,0]) (fun t => ![t,0,0]) 0 2 = 2",
+        "proof": "have integrand (t : ℝ) : dot ((fun p : Vec => ![p 0,0,0]) ![t,0,0]) (velocity (fun s => ![s,0,0]) t) = t := by\n  rw [velocity_components, dot]\n  norm_num\nrw [work, integral_values integrand, integral_id]\nnorm_num",
+        "hints": [
+          "Compute the field on the path and the component velocity.",
+          "Name their dot product as the integrand t.",
+          "Rewrite `work` with that formula and integrate."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The field-velocity work integral has value 2."
+      },
+      {
+        "title": "Reverse orientation",
+        "objective": "Show that reversing oriented integration negates work.",
+        "explanation": "Reversing the parameter bounds reverses oriented work. Open the two occurrences of `work` and apply the interval-reversal rule `reverse_integral`. This statement concerns the oriented integral; it does not negate a geometric arc length.",
+        "statement": "(F : Field) (c : ℝ → Vec) (a b : ℝ) : work F c b a = -work F c a b",
+        "proof": "rw [work, work]\napply reverse_integral",
+        "hints": [
+          "Open the work definitions on both sides.",
+          "The integrand is unchanged and the interval bounds are reversed.",
+          "Apply `reverse_integral`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Reversing the parameter bounds negates oriented work."
+      },
+      {
+        "title": "Apply the endpoint theorem",
+        "objective": "Use an established fundamental theorem for line integrals.",
+        "explanation": "`RegularPath` records differentiability of every coordinate along the interval. `PotentialAlong` states the derivative of the potential along the curve equals F·c′, and `WorkIntegrable` records integrability of that actual integrand. These names abbreviate the established derivative and integral conditions; none assumes the desired work equality. Apply the endpoint theorem and supply its two analytic hypotheses.",
+        "statement": "(F : Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ) (hcurve : RegularPath c a b) (hc : PotentialAlong F f c a b) (hi : WorkIntegrable F c a b) : work F c a b = f (c b)-f (c a)",
+        "proof": "apply work_eq_endpoint\n· exact hc\n· exact hi",
+        "hints": [
+          "Identify which assumption gives the derivative of the potential along the path.",
+          "Apply `work_eq_endpoint`.",
+          "Supply `hc` and `hi` separately."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The derivative-along-path and integrability hypotheses justify endpoint evaluation."
+      },
+      {
+        "title": "Boss: path independence",
+        "objective": "Use a potential to compare two paths and compute their common work.",
+        "explanation": "For potential φ=x, the endpoint rule `work_first_coordinate` is proved from the fundamental theorem with the stated path regularity and derivative-integrability hypotheses. Apply it to each path. Their shared start and finish then force equal work, and the first equality gives its value as final x minus initial x. This proves path independence for the specified conservative field.",
+        "statement": "(c d : ℝ → Vec) (h0 : c 0 = d 0) (h1 : c 1 = d 1) (hc : RegularPath c 0 1) (hd : RegularPath d 0 1) (hic : IntervalIntegrable (fun t => deriv (fun s => c s 0) t) volume 0 1) (hid : IntervalIntegrable (fun t => deriv (fun s => d s 0) t) volume 0 1) : work (fun _ => ![1,0,0]) c 0 1 = c 1 0-c 0 0 ∧ work (fun _ => ![1,0,0]) c 0 1 = work (fun _ => ![1,0,0]) d 0 1",
+        "proof": "have first := work_first_coordinate c 0 1 hc hic\nhave second := work_first_coordinate d 0 1 hd hid\nconstructor\n· exact first\n· rw [first, second, h0, h1]",
+        "hints": [
+          "Apply the first-coordinate endpoint rule to each path separately.",
+          "Keep the resulting work-value identities as named facts.",
+          "Rewrite the two values using the shared endpoints."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two paths have equal work because their potential endpoint values coincide."
+      }
+    ]
+  },
+  {
+    "id": "GreensGarden",
+    "title": "Green’s Garden",
+    "prerequisites": "Planar line integrals; double integrals; positive orientation.",
+    "levels": [
+      {
+        "title": "A positive boundary",
+        "objective": "Verify endpoints of counterclockwise square edges.",
+        "explanation": "A positive planar boundary goes counterclockwise, keeping its region on the left. The square edges run right along the bottom, up the right, left along the top, and down the left. Check that the first two joins match. Their explicit parameter directions determine the orientation used by `squareCirculation`.\n\nWorked example: A circle traversed counterclockwise has its disk on the left. Positive square edges obey the same left-of-motion convention.",
+        "statement": ": (![1,0,0] : Vec) = (fun t : ℝ => ![1,t,0]) 0 ∧ (fun t : ℝ => (![1,t,0] : Vec)) 1 = (fun t : ℝ => ![1-t,1,0]) 0",
+        "proof": "constructor\n· apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\n· apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num",
+        "hints": [
+          "Separate the two endpoint joins.",
+          "Substitute the appropriate parameter endpoints.",
+          "Use the familiar vector component comparison."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The specified square edges join in the positive counterclockwise traversal."
+      },
+      {
+        "title": "Circulation by edges",
+        "objective": "Evaluate circulation directly along a closed boundary.",
+        "explanation": "Compute circulation directly by evaluating work on each of the four counterclockwise edges. Only the right edge contributes for F=(0,x,0). Name the four edge values before adding them with `squareCirculation`. This supplies an independent boundary calculation before any use of Green’s theorem.\n\nWorked example: For F=(0,2x,0), the upward right edge x=1 has work integrand 2, giving contribution 2 over its unit parameter interval.",
+        "statement": ": squareCirculation (fun p => ![0,p 0,0]) = 1",
+        "proof": "have edge1 : work (fun p => ![0,p 0,0]) (fun t => ![t,0,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge2 : work (fun p => ![0,p 0,0]) (fun t => ![1,t,0]) 0 1 = 1 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge3 : work (fun p => ![0,p 0,0]) (fun t => ![1-t,1,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge4 : work (fun p => ![0,p 0,0]) (fun t => ![0,1-t,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nrw [squareCirculation, edge1, edge2, edge3, edge4]\nnorm_num",
+        "hints": [
+          "Calculate one work integral per oriented edge.",
+          "The right edge has constant integrand 1; the others contribute zero.",
+          "Rewrite `squareCirculation` using the four named edge values and add."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The four independent edge calculations give circulation 1."
+      },
+      {
+        "title": "The interior integrand",
+        "objective": "Compute the matching planar curl integral.",
+        "explanation": "For the same field, the planar curl integrand is ∂Q/∂x-∂P/∂y=1. Calculate this derivative expression, then integrate it over the square. Its value agrees with the independent edge calculation, verifying the interior side of this example.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (curl (fun p => ![0,p 0,0]) ![x,y,0]) 2) = 1",
+        "proof": "have integrand (x y : ℝ) : (curl (fun p => ![0,p 0,0]) ![x,y,0]) 2 = 1 := by\n  rw [curl]\n  norm_num [partial_coordinate, partial_constant]\nhave innerValue (x : ℝ) : (∫ y : ℝ in 0..1, (curl (fun p => ![0,p 0,0]) ![x,y,0]) 2) = 1 := by\n  rw [integral_values (integrand x), constant_integral]\n  norm_num\nrw [integral_values innerValue, constant_integral]\nnorm_num",
+        "hints": [
+          "Calculate the vertical component of curl at an arbitrary square point.",
+          "Integrate the resulting constant in y.",
+          "Replace that inner integral and integrate in x."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The square integral of the planar curl equals 1."
+      },
+      {
+        "title": "Green for a shear field",
+        "objective": "Apply a proved circulation-form Green special case.",
+        "explanation": "Apply the established Green circulation identity for the smooth shear family F=(0,kx,0) on the positively oriented unit square. Here k=3. The theorem is a fully proved special case for this family and boundary, not a claim about arbitrary regions or fields. The earlier levels verified both sides directly for k=1.",
+        "statement": ": squareCirculation (fun p => ![0,3*p 0,0]) = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (curl (fun p => ![0,3*p 0,0]) ![x,y,0]) 2",
+        "proof": "apply green_shear",
+        "hints": [
+          "Recognize the field as a member of the shear family.",
+          "Identify coefficient k=3 and the positive square orientation.",
+          "Apply `green_shear`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The proved shear-family Green identity applies with coefficient 3 and the stated boundary orientation."
+      },
+      {
+        "title": "Green in flux form",
+        "objective": "Verify outward planar flux equals the divergence integral.",
+        "explanation": "For F=(x,y,0), compute outward planar flux using the four specified unit conormals, then compute the integral of divergence 2. Right and top edges contribute 1 each; bottom and left contribute zero. Equality of these independent calculations verifies the flux-form Green special case, with outward conormals distinct from boundary tangent directions.",
+        "statement": ": squareOutwardFlux (fun p => ![p 0,p 1,0]) = (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, divergence (fun p => ![p 0,p 1,0]) ![x,y,0])",
+        "proof": "have boundary : squareOutwardFlux (fun p => ![p 0,p 1,0]) = 2 := by\n  rw [squareOutwardFlux]\n  norm_num [dot]\nhave insideValue : (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, divergence (fun p => ![p 0,p 1,0]) ![x,y,0]) = 2 := by\n  norm_num [divergence, partial_coordinate, partial_constant]\nrw [boundary, insideValue]",
+        "hints": [
+          "Evaluate the outward edge sum as one named boundary value.",
+          "Compute matching-coordinate derivatives for the interior value.",
+          "Rewrite both sides using those independent calculations."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Independent outward-flux and divergence calculations verify this flux-form Green special case."
+      },
+      {
+        "title": "Boss: area from the boundary",
+        "objective": "Recover enclosed area from a boundary circulation.",
+        "explanation": "The area formula uses the boundary field (-y/2,x/2,0), whose planar curl is 1. Compute the boundary integral directly on the four positively oriented edges, then compare with the double integral of 1. The two nonzero edge contributions are each 1/2. This proves the stated area identity for the unit square.",
+        "statement": ": squareCirculation rotation = (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (1:ℝ)) ∧ squareCirculation rotation = 1",
+        "proof": "have circulation : squareCirculation rotation = 1 := by\n  have edge1 : work (rotation) (fun t => ![t,0,0]) 0 1 = 0 := by\n    norm_num [work, dot, velocity_components, deriv_const_sub_id, rotation]\n  have edge2 : work (rotation) (fun t => ![1,t,0]) 0 1 = 1/2 := by\n    norm_num [work, dot, velocity_components, deriv_const_sub_id, rotation]\n  have edge3 : work (rotation) (fun t => ![1-t,1,0]) 0 1 = 1/2 := by\n    norm_num [work, dot, velocity_components, deriv_const_sub_id, rotation]\n  have edge4 : work (rotation) (fun t => ![0,1-t,0]) 0 1 = 0 := by\n    norm_num [work, dot, velocity_components, deriv_const_sub_id, rotation]\n  rw [squareCirculation, edge1, edge2, edge3, edge4]\n  norm_num\nconstructor\n· rw [circulation]\n  norm_num [constant_integral]\n· exact circulation",
+        "hints": [
+          "Use the rotational field and the positive square boundary.",
+          "Compute and add its four work integrals.",
+          "Compare the resulting circulation with the integral of the constant area density."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The rotational boundary integral equals the square’s area 1."
+      }
+    ]
+  },
+  {
+    "id": "SurfaceExpedition",
+    "title": "Surface Expedition",
+    "prerequisites": "Cross products; partial derivatives; double integration.",
+    "levels": [
+      {
+        "title": "Parametrize a surface",
+        "objective": "Verify that a patch lies in a specified surface.",
+        "explanation": "A surface parametrization has two independent parameters. `patch u v` maps (u,v) to (u,v,0), placing every point in the horizontal plane. Read its height and two planar coordinates directly. The parameter rectangle used later fixes the actual bounded patch.\n\nWorked example: For s(u,v)=(u,v,u+v), substituting (1,2) gives (1,2,3). A surface uses two parameter inputs.",
+        "statement": "(u v : ℝ) : (patch u v) 2 = 0 ∧ (patch u v) 0 = u ∧ (patch u v) 1 = v",
+        "proof": "constructor\n· rfl\n· constructor\n  · rfl\n  · rfl",
+        "hints": [
+          "Separate the height and the two planar coordinates.",
+          "Read the explicit formula for `patch`.",
+          "Each coordinate identity follows by `rfl`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The two-parameter map lies in the horizontal plane and retains its planar coordinates."
+      },
+      {
+        "title": "Tangents and normal",
+        "objective": "Compute the two parameter tangents and their oriented cross product.",
+        "explanation": "Differentiate the surface while holding v fixed, then while holding u fixed. These are the two tangent vectors. Their cross product in the stated order is the oriented normal, including the area factor. Name both tangent calculations and reuse them in `surfaceNormal`.\n\nWorked example: For s(u,v)=(2u,v,0), parameter tangents are (2,0,0) and (0,1,0), so the oriented area vector is (0,0,2).",
+        "statement": "(u v : ℝ) : velocity (fun t => patch t v) u = (![1,0,0] : Vec) ∧ velocity (patch u) v = (![0,1,0] : Vec) ∧ surfaceNormal patch u v = (![0,0,1] : Vec)",
+        "proof": "have du : velocity (fun t => patch t v) u = (![1,0,0] : Vec) := by\n  simp only [patch, velocity_components]\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\nhave dv : velocity (patch u) v = (![0,1,0] : Vec) := by\n  have coordinates (t : ℝ) : patch u t = (![u,t,0] : Vec) := by rfl\n  rw [velocity_congr coordinates, velocity_components]\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num\nconstructor\n· exact du\n· constructor\n  · exact dv\n  · rw [surfaceNormal, du, dv]\n    apply vector_eq\n    · norm_num [cross]\n    · norm_num [cross]\n    · norm_num [cross]",
+        "hints": [
+          "Name the derivative in each parameter direction.",
+          "Use `velocity_components` for each scalar component.",
+          "Rewrite `surfaceNormal` with the two tangent values and calculate their cross product."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The parameter tangents give the upward oriented normal (0,0,1)."
+      },
+      {
+        "title": "Area factor",
+        "objective": "Compute the Euclidean surface-area density.",
+        "explanation": "The surface-area factor is the Euclidean length of the parameter normal. The general rule `normal_components` computes that normal from the two parameter derivatives. For this patch its value is (0,0,1), so its length is 1. Scalar area uses the length, while flux retains the orientation vector. A named coordinate formula is passed to `normal_congr` to replace the surface before computing its derivative columns.",
+        "statement": "(u v : ℝ) : length (surfaceNormal patch u v) = 1",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nrw [normal]\nnorm_num [length, lengthSq, dot]",
+        "hints": [
+          "Compute the normal from the two parameter derivative columns.",
+          "Substitute the normal into the length.",
+          "Evaluate its squared Euclidean length and square root."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The parameter normal has Euclidean length 1, the required scalar area factor."
+      },
+      {
+        "title": "A scalar surface integral",
+        "objective": "Integrate a scalar density with the area factor.",
+        "explanation": "A scalar surface integral multiplies the scalar density at the surface point by the area factor. Here the density is u and the factor is 1. Name the normal, evaluate the inner integral as u, and integrate it over [0,1]. The increasing parameter bounds give nonnegative area weighting.",
+        "statement": ": surfaceIntegral (fun p => p 0) patch 0 1 0 1 = 1/2",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nhave innerValue (u : ℝ) : (∫ v : ℝ in 0..1, (fun p : Vec => p 0) (patch u v) * length (surfaceNormal patch u v)) = u := by\n  norm_num [normal, patch, length, lengthSq, dot, constant_integral]\nrw [surfaceIntegral, integral_values innerValue, integral_id]\nnorm_num",
+        "hints": [
+          "Calculate the parameter normal and hence its length.",
+          "Prove the inner scalar integral equals u.",
+          "Replace it under the outer integral and integrate u."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The scalar surface integral of the first coordinate equals 1/2."
+      },
+      {
+        "title": "Oriented flux",
+        "objective": "Integrate a vector field against an oriented area vector.",
+        "explanation": "Flux of the upward unit field through this upward-oriented patch uses the dot product with the unnormalized parameter normal. Its integrand is 1. Calculate that oriented integrand before integrating; no additional area-factor multiplication is needed.",
+        "statement": ": surfaceFlux (fun _ => ![0,0,1]) patch 0 1 0 1 = 1",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nhave innerValue (u : ℝ) : (∫ v : ℝ in 0..1, dot (![0,0,1] : Vec) (surfaceNormal patch u v)) = 1 := by\n  norm_num [normal, dot, constant_integral]\nrw [surfaceFlux, integral_values innerValue, constant_integral]\nnorm_num",
+        "hints": [
+          "Reuse the upward parameter normal.",
+          "Calculate the inner integral of the field-normal dot product.",
+          "Replace it and evaluate the outer constant integral."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The upward unit field has flux 1 through the upward patch."
+      },
+      {
+        "title": "Boss: reverse the patch",
+        "objective": "Compare equal scalar area and opposite oriented flux.",
+        "explanation": "Interchanging the parameter order reverses the normal while preserving its length. Calculate both normals, the two fluxes, and the two scalar areas. Then compare the results. This distinguishes orientation-sensitive flux from orientation-independent area by a fully checked concrete example.",
+        "statement": ": surfaceFlux (fun _ => ![0,0,1]) (fun u v => ![v,u,0]) 0 1 0 1 = -surfaceFlux (fun _ => ![0,0,1]) patch 0 1 0 1 ∧ surfaceIntegral (fun _ => 1) (fun u v => ![v,u,0]) 0 1 0 1 = surfaceIntegral (fun _ => 1) patch 0 1 0 1",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nhave reversed (u v : ℝ) : surfaceNormal (fun s t => ![t,s,0]) u v = (![0,0,-1] : Vec) := by\n  rw [normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nhave upFlux : surfaceFlux (fun _ => ![0,0,1]) patch 0 1 0 1 = 1 := by\n  norm_num [surfaceFlux, normal, dot]\nhave downFlux : surfaceFlux (fun _ => ![0,0,1]) (fun u v => ![v,u,0]) 0 1 0 1 = -1 := by\n  norm_num [surfaceFlux, reversed, dot]\nhave upArea : surfaceIntegral (fun _ => 1) patch 0 1 0 1 = 1 := by\n  norm_num [surfaceIntegral, normal, length, lengthSq, dot]\nhave downArea : surfaceIntegral (fun _ => 1) (fun u v => ![v,u,0]) 0 1 0 1 = 1 := by\n  norm_num [surfaceIntegral, reversed, length, lengthSq, dot]\nconstructor\n· rw [downFlux, upFlux]\n· rw [downArea, upArea]",
+        "hints": [
+          "Calculate the original and reversed parameter normals.",
+          "Use those normals to name the two fluxes and the two areas.",
+          "Substitute the four values into the requested comparisons."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Parameter reversal negates flux while preserving scalar surface area."
+      }
+    ]
+  },
+  {
+    "id": "StokesSummit",
+    "title": "Stokes Summit",
+    "prerequisites": "Curl; positively oriented boundaries; parametrized surface flux.",
+    "levels": [
+      {
+        "title": "The boundary of a patch",
+        "objective": "Determine all four oriented boundary traces of a parametrized patch.",
+        "explanation": "The four sides of the parameter square give the patch boundary. Traverse them with u increasing on the bottom, v increasing on the right, u decreasing on the top, and v decreasing on the left. Verify all four traces; these are the oriented edge curves used in the square circulation.\n\nWorked example: For a stretched rectangle s(u,v)=(2u,v,0), fixing v=0 gives its bottom edge (2u,0,0). Fix a parameter to obtain each edge.",
+        "statement": "(t : ℝ) : patch t 0 = (![t,0,0] : Vec) ∧ patch 1 t = (![1,t,0] : Vec) ∧ patch (1-t) 1 = (![1-t,1,0] : Vec) ∧ patch 0 (1-t) = (![0,1-t,0] : Vec)",
+        "proof": "constructor\n· rfl\n· constructor\n  · rfl\n  · constructor\n    · rfl\n    · rfl",
+        "hints": [
+          "Restrict the parametrization to each side of its square domain.",
+          "Keep decreasing parameters on the top and left.",
+          "Separate the four trace equalities and read their coordinates."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "All four parameter-edge restrictions give the stated oriented boundary traces."
+      },
+      {
+        "title": "Match orientations",
+        "objective": "Verify the normal and oriented top boundary agree.",
+        "explanation": "The upward parameter normal matches a counterclockwise boundary by the right-hand rule. Along the top edge, the tangent must point in the negative x direction. Verify both the surface normal and this oriented boundary tangent; matching a set of boundary points alone would not determine orientation.\n\nWorked example: A downward normal matches clockwise boundary motion when viewed from above. Reversing both orientations preserves the Stokes sign relation.",
+        "statement": "(t : ℝ) : surfaceNormal patch 0 0 = (![0,0,1] : Vec) ∧ velocity (fun s => patch (1-s) 1) t = (![-1,0,0] : Vec)",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nconstructor\n· exact normal 0 0\n· simp only [patch, velocity_components]\n  apply vector_eq\n  · norm_num [deriv_const_sub_id]\n  · norm_num [deriv_const_sub_id]\n  · norm_num [deriv_const_sub_id]",
+        "hints": [
+          "Calculate the upward surface normal.",
+          "Differentiate the top-edge parametrization with its decreasing first coordinate.",
+          "Check that its tangent is (-1,0,0)."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The upward normal matches the negative-x tangent on the top boundary edge."
+      },
+      {
+        "title": "Curl through a patch",
+        "objective": "Compute the curl flux integrand in Stokes’ formula.",
+        "explanation": "Stokes uses curl F dotted with the parameter normal. Compute the normal and the cross-coordinate derivatives for F=(0,x,0). Its curl points upward, so the dot product is 1. Keeping the normal vector rather than only its length preserves the orientation sign.",
+        "statement": "(u v : ℝ) : dot (curl (fun p => ![0,p 0,0]) (patch u v)) (surfaceNormal patch u v) = 1",
+        "proof": "have normal (s t : ℝ) : surfaceNormal patch s t = (![0,0,1] : Vec) := by\n  have coordinates (a b : ℝ) : patch a b = (![a,b,0] : Vec) := by rfl\n  rw [normal_congr coordinates, normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\nrw [normal, curl, dot]\nnorm_num [partial_coordinate, partial_constant]",
+        "hints": [
+          "Find the parameter normal.",
+          "Open the curl formula and use the coordinate partial rules.",
+          "Take the oriented dot product."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The curl dotted with the oriented patch normal equals 1."
+      },
+      {
+        "title": "The boundary calculation",
+        "objective": "Evaluate circulation with the orientation induced by the surface.",
+        "explanation": "Evaluate boundary circulation directly for F=(0,2x,0). Use the same four oriented edges as in Green’s Garden. Only the upward right edge contributes, with value 2. This independently checks the boundary side before invoking the surface theorem.",
+        "statement": ": squareCirculation (fun p => ![0,2*p 0,0]) = 2",
+        "proof": "have edge1 : work (fun p => ![0,2*p 0,0]) (fun t => ![t,0,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge2 : work (fun p => ![0,2*p 0,0]) (fun t => ![1,t,0]) 0 1 = 2 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge3 : work (fun p => ![0,2*p 0,0]) (fun t => ![1-t,1,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nhave edge4 : work (fun p => ![0,2*p 0,0]) (fun t => ![0,1-t,0]) 0 1 = 0 := by\n  norm_num [work, dot, velocity_components, deriv_const_sub_id]\nrw [squareCirculation, edge1, edge2, edge3, edge4]\nnorm_num",
+        "hints": [
+          "Compute the four edge work integrals.",
+          "Retain the top and left reversal signs in their velocities.",
+          "Add the four named values using `squareCirculation`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Direct boundary circulation equals 2."
+      },
+      {
+        "title": "Apply Stokes: square patch",
+        "objective": "Apply an established Stokes special-case family.",
+        "explanation": "Apply the proved Stokes special case for a shear field on the upward unit-square patch. The boundary is the counterclockwise square established earlier, and the field is smooth. `stokes_shear_patch` packages this verified family; it is not a general arbitrary-surface theorem.",
+        "statement": ": squareCirculation (fun p => ![0,2*p 0,0]) = surfaceFlux (curl (fun p => ![0,2*p 0,0])) patch 0 1 0 1",
+        "proof": "apply stokes_shear_patch",
+        "hints": [
+          "Recognize coefficient 2 in the shear field.",
+          "Check that the boundary and patch orientations match the proved family.",
+          "Apply `stokes_shear_patch`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The proved shear-family Stokes identity applies to the upward square patch."
+      },
+      {
+        "title": "Boss: choose a simpler surface",
+        "objective": "Justify replacing a graph by a planar patch with the same oriented boundary.",
+        "explanation": "The raised polynomial graph has exactly the same four oriented boundary traces as the flat patch. Prove those trace equalities first. The graph-normal rule `normal_graph` has vertical component 1, and this field has vertical unit curl, so both flux integrands equal 1. Together with the proved flat-patch Stokes family, this justifies the simpler-surface calculation in this concrete case; it does not assume a general surface-independence theorem.",
+        "statement": ": (∀ t : ℝ, liftedPatch t 0 = patch t 0 ∧ liftedPatch 1 t = patch 1 t ∧ liftedPatch (1-t) 1 = patch (1-t) 1 ∧ liftedPatch 0 (1-t) = patch 0 (1-t)) ∧ surfaceFlux (curl (fun p => ![0,p 0,0])) liftedPatch 0 1 0 1 = surfaceFlux (curl (fun p => ![0,p 0,0])) patch 0 1 0 1",
+        "proof": "constructor\n· intro t\n  constructor\n  · apply vector_eq\n    · norm_num [liftedPatch, patch]\n    · norm_num [liftedPatch, patch]\n    · norm_num [liftedPatch, patch]\n  · constructor\n    · apply vector_eq\n      · norm_num [liftedPatch, patch]\n      · norm_num [liftedPatch, patch]\n      · norm_num [liftedPatch, patch]\n    · constructor\n      · apply vector_eq\n        · norm_num [liftedPatch, patch]\n        · norm_num [liftedPatch, patch]\n        · norm_num [liftedPatch, patch]\n      · apply vector_eq\n        · norm_num [liftedPatch, patch]\n        · norm_num [liftedPatch, patch]\n        · norm_num [liftedPatch, patch]\n· have raisedVertical (u v : ℝ) : (surfaceNormal liftedPatch u v) 2 = 1 := by\n    have coordinates (s t : ℝ) : liftedPatch s t = (![s,t,s*(1-s)*t*(1-t)] : Vec) := by rfl\n    rw [normal_congr coordinates, normal_graph]\n    norm_num\n  have flatVertical (u v : ℝ) : (surfaceNormal patch u v) 2 = 1 := by\n    have coordinates (s t : ℝ) : patch s t = (![s,t,0] : Vec) := by rfl\n    rw [normal_congr coordinates, normal_components]\n    norm_num [partialX, partialY, cross]\n  have raised : surfaceFlux (curl (fun p => ![0,p 0,0])) liftedPatch 0 1 0 1 = 1 := by\n    norm_num [surfaceFlux, curl, partial_coordinate, partial_constant, dot, raisedVertical]\n  have flat : surfaceFlux (curl (fun p => ![0,p 0,0])) patch 0 1 0 1 = 1 := by\n    norm_num [surfaceFlux, curl, partial_coordinate, partial_constant, dot, flatVertical]\n  rw [raised, flat]",
+        "hints": [
+          "Verify all four boundary traces, including their decreasing parameter directions.",
+          "Use `normal_graph` to identify the vertical area-vector component.",
+          "Evaluate both curl fluxes and compare their values."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The raised and flat patches have the same oriented boundary and equal computed curl flux in this concrete case."
+      }
+    ]
+  },
+  {
+    "id": "GaussCitadel",
+    "title": "Gauss Citadel",
+    "prerequisites": "Divergence; oriented surface flux; triple integrals; integral theorem special cases.",
+    "levels": [
+      {
+        "title": "An outward closed boundary",
+        "objective": "Verify outward orientation on all six cube faces.",
+        "explanation": "A closed cube has six faces, and every face must point outward. The parameter order differs between opposite faces. Calculate all six cross-product normals: +x, -x, +y, -y, +z, -z. The same six parametrizations occur in `cubeFlux`, so the closed-boundary orientation is fully explicit.\n\nWorked example: On the top plane z=2 of a box, the parameter order (s,t,2) produces an upward normal, away from its interior. Opposite faces require opposite normals.",
+        "statement": "(u v : ℝ) : surfaceNormal (fun s t => ![1,s,t]) u v = (![1,0,0] : Vec) ∧ surfaceNormal (fun s t => ![0,t,s]) u v = (![-1,0,0] : Vec) ∧ surfaceNormal (fun s t => ![t,1,s]) u v = (![0,1,0] : Vec) ∧ surfaceNormal (fun s t => ![s,0,t]) u v = (![0,-1,0] : Vec) ∧ surfaceNormal (fun s t => ![s,t,1]) u v = (![0,0,1] : Vec) ∧ surfaceNormal (fun s t => ![t,s,0]) u v = (![0,0,-1] : Vec)",
+        "proof": "constructor\n· rw [normal_components]\n  apply vector_eq\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n  · norm_num [partialX, partialY, cross]\n· constructor\n  · rw [normal_components]\n    apply vector_eq\n    · norm_num [partialX, partialY, cross]\n    · norm_num [partialX, partialY, cross]\n    · norm_num [partialX, partialY, cross]\n  · constructor\n    · rw [normal_components]\n      apply vector_eq\n      · norm_num [partialX, partialY, cross]\n      · norm_num [partialX, partialY, cross]\n      · norm_num [partialX, partialY, cross]\n    · constructor\n      · rw [normal_components]\n        apply vector_eq\n        · norm_num [partialX, partialY, cross]\n        · norm_num [partialX, partialY, cross]\n        · norm_num [partialX, partialY, cross]\n      · constructor\n        · rw [normal_components]\n          apply vector_eq\n          · norm_num [partialX, partialY, cross]\n          · norm_num [partialX, partialY, cross]\n          · norm_num [partialX, partialY, cross]\n        · rw [normal_components]\n          apply vector_eq\n          · norm_num [partialX, partialY, cross]\n          · norm_num [partialX, partialY, cross]\n          · norm_num [partialX, partialY, cross]",
+        "hints": [
+          "Separate the six face-normal statements.",
+          "Use `normal_components` for each parametrization.",
+          "Check that the normal points away from the cube interior on that face."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "All six face normals point outward, including each pair of opposite directions."
+      },
+      {
+        "title": "Divergence in the solid",
+        "objective": "Integrate a field divergence over the cube.",
+        "explanation": "For the smooth radial field, the three matching coordinate partials give divergence 3. Establish that formula at an arbitrary point before evaluating its triple integral. The unit cube has unit volume, so integrating this constant gives 3. This is the volume side of the divergence identity.\n\nWorked example: For F=(2x,2y,2z), divergence is 6. On a unit cube its volume integral is 6 times volume 1.",
+        "statement": ": (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, divergence radial ![x,y,z]) = 3",
+        "proof": "have div (p : Vec) : divergence radial p = 3 := by\n  rw [divergence]\n  norm_num [radial, partial_coordinate]\nnorm_num [div, constant_integral]",
+        "hints": [
+          "Name the divergence formula for an arbitrary point.",
+          "Compute its three matching-coordinate partials.",
+          "Integrate the resulting constant over the unit cube."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The unit-cube divergence volume integral equals 3."
+      },
+      {
+        "title": "Flux by boundary pieces",
+        "objective": "Compute flux directly on the six outward-oriented faces.",
+        "explanation": "Calculate outward flux directly through all six cube faces for the radial field. Each face at coordinate 1 contributes 1; each face at coordinate 0 contributes 0. Name the six actual surface integrals before adding them in `cubeFlux`. This calculation does not use the divergence theorem.",
+        "statement": ": cubeFlux radial = 3",
+        "proof": "have face1 : surfaceFlux radial (fun s t => ![1,s,t]) 0 1 0 1 = 1 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nhave face2 : surfaceFlux radial (fun s t => ![0,t,s]) 0 1 0 1 = 0 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nhave face3 : surfaceFlux radial (fun s t => ![t,1,s]) 0 1 0 1 = 1 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nhave face4 : surfaceFlux radial (fun s t => ![s,0,t]) 0 1 0 1 = 0 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nhave face5 : surfaceFlux radial (fun s t => ![s,t,1]) 0 1 0 1 = 1 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nhave face6 : surfaceFlux radial (fun s t => ![t,s,0]) 0 1 0 1 = 0 := by\n  norm_num [surfaceFlux, radial, normal_components, partialX, partialY, cross, dot]\nrw [cubeFlux, face1, face2, face3, face4, face5, face6]\nnorm_num",
+        "hints": [
+          "Evaluate one outward-oriented surface integral per face.",
+          "Use the face normals to distinguish positive and zero contributions.",
+          "Rewrite the six-face sum with those values and add."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Adding six independently computed outward face fluxes gives total flux 3."
+      },
+      {
+        "title": "Apply Gauss on a cube",
+        "objective": "Apply a proved divergence-theorem family with verified orientation.",
+        "explanation": "Apply the proved divergence-theorem family for F=(ax,by,cz) on the outward unit cube. The specified field has coefficients 2, 3, and 4. Smoothness, the bounded solid, and six face orientations are built into this verified special case. The theorem does not assert a result for arbitrary closed surfaces.",
+        "statement": ": cubeFlux (fun p => ![2*p 0,3*p 1,4*p 2]) = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, divergence (fun p => ![2*p 0,3*p 1,4*p 2]) ![x,y,z]",
+        "proof": "apply gauss_diagonal",
+        "hints": [
+          "Recognize the diagonal linear field.",
+          "Identify coefficients 2, 3, and 4 and the outward cube boundary.",
+          "Apply `gauss_diagonal`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The proved diagonal-field Gauss identity applies to the outward unit cube."
+      },
+      {
+        "title": "Recover a missing face",
+        "objective": "Deduce an unknown flux from the closed-boundary total.",
+        "explanation": "The five known outward face fluxes sum to 5. Find the missing top flux by first using the unit-cube Gauss theorem to calculate total flux. The general matching-partial rule `divergence_diagonal` gives divergence 2+3+4=9. Rewrite the balance equation and solve the remaining linear equation. The balance assumption states the geometric decomposition, not the requested missing value.",
+        "statement": "(top : ℝ) (h : cubeFlux (fun p => ![2*p 0,3*p 1,4*p 2]) = 5+top) : top = 4",
+        "proof": "have total : cubeFlux (fun p => ![2*p 0,3*p 1,4*p 2]) = 9 := by\n  rw [gauss_diagonal]\n  norm_num [divergence_diagonal]\nrw [total] at h\nlinarith",
+        "hints": [
+          "Use `gauss_diagonal` to replace total flux with a volume integral.",
+          "Evaluate the constant divergence using `divergence_diagonal`.",
+          "Substitute the total in the face balance and solve with `linarith`."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "Gauss gives total flux 9; subtracting the known contribution 5 gives missing flux 4."
+      },
+      {
+        "title": "Final boss: three integral bridges",
+        "objective": "Combine justified special cases of Green, Stokes, and Gauss.",
+        "explanation": "Combine three established integral bridges. Use the shear Green and Stokes identities on the positive square and upward patch. Use the diagonal Gauss family on the outward cube, noting that coefficients (1,1,1) reconstruct the radial field. Evaluate circulation 2 and flux 3 through their interior integrals, then add them. All three applications are justified proved special cases; the final boss introduces no new tactic.",
+        "statement": ": (squareCirculation (fun p => ![0,2*p 0,0]) = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (curl (fun p => ![0,2*p 0,0]) ![x,y,0]) 2) ∧ (squareCirculation (fun p => ![0,2*p 0,0]) = surfaceFlux (curl (fun p => ![0,2*p 0,0])) patch 0 1 0 1) ∧ (cubeFlux radial = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, divergence radial ![x,y,z]) ∧ squareCirculation (fun p => ![0,2*p 0,0]) + cubeFlux radial = 5",
+        "proof": "have gauss : cubeFlux radial = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, ∫ z : ℝ in 0..1, divergence radial ![x,y,z] := by\n  have rule := gauss_diagonal 1 1 1\n  simp only [one_mul, vector_components] at rule\n  exact rule\nconstructor\n· apply green_shear\n· constructor\n  · apply stokes_shear_patch\n  · constructor\n    · exact gauss\n    · have circulation : squareCirculation (fun p => ![0,2*p 0,0]) = 2 := by\n        rw [green_shear]\n        norm_num [curl, partial_scaled_coordinate, partial_constant]\n      have flux : cubeFlux radial = 3 := by\n        rw [gauss]\n        norm_num [divergence, radial, partial_coordinate]\n      rw [circulation, flux]\n      norm_num",
+        "hints": [
+          "Identify the Green, Stokes, and Gauss families and their orientations.",
+          "For Gauss, instantiate coefficients 1,1,1 and use `vector_components` to reconstruct the radial field.",
+          "Evaluate the two interior integrals, then combine their values."
+        ],
+        "tools": "",
+        "rewritten": true,
+        "conclusion": "The verified Green, Stokes, and Gauss bridges give circulation 2 and flux 3, with combined value 5."
+      }
+    ]
+  }
+]

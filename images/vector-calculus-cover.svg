@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200" role="img" aria-labelledby="title desc">
+  <title id="title">Vector Calculus in Lean</title>
+  <desc id="desc">Sixteen worlds and ninety-six proof challenges, illustrated by a blue vector field and coordinate axes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 6 3 0 6Z" fill="#1877aa"/></marker>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#dceaf2" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="500" height="200" rx="12" fill="#f5faff"/>
+  <rect x="305" y="18" width="180" height="164" rx="10" fill="url(#grid)"/>
+  <path d="M321 153H472M343 174V31" fill="none" stroke="#a9bdce" stroke-width="1.5"/>
+  <g fill="none" stroke="#1877aa" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M323 55l14-9M357 55l17-4M395 55l18 4M435 55l14 9"/>
+    <path d="M323 89l16-4M357 89h18M395 89l17 4M435 89l13 9"/>
+    <path d="M323 124l17 3M357 124l17 6M395 124l15 10M435 124l11 12"/>
+    <path d="M323 158l17 7M357 158l15 10M395 158l12 12M435 158l8 13"/>
+  </g>
+  <path d="M348 146C367 115 397 100 449 78" fill="none" stroke="#e3a432" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="28" y="63" fill="#123d5b" font-family="Georgia,serif" font-weight="700" font-size="29">Vector Calculus</text>
+  <text x="29" y="96" fill="#1877aa" font-family="Georgia,serif" font-size="25">in Lean</text>
+  <path d="M29 115H267" stroke="#c7dce9"/>
+  <text x="29" y="140" fill="#405d71" font-family="sans-serif" font-size="14">16 worlds · 96 proof challenges</text>
+  <text x="29" y="165" fill="#405d71" font-family="sans-serif" font-size="13">From vectors to integral theorems</text>
+</svg>

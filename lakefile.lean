@@ -106,4 +106,7 @@ lean_lib Game
 
 @[test_driver]
 lean_lib test where
-  globs := #[.submodules `Test]
+  -- `.sofi-test-folders` contains deliberately invalid shell-script fixtures,
+  -- not Lean tests. Keep them intact and compile the actual test modules only.
+  globs := #[.one `Test.Verification, .one `Test.PlayerMode, .one `Test.SolutionProtection,
+    .one `Test.TacticLocks, .one `Test.LearnerProgression]

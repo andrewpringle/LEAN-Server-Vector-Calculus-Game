@@ -1,0 +1,100 @@
+[
+  {
+    "name": "apply",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Apply a lemma to the current goal."
+  },
+  {
+    "name": "exact",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Finish a goal with a proof of its statement."
+  },
+  {
+    "name": "have",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Name an intermediate mathematical fact."
+  },
+  {
+    "name": "intro",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Introduce a hypothesis or a universally quantified variable."
+  },
+  {
+    "name": "left",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Choose the first candidate in the Lagrange-system case split."
+  },
+  {
+    "name": "rfl",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Close a definitional equality."
+  },
+  {
+    "name": "right",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Choose the second candidate in the Lagrange-system case split."
+  },
+  {
+    "name": "rw",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Rewrite using proved equalities."
+  },
+  {
+    "name": "use",
+    "world": "Vectors",
+    "level": 1,
+    "baseline": true,
+    "explanation": "Supply a parameter witnessing membership in a parametric line."
+  },
+  {
+    "name": "norm_num",
+    "world": "Vectors",
+    "level": 2,
+    "baseline": false,
+    "explanation": "Check numerical coordinate arithmetic after expanding the relevant definitions."
+  },
+  {
+    "name": "constructor",
+    "world": "Vectors",
+    "level": 4,
+    "baseline": false,
+    "explanation": "Split a conjunction or construct a structured proof."
+  },
+  {
+    "name": "linarith",
+    "world": "SpaceExplorer",
+    "level": 2,
+    "baseline": false,
+    "explanation": "Solve linear equations or inequalities arising from a plane equation."
+  },
+  {
+    "name": "simp",
+    "world": "SpaceExplorer",
+    "level": 5,
+    "baseline": false,
+    "explanation": "Simplify using elementary identities and the explicitly supplied definitions."
+  },
+  {
+    "name": "ring",
+    "world": "PartialDerivativeLab",
+    "level": 2,
+    "baseline": false,
+    "explanation": "Check polynomial identities, including the tangent-plane approximation error."
+  }
+]

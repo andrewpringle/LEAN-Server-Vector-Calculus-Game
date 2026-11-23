@@ -1,4 +1,4 @@
-name: build-and-deploy
+name: build-for-server-import
 run-name: Build the game and save artifact
 on:
   workflow_dispatch:
@@ -11,36 +11,38 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      # `lean-action` refuses to run without a `lake-manifest.json`, but we do not want to include
-      # the manifest from the `leangame` repo.
-      # When using this template, you can replace the following steps with
-      # - uses: leanprover/lean-action@v1
-      #   with:
-      #     use-github-cache: false
       - name: install elan
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: update dependencies
-        run: lake update -R --keep-toolchain
+      - name: fetch locked dependencies and Mathlib cache
+        run: lake exe cache get
       - name: build game
         run: |
           lake build
           lake build GameServer
+
+      - name: verify game and tactic progression
+        run: |
+          lake test
+          node scripts/check-curriculum.mjs
+          pwsh -File scripts/test-package-game.ps1
 
       # The Lean server loads all `.ilean` files into RAM, which the game server does not need.
       # Lake only needs the files to exist, otherwise it considers the game as not built.
       - name: empty the .ilean files
         run: find -L .lake -name '*.ilean' -exec truncate -s 0 {} +
 
-      - name: compress built game
-        #run: tar -czvf ../game.tar.gz .
-        run: zip game.zip * .lake/ .i18n/ -r
+      - name: package game without local development runtime
+        shell: pwsh
+        run: ./scripts/package-game.ps1
 
       - name: upload compressed game folder
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: build-for-server-import
+          if-no-files-found: error
+          compression-level: 0
           path: |
             game.zip
 

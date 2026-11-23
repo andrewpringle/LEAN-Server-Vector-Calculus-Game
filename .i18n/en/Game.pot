@@ -10,36 +10,1743 @@ msgstr "Project-Id-Version: Game v4.35.0\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: ."
 
-#. §0: `Fin 3 → ℝ`
-#: Game/Levels/Vectors/L01_ZeroAdd.lean:13
-msgid "A three-dimensional vector is represented by §0.\n"
-"This assigns a real number to each of the three coordinates.\n"
+#: Game.lean:19
+msgid "# Welcome to Vector Calculus in Lean\n"
 "\n"
-"To prove two vectors equal, compare their coordinates."
+"### A Calculus III proof adventure\n"
+"\n"
+"Explore vectors, curves, multivariable derivatives, multiple integrals, and vector integral theorems across **16 worlds and 96 challenges**.\n"
+"\n"
+"## Start here\n"
+"\n"
+"Choose **Vector Workshop** on the world map, then open **Coordinates**. Each world has six levels; its final level brings the earlier ideas together.\n"
+"\n"
+"## Before you begin\n"
+"\n"
+"You should have completed the Natural Number Game and studied single-variable calculus. New calculus notation and a small set of additional tactics are explained where you need them.\n"
+"\n"
+"## Playing a level\n"
+"\n"
+"Read the objective, inspect the goal, and enter a tactic. The inventory explains the tools you have unlocked. Use the progressive hints when you need a nudge. **Regular** game rules enforce the unlock sequence.\n"
+"\n"
+"## The final worlds\n"
+"\n"
+"The integral-theorem challenges use explicitly stated, fully proved special cases. Each level tells you which result applies and what it establishes."
 msgstr ""
 
-#: Game/Levels/Vectors/L01_ZeroAdd.lean:7
-msgid "Adding the zero vector"
+#: Game.lean:21
+msgid "## About this game\n"
+"\n"
+"Original vector-calculus exercises aligned with [OpenStax Calculus Volume 3](https://openstax.org/books/calculus-volume-3/pages/preface). Proofs use Lean 4 and Mathlib.\n"
+"\n"
+"## Mathematical scope\n"
+"\n"
+"The later worlds include proved special-case families for Green, Stokes, and Gauss, and verified coordinate-side integration examples. They are labeled as special cases rather than proofs of the general integral theorems.\n"
+"\n"
+"## Project and references\n"
+"\n"
+"[Game repository](https://github.com/andrewpringle/LEAN-Server-Vector-Calculus-Game) · [Lean4Game framework](https://github.com/leanprover-community/lean4game)\n"
+"\n"
+"The repository contains the curriculum map, source references, verification status, and full tactic-unlock schedule."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:24
+msgid "1. Apply the first-coordinate endpoint rule to each path separately."
+msgstr ""
+
+#. §0: `matrix_eq`
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:26
+msgid "1. Apply §0 to compare the nine entries in row order."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:24
+msgid "1. Apply §0 to compare the three coordinates."
+msgstr ""
+
+#. §0: `continuous_sum_squares`
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:26
+msgid "1. Apply §0 to the three coordinate functions."
+msgstr ""
+
+#. §0: `limit_of_continuous`
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:24
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:21
+msgid "1. Apply §0."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:24
+msgid "1. Calculate one work integral per oriented edge."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:18
+msgid "1. Calculate the mass, x moment, and y moment separately."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:18
+msgid "1. Calculate the original and reversed parameter normals."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:21
+msgid "1. Calculate the parameter normal and hence its length."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:27
+msgid "1. Calculate the two diagonal second partials."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:18
+msgid "1. Calculate the upward surface normal."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:18
+msgid "1. Calculate the vertical component of curl at an arbitrary square point."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:18
+msgid "1. Calculate the vertical integral as x."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:21
+msgid "1. Calculate the vertical integral for a fixed radius."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:18
+msgid "1. Check feasibility and the attained objective value."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:18
+msgid "1. Compute both first partials before solving any equations."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:18
+msgid "1. Compute the absolute determinant, retaining its positive sign."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:18
+msgid "1. Compute the derivative entries and the 2×2 determinant."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:21
+msgid "1. Compute the field on the path and the component velocity."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:18
+msgid "1. Compute the four edge work integrals."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:38
+msgid "1. Compute the four partials and expand the 2×2 determinant."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:23
+msgid "1. Compute the normal from the two parameter derivative columns."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:21
+msgid "1. Compute the product of density along the path and speed."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:21
+msgid "1. Display the gradient as three partial derivatives."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:21
+msgid "1. Display the gradient components."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:21
+msgid "1. Evaluate one outward-oriented surface integral per face."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:21
+msgid "1. Evaluate the outward edge sum as one named boundary value."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:18
+msgid "1. Expand around (1,1) using displacements h and k."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:18
+msgid "1. Find the parameter normal."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:21
+msgid "1. First prove and name the projected vector using §0."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:23
+msgid "1. For each quantity, name its inner integral as a formula in x."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:25
+msgid "1. Identify the Green, Stokes, and Gauss families and their orientations."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:28
+msgid "1. Identify which assumption gives the derivative of the potential along the path."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:21
+msgid "1. Integrate the first component y with respect to x to propose a potential."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:18
+msgid "1. Multiply position by density before integrating."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:23
+msgid "1. Name both inner integrals as functions of the outer variable."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:26
+msgid "1. Name the component velocity formula for every time t."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:21
+msgid "1. Name the derivative in each parameter direction."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:18
+msgid "1. Name the divergence formula for an arbitrary point."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:18
+msgid "1. Name the fact that a nonzero real has positive square."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:18
+msgid "1. Name the factorization of the two coordinate squares."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:23
+msgid "1. Name the gradient of x and the curl of the rotational field."
+msgstr ""
+
+#. §0: `constant_integral`
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:18
+msgid "1. Name the inner integral and calculate it with §0."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:28
+msgid "1. Name the outer square derivative at t² and the inner square derivative at t."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:18
+msgid "1. Name the two-variable section integral for a fixed x."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:24
+msgid "1. Name the velocity formula using component derivatives."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:18
+msgid "1. Name the z integral first."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:32
+msgid "1. Name velocity, acceleration at zero, and speed at zero."
+msgstr ""
+
+#. §0: `squarePotential`
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:21
+msgid "1. Open the formula for §0."
+msgstr ""
+
+#. §0: `divergence`
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:21
+msgid "1. Open the sum in §0."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:24
+msgid "1. Open the work definitions on both sides."
+msgstr ""
+
+#. §0: `curl`
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:28
+msgid "1. Open §0 and compare its components."
+msgstr ""
+
+#. §0: `partialY`
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:27
+msgid "1. Open §0 and remove the fixed x² term."
+msgstr ""
+
+#. §0: `partialX`
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:24
+msgid "1. Open §0."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:18
+msgid "1. Prove both implications separately."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:26
+msgid "1. Prove that speed equals 1 for every parameter value."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:27
+msgid "1. Prove the sign of the spherical factor from the stated polar-angle bounds."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:21
+msgid "1. Recognize coefficient 2 in the shear field."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:21
+msgid "1. Recognize the diagonal linear field."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:21
+msgid "1. Recognize the field as a member of the shear family."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:24
+msgid "1. Recognize the scalar function as the first coordinate projection."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:18
+msgid "1. Restrict the parametrization to each side of its square domain."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:21
+msgid "1. Reuse the upward parameter normal."
+msgstr ""
+
+#. §0: `not_exists`
+#. §1: `intro L assumed`
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:40
+msgid "1. Rewrite with §0, then use §1 to consider an arbitrary proposed limit."
+msgstr ""
+
+#. §0: `velocity_components`
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:28
+msgid "1. Rewrite with §0."
+msgstr ""
+
+#. §0: `planeDistance`
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:23
+msgid "1. Rewrite §0 and the length definitions."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:18
+msgid "1. Separate area and volume."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:18
+msgid "1. Separate line membership and plane membership."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:18
+msgid "1. Separate mass and the three normalized moments."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:26
+msgid "1. Separate surface membership, gradient, nonzero normal, and plane equation."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:21
+msgid "1. Separate the four claims with repeated §0."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:21
+msgid "1. Separate the height and the two planar coordinates."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:18
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:18
+msgid "1. Separate the initial and final endpoint."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:21
+msgid "1. Separate the lower and upper bounds."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:18
+msgid "1. Separate the radicand restriction from the denominator restriction."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:18
+msgid "1. Separate the six face-normal statements."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:18
+msgid "1. Separate the two endpoint joins."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:21
+msgid "1. Separate the two field evaluations."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:24
+msgid "1. Separate the two trace statements."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:21
+msgid "1. Separate the xx derivative from the yx derivative."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:21
+msgid "1. Show the multiplier is nonzero and cancel it to obtain x=y."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:21
+msgid "1. Solve the first coordinate for the parameter."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:24
+msgid "1. Split the cross-product calculation from the perpendicularity claim."
+msgstr ""
+
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:21
+msgid "1. Start with the coordinate formula for the dot product."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:18
+msgid "1. Use the level equation and the zero first component to check p+v."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:18
+msgid "1. Use the rotational field and the positive square boundary."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:24
+msgid "1. Use §0 and introduce the hypothesis in each direction."
+msgstr ""
+
+#. §0: `ascent_squares u`
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:25
+msgid "1. Use §0 and substitute the unit-length hypothesis."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:21
+msgid "1. Use §0 to prove both implications."
+msgstr ""
+
+#. §0: `gauss_diagonal`
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:21
+msgid "1. Use §0 to replace total flux with a volume integral."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:24
+msgid "1. Use §0 to separate orthogonality and squared length."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:24
+msgid "1. Verify all four boundary traces, including their decreasing parameter directions."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:43
+msgid "1. Which entry has index 1?"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:23
+msgid "1. Write down the first partial in each variable."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:28
+msgid "2. Apply the power rule to the varying y²."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:19
+msgid "2. Apply §0 in each part."
+msgstr ""
+
+#. §0: `constant_integral`
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:19
+msgid "2. Apply §0 twice in each part."
+msgstr ""
+
+#. §0: `work_eq_endpoint`
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:29
+msgid "2. Apply §0."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:22
+msgid "2. Calculate the inner integral of the field-normal dot product."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:19
+msgid "2. Calculate the unit-width y integral of that value."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:22
+msgid "2. Check that the boundary and patch orientations match the proved family."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:25
+msgid "2. Check the initial point and reuse the velocity formula."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:22
+msgid "2. Choose the additive constant so the origin value is zero."
+msgstr ""
+
+#. §0: `directional_coordinate`
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:25
+msgid "2. Choose §0 with coordinate index 0."
+msgstr ""
+
+#. §0: `derivative_chain`
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:29
+msgid "2. Combine them with §0."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:22
+msgid "2. Compare vectors with §0."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:19
+msgid "2. Compute and add its four work integrals."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:19
+msgid "2. Compute its three matching-coordinate partials."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:22
+msgid "2. Compute matching-coordinate derivatives for the interior value."
+msgstr ""
+
+#. §0: `vector_ne_zero 2`
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:22
+msgid "2. Compute the cross product, and use §0 for its nonzero component."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:19
+msgid "2. Differentiate the top-edge parametrization with its decreasing first coordinate."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:19
+msgid "2. Display the gradient of the first coordinate."
+msgstr ""
+
+#. §0: `divergence_diagonal`
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:22
+msgid "2. Evaluate the constant divergence using §0."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:19
+msgid "2. Evaluate the original rectangle integral."
+msgstr ""
+
+#. §0: `projection`
+#. §1: `lengthSq`
+#. §2: `dot`
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:22
+msgid "2. Expand §0, §1, and §2 in its three components."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:39
+msgid "2. Factor the result as r(sin²θ+cos²θ), then use r≥0 for its absolute value."
+msgstr ""
+
+#. §0: `vector_components`
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:26
+msgid "2. For Gauss, instantiate coefficients 1,1,1 and use §0 to reconstruct the radial field."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:19
+msgid "2. For arbitrary feasible x and y, use the sum-and-difference square identity."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:19
+msgid "2. For each moment, identify which integration first involves a varying coordinate."
+msgstr ""
+
+#. §0: `Or.elim`
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:28
+msgid "2. For positivity, use §0 on the nonzero-coordinate alternative."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:19
+msgid "2. For the line, supply parameter 3 and compare components."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:22
+msgid "2. Identify coefficient k=3 and the positive square orientation."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:22
+msgid "2. Identify coefficients 2, 3, and 4 and the outward cube boundary."
+msgstr ""
+
+#. §0: `norm_num [onPlane, dot] at h`
+#. §1: `linarith`
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:25
+msgid "2. In the forward direction, use §0, then §1."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:19
+msgid "2. Integrate the resulting constant in y."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:19
+msgid "2. Keep decreasing parameters on the top and left."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:25
+msgid "2. Keep the resulting work-value identities as named facts."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:25
+msgid "2. Lean now asks for the x, y, and z calculations separately."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:22
+msgid "2. Name that product as the scalar integrand t."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:28
+msgid "2. Name the radial integral, treating sin φ as a constant."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:19
+msgid "2. Name the signed determinant -6."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:19
+msgid "2. Name the y integral of the resulting constant."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:22
+msgid "2. Name their dot product as the integrand t."
+msgstr ""
+
+#. §0: `jacobian`
+#. §1: `partial_coordinate`
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:27
+msgid "2. Open each entry using §0 and §1."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:19
+msgid "2. Open the curl formula and use the coordinate partial rules."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:25
+msgid "2. Prove continuity using the sum-of-squares rule."
+msgstr ""
+
+#. §0: `ring`
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:19
+msgid "2. Prove that the section integral is x³ using constant integrals and §0."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:22
+msgid "2. Prove the inner scalar integral equals u."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:22
+msgid "2. Prove the lower bound by adding two nonnegative squares."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:22
+msgid "2. Pull the constant 2 out of the radial integral and integrate r."
+msgstr ""
+
+#. §0: `patch`
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:22
+msgid "2. Read the explicit formula for §0."
+msgstr ""
+
+#. §0: `.1`
+#. §1: `.2`
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:22
+msgid "2. Read the required bounds from the hypothesis using §0 and §1."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:25
+msgid "2. Remove the term that is constant in the varying coordinate."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:19
+msgid "2. Remove the value and the two linear terms."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:19
+msgid "2. Reorder the listed bounds using conjunction selectors."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:24
+msgid "2. Replace the corresponding fields using the congruence rules."
+msgstr ""
+
+#. §0: `velocity_congr`
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:27
+msgid "2. Replace the velocity curve using §0, then differentiate again."
+msgstr ""
+
+#. §0: `integral_values`
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:24
+msgid "2. Replace them with §0."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:19
+msgid "2. Retain the top and left reversal signs in their velocities."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:19
+msgid "2. Rewrite the double integral using that named value."
+msgstr ""
+
+#. §0: `dot`
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:25
+msgid "2. Rewrite the first goal with §0."
+msgstr ""
+
+#. §0: `Real.sin_sq_add_cos_sq`
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:19
+msgid "2. Rewrite the trigonometric factor with §0."
+msgstr ""
+
+#. §0: `arcLength`
+#. §1: `integral_values unitSpeed`
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:27
+msgid "2. Rewrite §0, then replace its integrand with §1."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:22
+msgid "2. Simplify the inner partial using the rules from the preceding levels."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:19
+msgid "2. Substitute t=0 and simplify."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:19
+msgid "2. Substitute the appropriate parameter endpoints."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:19
+msgid "2. Substitute the first displacement and use that positivity."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:24
+msgid "2. Substitute the normal into the length."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:22
+msgid "2. Substitute the three coordinates."
+msgstr ""
+
+#. §0: `unitTangent`
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:33
+msgid "2. Substitute those facts into §0."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:19
+msgid "2. Substitute x=1 and y=0."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:22
+msgid "2. Supply joint continuity of the underlying polynomial."
+msgstr ""
+
+#. §0: `use 2`
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:22
+msgid "2. Supply the witness with §0."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:24
+msgid "2. The displacement has normal component 4-1."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:25
+msgid "2. The first trace simplifies because the omitted coordinate is zero."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:25
+msgid "2. The integrand is unchanged and the interval bounds are reversed."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:22
+msgid "2. The radial-field identity is definitional."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:25
+msgid "2. The right edge has constant integrand 1; the others contribute zero."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:44
+msgid "2. The selected entry is -1 on both sides."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:26
+msgid "2. The two additional squares are nonnegative, so the squared rate is at most 25."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:27
+msgid "2. This creates one continuity goal per coordinate."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:19
+msgid "2. Use a pointwise inner-integral formula for the x moment."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:27
+msgid "2. Use the component gradient rule and the partial derivatives of the sum of squares."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:22
+msgid "2. Use the constraint to prove x²=1, then factor (x-1)(x+1)."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:22
+msgid "2. Use the coordinate derivative rule on each matching entry."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:29
+msgid "2. Use the coordinate, constant, negative, and constant-division partial rules."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:22
+msgid "2. Use the face normals to distinguish positive and zero contributions."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:19
+msgid "2. Use the two unit side lengths to simplify that section."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:19
+msgid "2. Use those normals to name the two fluxes and the two areas."
+msgstr ""
+
+#. §0: `deriv_mul_const_field`
+#. §1: `deriv_const_mul_field`
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:24
+msgid "2. Use §0 and §1 for fixed factors."
+msgstr ""
+
+#. §0: `normal_components`
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:19
+msgid "2. Use §0 for each parametrization."
+msgstr ""
+
+#. §0: `velocity_components`
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:22
+msgid "2. Use §0 for each scalar component."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:29
+msgid "2. Use §0 to compare the three derivative values."
+msgstr ""
+
+#. §0: `rw [dot]`
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:22
+msgid "2. Use §0 to expand that formula."
+msgstr ""
+
+#. §0: `normal_graph`
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:25
+msgid "2. Use §0 to identify the vertical area-vector component."
+msgstr ""
+
+#. §0: `constructor`
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:19
+msgid "2. Use §0 to prove both directions of the equivalence."
+msgstr ""
+
+#. §0: `integral_values`
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:24
+msgid "2. Use §0 to replace it under the outer integral."
+msgstr ""
+
+#. §0: `path_limit_of_values`
+#. §1: `ratio_horizontal`
+#. §2: `ratio_diagonal`
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:41
+msgid "2. Use §0 with §1 and §2 to establish the two path limits."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:22
+msgid "2. Use §0."
+msgstr ""
+
+#. §0: `vector_eq`
+#. §1: `norm_num [cross]`
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:25
+msgid "2. Use §0; §1 checks each component."
+msgstr ""
+
+#. §0: `squareCirculation`
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:20
+msgid "3. Add the four named values using §0."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:23
+msgid "3. Add the three ones."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:23
+msgid "3. Add their squares."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:29
+msgid "3. Apply the appropriate positive-plus-nonnegative addition rule and the square sign lemmas."
+msgstr ""
+
+#. §0: `vector_eq`
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:23
+msgid "3. Apply §0 and check all three coordinates."
+msgstr ""
+
+#. §0: `constant_integral`
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:28
+msgid "3. Apply §0 and evaluate the interval length."
+msgstr ""
+
+#. §0: `partial_coordinate`
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:23
+msgid "3. Apply §0 in each component."
+msgstr ""
+
+#. §0: `le_of_sq_le_sq`
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:27
+msgid "3. Apply §0 with upper bound 5, then identify the dot product."
+msgstr ""
+
+#. §0: `deriv_pow_field`
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:26
+msgid "3. Apply §0, then simplify the numerical exponent."
+msgstr ""
+
+#. §0: `reverse_integral`
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:26
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:23
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:23
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:23
+msgid "3. Apply §0."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:25
+msgid "3. Both remaining derivatives are derivatives of the identity function."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:20
+msgid "3. Calculate its dot product with v."
+msgstr ""
+
+#. §0: `onPlane`
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:23
+msgid "3. Check B and C in §0 using the normal you found."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:20
+msgid "3. Check each numerical condition."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:20
+msgid "3. Check that its tangent is (-1,0,0)."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:20
+msgid "3. Check that the normal points away from the cube interior on that face."
+msgstr ""
+
+#. §0: `assumed`
+#. §1: `path_limit_unique`
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:42
+msgid "3. Compare each with the restriction of §0 using §1; the resulting real equations contradict one another."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:20
+msgid "3. Compare the resulting circulation with the integral of the constant area density."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:23
+msgid "3. Compare the rotational output by its three coordinates."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:28
+msgid "3. Compare with the corresponding entry of the identity matrix."
+msgstr ""
+
+#. §0: `deriv_const_mul_id`
+#. §1: `deriv_const`
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:23
+msgid "3. Differentiate 2x in the requested variable using §0 or §1."
+msgstr ""
+
+#. §0: `le_of_sq_le_sq`
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:20
+msgid "3. Discard the nonnegative square and apply §0 with upper bound 2."
+msgstr ""
+
+#. §0: `rfl`
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:23
+msgid "3. Each coordinate identity follows by §0."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:26
+msgid "3. Evaluate both curl fluxes and compare their values."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:25
+msgid "3. Evaluate its squared Euclidean length and square root."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:25
+msgid "3. Evaluate the absolute value and the unit-normal denominator."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:26
+msgid "3. Evaluate the function at the origin."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:20
+msgid "3. Evaluate the side lengths and the height."
+msgstr ""
+
+#. §0: `partial_xy`
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:23
+msgid "3. Evaluate the three entries with §0."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:27
+msgid "3. Evaluate the two interior integrals, then combine their values."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:25
+msgid "3. Every remaining partial derivative is a constant derivative."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:26
+msgid "3. Expand squared length and combine the sine-cosine identity with the vertical component."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:20
+msgid "3. Finish the remaining polynomial identity."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:23
+msgid "3. For an arbitrary point, verify all three gradient components."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:28
+msgid "3. For speed at zero, rewrite with the named velocity and evaluate its length."
+msgstr ""
+
+#. §0: `onPlane`
+#. §1: `dot`
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:20
+msgid "3. For the plane, open §0 and §1; the displacement is zero."
+msgstr ""
+
+#. §0: `dot_cross_left`
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:26
+msgid "3. For the second goal, apply §0."
+msgstr ""
+
+#. §0: `eq_comm`
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:26
+msgid "3. For the second trace, use the symmetry of equality, §0."
+msgstr ""
+
+#. §0: `Or.elim`
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:23
+msgid "3. Handle the two factors with §0; recover y and λ for each sign."
+msgstr ""
+
+#. §0: `norm_num [onPlane, dot, h]`
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:26
+msgid "3. In the reverse direction, substitute the given coordinate with §0."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:23
+msgid "3. In the reverse direction, use transitivity on 0≤y and y≤x to recover 0≤x."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:40
+msgid "3. Integrate r on [0,1], then the resulting constant over [0,2π]."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:29
+msgid "3. Integrate sine on [0,π], then the constant on [0,2π]."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:20
+msgid "3. Integrate the resulting constant 3 on [0,2]."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:23
+msgid "3. Integrate the resulting constant over the angular interval."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:20
+msgid "3. Integrate the resulting constant over the unit cube."
+msgstr ""
+
+#. §0: `h.1`
+#. §1: `h.2`
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:20
+msgid "3. Read the two conditions as §0 and §1; normalize each computed equation, then assemble the origin conditions."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:20
+msgid "3. Recover x≥0 by transitivity of 0≤z and z≤x."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:23
+msgid "3. Replace it and evaluate the outer constant integral."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:23
+msgid "3. Replace it under the outer integral and integrate u."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:20
+msgid "3. Replace that inner integral and integrate in x."
+msgstr ""
+
+#. §0: `integral_pow`
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:20
+msgid "3. Replace the section and apply §0."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:20
+msgid "3. Reuse that equality when taking the absolute value."
+msgstr ""
+
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:23
+msgid "3. Reuse the named equality in the remainder, then calculate its dot product."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:23
+msgid "3. Rewrite both sides using those independent calculations."
+msgstr ""
+
+#. §0: `integral_id`
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:23
+msgid "3. Rewrite the line integral and use §0."
+msgstr ""
+
+#. §0: `lengthSq`
+#. §1: `dot`
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:26
+msgid "3. Rewrite the second with §0 and §1, then calculate."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:23
+msgid "3. Rewrite the six-face sum with those values and add."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:26
+msgid "3. Rewrite the two values using the shared endpoints."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:26
+msgid "3. Rewrite with that rule; the unit hypothesis provides the geometric interpretation."
+msgstr ""
+
+#. §0: `squareCirculation`
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:26
+msgid "3. Rewrite §0 using the four named edge values and add."
+msgstr ""
+
+#. §0: `work`
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:23
+msgid "3. Rewrite §0 with that formula and integrate."
+msgstr ""
+
+#. §0: `surfaceNormal`
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:23
+msgid "3. Rewrite §0 with the two tangent values and calculate their cross product."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:20
+msgid "3. Separate the four trace equalities and read their coordinates."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:20
+msgid "3. Substitute both values and check the transformed unit-square integral."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:20
+msgid "3. Substitute both values and finish the x integral."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:20
+msgid "3. Substitute t=1 and simplify."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:20
+msgid "3. Substitute that formula and integrate the cube."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:20
+msgid "3. Substitute the four values into the requested comparisons."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:20
+msgid "3. Substitute the parameter and calculate each coordinate."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:20
+msgid "3. Substitute the second displacement and negate the positive value."
+msgstr ""
+
+#. §0: `linarith`
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:23
+msgid "3. Substitute the total in the face balance and solve with §0."
+msgstr ""
+
+#. §0: `curvature`
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:34
+msgid "3. Substitute them into §0 and compute the cross-product length."
+msgstr ""
+
+#. §0: `hc`
+#. §1: `hi`
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:30
+msgid "3. Supply §0 and §1 separately."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:20
+msgid "3. Take the oriented dot product."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:30
+msgid "3. The third component is 1/2 minus -1/2."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:28
+msgid "3. Use a nonzero component for regularity; solve the point-normal equation as in Space Explorer."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:20
+msgid "3. Use the constant and identity integral rules, then divide by mass 1."
+msgstr ""
+
+#. §0: `integral_id`
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:25
+msgid "3. Use the difference rule with the displayed continuity-based integrability proofs, then §0."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:20
+msgid "3. Use the familiar vector component comparison."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:23
+msgid "3. Use the given feasibility inequality for the upper bound."
+msgstr ""
+
+#. §0: `integral_values`
+#. §1: `integral_id`
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:20
+msgid "3. Use §0 and §1 for the last integration."
+msgstr ""
+
+#. §0: `norm_num [deriv_pow_field]`
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:30
+msgid "3. Use §0 for each scalar derivative."
+msgstr ""
+
+#. §0: `integral_id`
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:20
+msgid "3. Use §0 for each variable moment, then divide by the positive mass."
+msgstr ""
+
+#. §0: `integral_id`
+#. §1: `integral_pow`
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:25
+msgid "3. Use §0 or §1, and normalize the moments by mass 1/2."
+msgstr ""
+
+#. §0: `norm_num`
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:23
+msgid "3. Use §0 to check 3 + 0 - 4 = -1."
+msgstr ""
+
+#. §0: `ring`
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:20
+msgid "3. Use §0 to verify that only h²+k² remains."
+msgstr ""
+
+#. §0: `ring`
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:29
+msgid "3. Use §0 to write the result as y+y."
+msgstr ""
+
+#. §0: `norm_num`
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:26
+msgid "3. Use §0 under each of the three bullets."
+msgstr ""
+
+#. §0: `exact continuous_apply 0`
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:28
+msgid "3. Use §0, and similarly for coordinates 1 and 2."
+msgstr ""
+
+#. §0: `derivative_value`
+#. §1: `ring`
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:30
+msgid "3. Use §0, then §1, to obtain 4t³."
+msgstr ""
+
+#. §0: `rfl`
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:45
+msgid "3. Use §0."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:23
+msgid "3. Verify that the assigned origin value matches the polynomial."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:11
+msgid "A Jacobian matrix"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:18
+msgid "A constant added before a scalar function does not change its derivative."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:15
+msgid "A constant integral is its value times the interval's signed length."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:15
+msgid "A constant real factor may be pulled outside an interval integral."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:15
+msgid "A constant scalar field has zero partial derivatives."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:15
+msgid "A constant scalar function has derivative zero."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:11
+msgid "A constrained domain"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:17
+msgid "A coordinate projection on a product space is continuous. Supply its coordinate index, for example continuous_apply 0."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:15
+msgid "A coordinate projection's total directional derivative is the chosen component. This rate is per unit distance when the direction has Euclidean length one."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:11
+msgid "A critical point"
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:11
+msgid "A first moment"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:15
+msgid "A fixed left scalar factor pulls outside the scalar derivative."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:17
+msgid "A fixed right scalar factor pulls outside the scalar derivative."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:19
+msgid "A fixed right-hand real factor may be pulled outside an interval integral."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:19
+msgid "A function constant for all nonzero parameters has that punctured limit."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:11
+msgid "A lamina centroid"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:11
+msgid "A level set"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:11
+msgid "A limit from continuity"
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:17
+msgid "A nonnegative first summand plus a positive second summand is positive."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:11
+msgid "A nonpolar Jacobian"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:38
+msgid "A nonzero cross product supplies a plane normal for the three noncollinear points."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:21
+msgid "A nonzero real number has a strictly positive square. Supply the proof that the number is nonzero."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:11
+msgid "A paraboloid and its traces"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:11
+msgid "A plane from a normal"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:11
+msgid "A point on a line"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:11
+msgid "A positive boundary"
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:19
+msgid "A positive first summand plus a nonnegative second summand is positive."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:21
+msgid "A product of two nonnegative real numbers is nonnegative. Prove the sign of each factor."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:15
+msgid "A punctured multivariable limit restricts to the diagonal path."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:17
+msgid "A punctured multivariable limit restricts to the horizontal path."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:18
+msgid "A readable name for the full multivariable limit at the origin."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:32
+msgid "A readable name for the punctured multivariable limit at the origin."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:18
+msgid "A real function is integrable over the interval between its two endpoints. This analytic hypothesis justifies splitting and endpoint evaluation rules."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:11
+msgid "A rectangle"
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:11
+msgid "A rectangular box"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:15
+msgid "A scalar field assigns one real value to each spatial point."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:30
+msgid "A scalar path limit excludes its zero parameter."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:11
+msgid "A scalar surface integral"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:37
+msgid "A spatial real vector with coordinates 0, 1, and 2. Write ![x,y,z] and read its coordinates with v 0, v 1, v 2."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:15
+msgid "A sum of squared continuous real functions is continuous."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:15
+msgid "A sum of two nonnegative real numbers is nonnegative."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:11
+msgid "A tangent approximation"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:26
+msgid "A tangent displacement preserves the level plane and is perpendicular to its gradient."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:11
+msgid "A triangular region"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:11
+msgid "A unit direction"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:18
+msgid "A vector field takes a spatial point and returns a spatial vector."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:15
+msgid "A vector is perpendicular to its cross product with another vector: dot u (cross u v) = 0."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:15
+msgid "A vector with a nonzero component is nonzero."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:11
+msgid "A weighted wire"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:17
+msgid "Absolute normal displacement divided by the Euclidean normal length. The plane normal must be nonzero."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:15
+msgid "Adding a constant to a scalar function does not change its derivative."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:11
+msgid "Adding and scaling"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:39
+msgid "Adding six independently computed outward face fluxes gives total flux 3."
 msgstr ""
 
 #: Game/Doc/Definitions.lean:6
 msgid "Addition"
 msgstr ""
 
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:29
+msgid "All four parameter-edge restrictions give the stated oriented boundary traces."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:57
+msgid "All six face normals point outward, including each pair of opposite directions."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:11
+msgid "Along a parametrized path"
+msgstr ""
+
 #: Game/Doc/Definitions.lean:3
 msgid "An equality"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:18
+msgid "An equality may be read in either direction: a=b is equivalent to b=a."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:11
+msgid "An outward closed boundary"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:11
+msgid "Apply Gauss on a cube"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:11
+msgid "Apply Stokes: square patch"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:15
+msgid "Apply a lemma to the current goal."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:19
+msgid "Apply a proved circulation-form Green special case."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:19
+msgid "Apply a proved divergence-theorem family with verified orientation."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:19
+msgid "Apply an established Stokes special-case family."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:11
+msgid "Apply the endpoint theorem"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:26
+msgid "Apply the scalar chain rule to a composite along a path."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:18
+msgid "Apply the total derivative to a direction vector. For a unit direction, this is rate of change per unit distance."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:11
+msgid "Arc length of a segment"
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:11
+msgid "Area and volume"
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:11
+msgid "Area factor"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:11
+msgid "Assemble a gradient"
 msgstr ""
 
 #: Game/Doc/Tactics.lean:15
 msgid "Assume the premise of an induction."
 msgstr ""
 
-#: Game.lean:25
-msgid "Calc III, but in Lean. Simple enough."
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:11
+msgid "Boss: a global constrained optimum"
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:11
+msgid "Boss: a triangular lamina"
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:11
+msgid "Boss: an absolute Jacobian"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:11
+msgid "Boss: an implicit tangent plane"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:11
+msgid "Boss: area from the boundary"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:11
+msgid "Boss: choose a simpler surface"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:11
+msgid "Boss: construct a potential"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:11
+msgid "Boss: path independence"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:11
+msgid "Boss: repair the origin"
+msgstr ""
+
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:11
+msgid "Boss: resolve a vector"
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:11
+msgid "Boss: reverse the patch"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:11
+msgid "Boss: tangent to a level set"
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:11
+msgid "Boss: the center of a solid"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:11
+msgid "Boss: the helix"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:11
+msgid "Boss: three points"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:47
+msgid "Both differential identities hold for the stated explicit smooth examples."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:36
+msgid "Both integration orders give the same area for this explicitly calculated triangle."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:11
+msgid "Bounds for a solid"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:19
+msgid "Build a nondegenerate plane through three points."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:24
+msgid "Calculate velocity, acceleration, and speed at a regular point."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:16
+msgid "Calculate volume using a variable upper bound."
+msgstr ""
+
+#: Game.lean:23
+msgid "Calculus III, proved in Lean"
 msgstr ""
 
 #: Game/Doc/Tactics.lean:9
 msgid "Can be proven by an existing result."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:15
+msgid "Cancel a common nonzero left factor in a real multiplication equality. Supply the nonzero-factor proof and the equality."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:15
+msgid "Chain rule stated as a derivative equality; both differentiability facts are required."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:15
+msgid "Check numerical coordinate arithmetic after expanding the relevant definitions."
+msgstr ""
+
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:22
+msgid "Check perpendicularity and a squared Euclidean length."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:15
+msgid "Check polynomial identities, including the tangent-plane approximation error."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:11
+msgid "Choose an orientation"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:23
+msgid "Choose the first candidate in the Lagrange-system case split."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:27
+msgid "Choose the second candidate in the Lagrange-system case split."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:11
+msgid "Circulation by edges"
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:25
+msgid "Classify the quadratic minimum using its positive second variation."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:25
+msgid "Close a definitional equality."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:15
+msgid "Combine a≤b and b≤c to obtain a≤c."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:22
+msgid "Combine endpoints, velocity, and speed for a spatial curve."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:23
+msgid "Combine justified special cases of Green, Stokes, and Gauss."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:21
+msgid "Combine variable bounds, mass, and a first moment."
 msgstr ""
 
 #. §0: `ℕ`
@@ -47,74 +1754,2633 @@ msgstr ""
 msgid "Commutativity on §0"
 msgstr ""
 
-#: Game.lean:15
-msgid "Here you can put additional information about the game. It is accessible\n"
-"from the starting through the drop-down menu.\n"
-"\n"
-"For example: Game version, Credits, Link to Github and Zulip, etc.\n"
-"\n"
-"Use **markdown**."
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:16
+msgid "Compare equal scalar area and opposite oriented flux."
 msgstr ""
 
-#. §0: `lean`
-#: Game.lean:26
-msgid "If you're learning, already a master, or just bored, learn all of Vector Calculus in Lean! §0"
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:19
+msgid "Compare global values over a closed disk, including its boundary."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:11
+msgid "Compare two fields"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:15
+msgid "Component derivatives compute the derivative of a parametrized spatial curve."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:22
+msgid "Compute a cross product and verify perpendicularity."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:16
+msgid "Compute a determinant for a linear coordinate transformation."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:19
+msgid "Compute a field divergence using the appropriate coordinate derivatives."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:19
+msgid "Compute a gradient from coordinate partial derivatives."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:22
+msgid "Compute a linear combination coordinate by coordinate."
+msgstr ""
+
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:19
+msgid "Compute a projection and show its remainder is orthogonal."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:22
+msgid "Compute a total directional derivative with a unit-direction assumption."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:30
+msgid "Compute a unit tangent and curvature at a circle point."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:26
+msgid "Compute an oriented curl from coordinate partial derivatives."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:16
+msgid "Compute area and the volume below a constant roof."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:24
+msgid "Compute entries of the derivative matrix of a vector map."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:19
+msgid "Compute flux directly on the six outward-oriented faces."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:16
+msgid "Compute mass and a normalized first moment."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:16
+msgid "Compute mass from a nonconstant density."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:16
+msgid "Compute positive mass and three normalized moments."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:21
+msgid "Compute the Euclidean surface-area density."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:26
+msgid "Compute the component derivatives of a vector curve."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:16
+msgid "Compute the curl flux integrand in Stokes’ formula."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:22
+msgid "Compute the first x partial derivative."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:25
+msgid "Compute the first y partial derivative."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:16
+msgid "Compute the matching planar curl integral."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:19
+msgid "Compute the two parameter tangents and their oriented cross product."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:41
+msgid "Construct a vector and extract its components."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:16
+msgid "Construct the affine approximation and bound its exact error."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:34
+msgid "Continuity and the origin value establish the actual multivariable limit."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:15
+msgid "Continuity and the value at zero give the full limit."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:34
+msgid "Continuity follows from continuity of the coordinate functions and polynomial operations."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal.lean:9
+msgid "Coordinate Portal"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:11
+msgid "Coordinates"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:18
+msgid "Counterclockwise circulation on the four edges of the unit square."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:11
+msgid "Crossing directions"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:11
+msgid "Curl"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:11
+msgid "Curl through a patch"
+msgstr ""
+
+#: Game/Levels/CurveNavigator.lean:9
+msgid "Curve Navigator"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:20
+msgid "Curve regularity in the coordinate representation."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:11
+msgid "Cylindrical volume"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:19
+msgid "Deduce an unknown flux from the closed-boundary total."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:20
+msgid "Derivative matrix: row i, column j is the j partial of output component i."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:36
+msgid "Derive the polar determinant and integrate the unit disk area density."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:16
+msgid "Determine all four oriented boundary traces of a parametrized patch."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:11
+msgid "Differentiate a curve"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:19
+msgid "Differentiate an already computed first partial."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:15
+msgid "Differentiate in the first parameter, differentiate in the second, then take their cross product in that order."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:20
+msgid "Differentiate the three component functions of a parametrized curve. Use velocity_components to display those derivatives."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:15
+msgid "Differentiating a coordinate gives one in its own direction and zero otherwise."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:32
+msgid "Direct boundary circulation equals 2."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:44
+msgid "Direct integration verifies the uniform cube’s positive mass and center (1/2,1/2,1/2)."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:15
+msgid "Display a gradient as its three partial derivatives."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:38
+msgid "Disprove a common limit by uniqueness along two paths."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:11
+msgid "Distance to a plane"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:11
+msgid "Divergence"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:11
+msgid "Divergence in the solid"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:26
+msgid "Divide velocity by its Euclidean speed on a regular curve, where speed is nonzero."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:17
+msgid "Division by a fixed scalar commutes with a partial derivative."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:17
+msgid "Division by a fixed scalar commutes with interval integration."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley.lean:9
+msgid "Double Integral Valley"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:37
+msgid "Each curve component has the stated derivative."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:15
+msgid "Endpoint evaluation for the potential x, with explicit regularity and integrability."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:11
+msgid "Endpoints of a curve"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:17
+msgid "Entrywise equality for a 3 by 3 Jacobian; indices start at zero."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:15
+msgid "Equal vector fields have equal curls."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:17
+msgid "Equal vector fields have equal divergences."
+msgstr ""
+
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:15
+msgid "Euclidean dot product: multiply the three matching coordinates and add. Use rw [dot] to display the formula."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:15
+msgid "Euclidean length, the nonnegative square root of lengthSq. This differs from the default Pi-type norm."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:19
+msgid "Evaluate a correctly weighted cylindrical-coordinate integral."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:22
+msgid "Evaluate a multivariable limit using continuity."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:16
+msgid "Evaluate a polynomial curve at its parameter endpoints."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:19
+msgid "Evaluate a scalar line integral with arc-length weight."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:16
+msgid "Evaluate a triple iterated integral on a box."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:16
+msgid "Evaluate an iterated integral on a rectangle."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:19
+msgid "Evaluate and distinguish vector fields at a point."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:22
+msgid "Evaluate circulation directly along a closed boundary."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:16
+msgid "Evaluate circulation with the orientation induced by the surface."
+msgstr ""
+
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:19
+msgid "Evaluate the coordinate formula for an inner product."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:21
+msgid "Evaluate the normal-distance formula with a nonzero normal."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:25
+msgid "Evaluate the spherical volume density on its standard domain."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:30
+msgid "Every feasible disk point has objective value between 0 and 1."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:19
+msgid "Every real square is nonnegative: sq_nonneg x proves 0 ≤ x^2."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:40
+msgid "Every unit direction gives a rate at most 5 for gradient (3,4,0)."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:16
+msgid "Exhibit both upward and downward directions arbitrarily near a saddle."
+msgstr ""
+
+#: Game.lean:24
+msgid "Explore vectors, curves, multivariable derivatives, multiple integrals, and vector integral theorems through 96 proof challenges. Completion of the Natural Number Game and single-variable calculus are assumed. Advanced integral-theorem challenges use explicitly labeled, fully proved special cases."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:16
+msgid "Express a sloping-roof solid with explicit bounds."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:16
+msgid "Express and verify a domain with explicit inequalities."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:15
+msgid "Filling in the existing value at the origin preserves continuity."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:11
+msgid "Final boss: three integral bridges"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:16
+msgid "Find a point satisfying both geometric constraints."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:16
+msgid "Find all critical points of a quadratic function."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:17
+msgid "Finish a goal with a proof of its statement."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:11
+msgid "Flux by boundary pieces"
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:19
+msgid "For a nonnegative real a, its absolute value equals a. Supply the nonnegativity proof."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:24
+msgid "For a regular curve, curvature is the length of velocity cross acceleration divided by speed cubed."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:17
+msgid "From a^2 ≤ b^2 and 0 ≤ b, conclude a ≤ b. The upper bound must be nonnegative; a may have either sign."
+msgstr ""
+
+#: Game/Levels/GaussCitadel.lean:9
+msgid "Gauss Citadel"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:30
+msgid "Gauss gives total flux 9; subtracting the known contribution 5 gives missing flux 4."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:15
+msgid "Gauss' identity for diagonal linear fields on the outward unit cube."
+msgstr ""
+
+#: Game/Levels/GradientMountain.lean:9
+msgid "Gradient Mountain"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:15
+msgid "Graph normals have vertical component one, without assuming a unit normal."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:11
+msgid "Green for a shear field"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:11
+msgid "Green in flux form"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:15
+msgid "Green's circulation identity for a linear shear on the unit square."
+msgstr ""
+
+#: Game/Levels/GreensGarden.lean:9
+msgid "Green’s Garden"
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:22
+msgid "HasDerivAt f a t means f is differentiable at t with derivative a. It states existence and the value together."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:21
+msgid "Hold the first real argument fixed and vary the second: deriv (fun t => f x t) y."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:11
+msgid "Hold x fixed"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:11
+msgid "Hold y fixed"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:33
+msgid "Holding x fixed gives the y partial y+y, equivalently 2y."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:30
+msgid "Holding y fixed gives the x partial 2x."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:29
+msgid "In a unit direction, the coordinate rate is the direction’s first component."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:31
+msgid "Independent outward-flux and divergence calculations verify this flux-form Green special case."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:22
+msgid "Integrability of the actual work integrand on the ordered or reversed interval."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:20
+msgid "Integrate Euclidean speed over the parameter interval. Geometric arc length uses increasing bounds."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:16
+msgid "Integrate a field divergence over the cube."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:15
+msgid "Integrate a natural power using the next power divided by the next exponent."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:19
+msgid "Integrate a scalar density with the area factor."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:19
+msgid "Integrate a vector field against an oriented area vector."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:19
+msgid "Integrate a vector field dotted with the curve velocity."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:15
+msgid "Integrate field-along-path dotted with velocity. This signed integral depends on path orientation."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:16
+msgid "Integrate position times density."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:15
+msgid "Integrate scalar density along a curve, multiplied by Euclidean speed. Increasing bounds give arc-length weighting."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:15
+msgid "Integrate scalar density on a parametrized surface, multiplied by the Euclidean length of its parameter normal."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:15
+msgid "Integrate the field dotted with the parameter cross-product normal. The normal already includes the oriented area factor."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:15
+msgid "Integrate the identity function using (b²-a²)/2."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:24
+msgid "Integrate the speed of a regular curve on ordered bounds."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:15
+msgid "Interchanging interval endpoints negates the signed integral of the same integrand."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:11
+msgid "Interior and boundary"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:21
+msgid "Introduce a hypothesis or a universally quantified variable."
 msgstr ""
 
 #: Game/Doc/Tactics.lean:12
 msgid "Introduce an auxilary result."
 msgstr ""
 
-#: Game.lean:4
-msgid "LEAN Vector Calculus Game"
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:15
+msgid "Join equalities through an intermediate value. apply Eq.trans (b := value) asks for the first and second equality."
 msgstr ""
 
-#: Game/Levels/Vectors.lean:6
-msgid "Learn to work with three-dimensional vectors,\n"
-"starting with their coordinates and addition."
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:20
+msgid "Joint continuity of a function at every point of its domain. The sum, power, and coordinate continuity rules build proofs."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:22
+msgid "Justify replacing a graph by a planar patch with the same oriented boundary."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:11
+msgid "Lagrange equations"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:11
+msgid "Line meets plane"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:15
+msgid "Line membership means there is a real parameter t for which q = p + t times v. Supply a witness with use."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:11
+msgid "Match orientations"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:15
+msgid "Matching diagonal partials give the divergence of a diagonal linear field."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:11
+msgid "Mixed partials agree"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:11
+msgid "Motion at an instant"
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:19
+msgid "Multiplying by one leaves a value unchanged. Here it simplifies the three unit coefficients of the radial field."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes.lean:9
+msgid "Multivariable Landscapes"
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:19
+msgid "Name an intermediate mathematical fact."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:19
+msgid "Negating a field negates its partial derivatives."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:15
+msgid "Negating a scalar function negates its derivative."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:28
+msgid "Nonzero displacements on the two coordinate paths give opposite signs, witnessing a saddle."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:13
+msgid "Objective: Apply a proved circulation-form Green special case.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n"
+"\n"
+"Apply the established Green circulation identity for the smooth shear family F=(0,kx,0) on the positively oriented unit square. Here k=3. The theorem is a fully proved special case for this family and boundary, not a claim about arbitrary regions or fields. The earlier levels verified both sides directly for k=1.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:13
+msgid "Objective: Apply a proved divergence-theorem family with verified orientation.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Earlier levels of Gauss Citadel.\n"
+"\n"
+"Apply the proved divergence-theorem family for F=(ax,by,cz) on the outward unit cube. The specified field has coefficients 2, 3, and 4. Smoothness, the bounded solid, and six face orientations are built into this verified special case. The theorem does not assert a result for arbitrary closed surfaces.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `stokes_shear_patch`
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:13
+msgid "Objective: Apply an established Stokes special-case family.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n"
+"\n"
+"Apply the proved Stokes special case for a shear field on the upward unit-square patch. The boundary is the counterclockwise square established earlier, and the field is smooth. §0 packages this verified family; it is not a general arbitrary-surface theorem.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `derivative_chain`
+#. §1: `derivative_value`
+#. §2: `f := ...`
+#. §3: `g := ...`
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:13
+msgid "Objective: Apply the scalar chain rule to a composite along a path.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices. Earlier levels of Gradient Mountain.\n"
+"\n"
+"For the composite (t²)², evaluate the derivative of the outer square at the inner value t². Name the two scalar derivative facts. §0 multiplies them, and §1 lets you finish by proving the product equals the requested polynomial. This keeps the chain-rule choice separate from algebra. The named arguments §2 and §3 specify the outer and inner functions explicitly so Lean need not infer a function from one of its values.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `vector_ne_zero`
+#: Game/Levels/SpaceExplorer/L06_BossThreePoints.lean:13
+msgid "Objective: Build a nondegenerate plane through three points.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n"
+"\n"
+"Use the edges AB and AC to compute a normal to the plane through the three specified points. Show the cross product is nonzero by its z component, using §0. Then verify the point-normal equation for B and C; A is already the base point. A nonzero cross product also establishes that the three points are not collinear.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `velocity_congr`
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:13
+msgid "Objective: Calculate velocity, acceleration, and speed at a regular point.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration. Earlier levels of Curve Navigator.\n"
+"\n"
+"Acceleration is the velocity of the velocity curve. First name the velocity formula for an arbitrary time. §0 lets you differentiate a curve after replacing it by a proved equal formula. Speed is the Euclidean length of velocity; it is not another component derivative.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:13
+msgid "Objective: Calculate volume using a variable upper bound.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments. Earlier levels of Triple Integral Caverns.\n"
+"\n"
+"Integrate 1 over the sloping-roof solid. Its vertical section has height x. The unit y width leaves that section value unchanged, so the outer integral is ∫₀¹x dx. Prove the inner and middle formulas before evaluating the remaining one-variable integral.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `∧`
+#. §1: `constructor`
+#. §2: `constructor`
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:13
+msgid "Objective: Check perpendicularity and a squared Euclidean length.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space. Earlier levels of Vector Workshop.\n"
+"\n"
+"Orthogonal vectors have dot product zero. Squared length is the dot product of a vector with itself. The symbol §0 asks for both statements: §1 splits them into two goals, which you solve under separate bullets. Each calculation then uses a formula you know.\n"
+"\n"
+"New tools unlocked here:\n"
+"\n"
+"§2: Split a conjunction or construct a structured proof.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `apply Or.elim nonzero`
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:13
+msgid "Objective: Classify the quadratic minimum using its positive second variation.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Earlier levels of Optimization Arena.\n"
+"\n"
+"The two diagonal second partials of x²+y² are 2. To justify strict positivity of its second variation, a nonzero displacement has at least one nonzero coordinate. §0 gives the two alternatives; introduce the nonzero coordinate in each branch. Combine a strictly positive square with the other nonnegative square. A Hessian calculation is accompanied by the needed sign justification.\n"
+"\n"
+"Worked example: For f=3x²+y² the Hessian is diag(6,2). On a nonzero x-axis displacement (h,0), its quadratic form 6h² is strictly positive.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:13
+msgid "Objective: Combine endpoints, velocity, and speed for a spatial curve.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration. Earlier levels of Curve Navigator.\n"
+"\n"
+"The helix adds uniform vertical motion to a circle. Assemble its initial point, velocity at any parameter, and squared speed. The familiar identity sin²t+cos²t=1 supplies the final calculation. Use the existing linear-arithmetic tool to combine that identity with the additional vertical contribution 1.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:13
+msgid "Objective: Combine justified special cases of Green, Stokes, and Gauss.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Earlier levels of Gauss Citadel.\n"
+"\n"
+"Combine three established integral bridges. Use the shear Green and Stokes identities on the positive square and upward patch. Use the diagonal Gauss family on the outward cube, noting that coefficients (1,1,1) reconstruct the radial field. Evaluate circulation 2 and flux 3 through their interior integrals, then add them. All three applications are justified proved special cases; the final boss introduces no new tactic.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:13
+msgid "Objective: Combine variable bounds, mass, and a first moment.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n"
+"\n"
+"For uniform density on 0≤y≤x≤1, derive the inner mass and moment integrals as x, x², and x²/2. Integrating these gives mass 1/2 and moments 1/3 and 1/6. Divide by the positive mass to obtain the full centroid (2/3,1/3). Reuse pointwise replacement and the power rule; the boss introduces no new proof syntax.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:13
+msgid "Objective: Compare equal scalar area and opposite oriented flux.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration. Earlier levels of Surface Expedition.\n"
+"\n"
+"Interchanging the parameter order reverses the normal while preserving its length. Calculate both normals, the two fluxes, and the two scalar areas. Then compare the results. This distinguishes orientation-sensitive flux from orientation-independent area by a fully checked concrete example.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L04_InteriorAndBoundary.lean:13
+msgid "Objective: Compare global values over a closed disk, including its boundary.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Earlier levels of Optimization Arena.\n"
+"\n"
+"On the closed disk x²+y²≤1, compare values at every feasible point. The lower bound follows from the nonnegativity of the two squares; the upper bound is the region constraint. The origin attains 0, and every point of the unit-circle boundary attains 1. Bounds for arbitrary feasible points provide the global justification.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `vector_eq`
+#. §1: `cross`
+#. §2: `dot_cross_left`
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:13
+msgid "Objective: Compute a cross product and verify perpendicularity.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space. Earlier levels of Vector Workshop.\n"
+"\n"
+"The right-hand rule fixes the order in a cross product. Compute its three components using §0 and the definition §1. For perpendicularity, apply the proved rule §2: any vector is perpendicular to its cross product with another vector.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:13
+msgid "Objective: Compute a determinant for a linear coordinate transformation.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n"
+"\n"
+"The map T(u,v)=(2u,-3v) has derivative matrix diag(2,-3). Derive its entries from the coordinate partials before taking the determinant. Name the signed determinant and reuse it for the absolute determinant. The negative sign records orientation reversal; area scaling uses its positive magnitude.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:13
+msgid "Objective: Compute a field divergence using the appropriate coordinate derivatives.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n"
+"\n"
+"Divergence adds only the matching-coordinate partials: ∂F₀/∂x₀, ∂F₁/∂x₁, and ∂F₂/∂x₂. For the radial field each is a coordinate derivative equal to 1. Choose those terms using the definition before calculating their sum.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `gradient_components`
+#. §1: `partial_coordinate`
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:13
+msgid "Objective: Compute a gradient from coordinate partial derivatives.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices.\n"
+"\n"
+"The gradient collects the scalar partial derivatives in coordinate order. Open it using §0. The rule §1 says that differentiating a coordinate with respect to itself gives 1, while the other coordinate derivatives are zero.\n"
+"\n"
+"Worked example: For f(x,y,z)=3x, the three partials are 3, 0, and 0, assembled in that order into the gradient.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `apply vector_eq`
+#. §1: `·`
+#. §2: `norm_num`
+#. §3: `apply vector_eq`
+#. §4: `norm_num`
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:13
+msgid "Objective: Compute a linear combination coordinate by coordinate.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space. Earlier levels of Vector Workshop.\n"
+"\n"
+"Addition and scalar multiplication act on each coordinate. Use §0 to turn one vector equality into three real equalities. The three bullets §1 handle those goals in order. This proved rule lets you compare coordinates without learning how Lean implements finite functions. §2 checks concrete arithmetic; it does not choose the vector operation for you.\n"
+"\n"
+"Worked example: For u=(2,0,1) and v=(1,1,0), u+v=(3,1,1). After §3, check the three scalar sums under separate bullets.\n"
+"\n"
+"New tools unlocked here:\n"
+"\n"
+"§4: Check numerical coordinate arithmetic after expanding the relevant definitions.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `have`
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:13
+msgid "Objective: Compute a projection and show its remainder is orthogonal.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space. Earlier levels of Vector Workshop.\n"
+"\n"
+"Project v=(3,1,2) onto the nonzero direction n=(1,1,0). Its squared length is 2, so the projection coefficient (v·n)/(n·n) is 4/2. Name the resulting vector equality with §0, then reuse it when calculating the remainder. The challenge combines coordinate comparison, dot products, and projection; no new tactic is needed.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `directional_coordinate`
+#. §1: `lengthSq u = 1`
+#: Game/Levels/GradientMountain/L02_AUnitDirection.lean:13
+msgid "Objective: Compute a total directional derivative with a unit-direction assumption.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices. Earlier levels of Gradient Mountain.\n"
+"\n"
+"A directional derivative applies the total derivative to the direction u. The general coordinate-projection rule §0 computes it without asking you to construct a continuous linear map. The hypothesis §1 specifies a unit direction, so the answer is a rate per unit distance. The underlying derivative identity also holds for nonunit vectors.\n"
+"\n"
+"Worked example: For the scalar field f(x,y,z)=x and unit direction (0,1,0), the directional rate is zero: moving in y does not change x.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:13
+msgid "Objective: Compute a unit tangent and curvature at a circle point.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration. Earlier levels of Curve Navigator.\n"
+"\n"
+"On a regular curve, divide velocity by speed to obtain a unit tangent. Curvature is |v×a|/|v|³. At parameter zero on the unit circle, velocity is (0,1,0), acceleration is (-1,0,0), and speed is 1. Name these ingredients, then substitute them into the two geometric formulas.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `partial_div_const`
+#. §1: `partial_neg`
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:13
+msgid "Objective: Compute an oriented curl from coordinate partial derivatives.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n"
+"\n"
+"Curl uses the right-handed difference of cross-coordinate partials. For (-y/2,x/2,0), the only nonzero component is ∂(x/2)/∂x minus ∂(-y/2)/∂y. The rules §0 and §1 express the familiar constant-factor and sign laws. Compute components without exposing coordinate updates.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:13
+msgid "Objective: Compute area and the volume below a constant roof.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n"
+"\n"
+"Integrating 1 gives the rectangle area; integrating the nonnegative height 4 gives the volume below a constant roof. Calculate the inner constant integral and then the outer one in each case. The same bounds describe the two applications.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `matrix_eq`
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:13
+msgid "Objective: Compute entries of the derivative matrix of a vector map.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices. Earlier levels of Gradient Mountain.\n"
+"\n"
+"The Jacobian entry in row i and column j is the j partial of output component i. For the identity map, matching coordinates give 1 and the other entries give 0. The proved rule §0 asks for the nine entries in row order, so no matrix-extensionality tactic is needed.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `cubeFlux`
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:13
+msgid "Objective: Compute flux directly on the six outward-oriented faces.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Earlier levels of Gauss Citadel.\n"
+"\n"
+"Calculate outward flux directly through all six cube faces for the radial field. Each face at coordinate 1 contributes 1; each face at coordinate 0 contributes 0. Name the six actual surface integrals before adding them in §0. This calculation does not use the divergence theorem.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:13
+msgid "Objective: Compute mass and a normalized first moment.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n"
+"\n"
+"The uniform rectangle [0,2]×[0,1] has positive mass 2. Its centroid coordinates are the first moments divided by that mass. For the x moment, x is constant during the y integration. For the y moment, first integrate y over [0,1]. Keep these two different inner calculations separate.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:13
+msgid "Objective: Compute mass from a nonconstant density.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments. Earlier levels of Triple Integral Caverns.\n"
+"\n"
+"The density x² is nonnegative on the unit cube and varies with x. Treat it as constant while integrating over y and z. The section integral remains x²; only then apply the power integration rule in x. Vanishing density on one face does not make the total mass zero.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L06_BossTheCenterOfASolid.lean:13
+msgid "Objective: Compute positive mass and three normalized moments.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments. Earlier levels of Triple Integral Caverns.\n"
+"\n"
+"The uniform unit cube is symmetric, suggesting center (1/2,1/2,1/2). Justify that prediction by computing positive mass 1 and all three coordinate moments. Each moment requires choosing the correct varying variable. Divide by the computed positive mass, rather than using symmetry as an unproved conclusion.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `normal_components`
+#. §1: `normal_congr`
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:13
+msgid "Objective: Compute the Euclidean surface-area density.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration. Earlier levels of Surface Expedition.\n"
+"\n"
+"The surface-area factor is the Euclidean length of the parameter normal. The general rule §0 computes that normal from the two parameter derivatives. For this patch its value is (0,0,1), so its length is 1. Scalar area uses the length, while flux retains the orientation vector. A named coordinate formula is passed to §1 to replace the surface before computing its derivative columns.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `velocity_components`
+#. §1: `deriv_pow_field`
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:13
+msgid "Objective: Compute the component derivatives of a vector curve.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration. Earlier levels of Curve Navigator.\n"
+"\n"
+"Velocity differentiates the three scalar component functions. The proved rule §0 displays those three derivatives. §1 is the ordinary power rule; Lean already knows the derivatives of the identity and constant functions. Apply these rules coordinate by coordinate.\n"
+"\n"
+"Worked example: For c(t)=(t³,0,0), the component power rule gives velocity (3t²,0,0). Each output coordinate is differentiated separately.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:13
+msgid "Objective: Compute the curl flux integrand in Stokes’ formula.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n"
+"\n"
+"Stokes uses curl F dotted with the parameter normal. Compute the normal and the cross-coordinate derivatives for F=(0,x,0). Its curl points upward, so the dot product is 1. Keeping the normal vector rather than only its length preserves the orientation sign.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `partialX f x y`
+#. §1: `deriv (fun t => f t y) x`
+#. §2: `deriv_add_const`
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:13
+msgid "Objective: Compute the first x partial derivative.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals.\n"
+"\n"
+"§0 is §1: vary x while holding y fixed. Rewrite that definition, remove the constant y² with §2, and apply the power rule. A partial derivative here is a scalar rate, distinct from the total derivative linear map.\n"
+"\n"
+"Worked example: For f(x,y)=x³+y, holding y fixed gives the x partial 3x². The added y is constant in this derivative.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `ring`
+#. §1: `ring`
+#: Game/Levels/PartialDerivativeLab/L02_HoldXFixed.lean:13
+msgid "Objective: Compute the first y partial derivative.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n"
+"\n"
+"Now hold x fixed and vary y. The same power rule gives 2y, written here as y+y. §0 proves polynomial identities such as 2y=y+y; it does not decide which variable to differentiate. Use it after applying the calculus rules.\n"
+"\n"
+"Worked example: For f(x,y)=xy, holding x fixed gives the y partial x. Switching the varying coordinate changes which factor is constant.\n"
+"\n"
+"New tools unlocked here:\n"
+"\n"
+"§1: Check polynomial identities, including the tangent-plane approximation error.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:13
+msgid "Objective: Compute the matching planar curl integral.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n"
+"\n"
+"For the same field, the planar curl integrand is ∂Q/∂x-∂P/∂y=1. Calculate this derivative expression, then integrate it over the square. Its value agrees with the independent edge calculation, verifying the interior side of this example.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `surfaceNormal`
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:13
+msgid "Objective: Compute the two parameter tangents and their oriented cross product.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration. Earlier levels of Surface Expedition.\n"
+"\n"
+"Differentiate the surface while holding v fixed, then while holding u fixed. These are the two tangent vectors. Their cross product in the stated order is the oriented normal, including the area factor. Name both tangent calculations and reuse them in §0.\n"
+"\n"
+"Worked example: For s(u,v)=(2u,v,0), parameter tangents are (2,0,0) and (0,1,0), so the oriented area vector is (0,0,2).\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `![a,b,c]`
+#. §1: `ℝ`
+#. §2: `Vec`
+#. §3: `rfl`
+#. §4: `(![5,6,7] : Vec) 0 = 5`
+#. §5: `rfl`
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:13
+msgid "Objective: Construct a vector and extract its components.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space.\n"
+"\n"
+"§0 is a spatial vector, with coordinates numbered 0, 1, and 2. Here index 1 selects the middle entry. The type §1 means real numbers; §2 keeps the same three-coordinate representation throughout the game. Lean can read a specified coordinate directly, so the familiar §3 finishes this first calculation.\n"
+"\n"
+"Worked example: §4 follows by §5: index 0 selects the first entry.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:13
+msgid "Objective: Construct the affine approximation and bound its exact error.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n"
+"\n"
+"At (1,1), the linear approximation to x²+y² is 2+2h+2k. Subtract it from the exact value at (1+h,1+k). The remaining h²+k² measures the approximation error and has no constant or linear terms. The polynomial tool introduced earlier now verifies this identity.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `divergence_diagonal`
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:13
+msgid "Objective: Deduce an unknown flux from the closed-boundary total.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Earlier levels of Gauss Citadel.\n"
+"\n"
+"The five known outward face fluxes sum to 5. Find the missing top flux by first using the unit-cube Gauss theorem to calculate total flux. The general matching-partial rule §0 gives divergence 2+3+4=9. Rewrite the balance equation and solve the remaining linear equation. The balance assumption states the geometric decomposition, not the requested missing value.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:13
+msgid "Objective: Derive the polar determinant and integrate the unit disk area density.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n"
+"\n"
+"Build the polar Jacobian from the actual partial derivatives of r cos θ and r sin θ, then use the 2×2 determinant rule. The sine-cosine identity simplifies the determinant to r. The assumption r≥0 permits replacing |r| by r. Finally integrate that radial area factor over the standard disk parameter domain. This evaluates the coordinate-side integral, not a general substitution theorem.\n"
+"\n"
+"Worked example: For T(u,v)=(3u,2v), compute derivative columns (3,0) and (0,2). Their 2×2 determinant is 6, so the area factor is |6|=6.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:13
+msgid "Objective: Determine all four oriented boundary traces of a parametrized patch.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux.\n"
+"\n"
+"The four sides of the parameter square give the patch boundary. Traverse them with u increasing on the bottom, v increasing on the right, u decreasing on the top, and v decreasing on the left. Verify all four traces; these are the oriented edge curves used in the square circulation.\n"
+"\n"
+"Worked example: For a stretched rectangle s(u,v)=(2u,v,0), fixing v=0 gives its bottom edge (2u,0,0). Fix a parameter to obtain each edge.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `simp only [rules]`
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:13
+msgid "Objective: Differentiate an already computed first partial.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n"
+"\n"
+"A second partial differentiates an already computed first partial. For x²+y² the first x partial is 2x. Differentiating it again in x gives 2, while differentiating it in y gives 0. §0 applies just the displayed derivative rules, including under the inner function; this is the explicit-rule form of the simplification tool already learned.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `PuncturedLimit`
+#. §1: `PathLimit`
+#. §2: `rw [not_exists]`
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:13
+msgid "Objective: Disprove a common limit by uniqueness along two paths.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity. Earlier levels of Multivariable Landscapes.\n"
+"\n"
+"For f=xy/(x²+y²), the horizontal and diagonal paths approach the punctured origin. §0 and §1 keep those punctured limits precise. Prove each path has a constant value away from zero. A hypothetical multivariable limit must restrict to both paths; uniqueness would force its value to be both 0 and 1/2. §2 rewrites the claim as: every proposed limit fails. You can then introduce an arbitrary limit value and its claimed property.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:13
+msgid "Objective: Evaluate a correctly weighted cylindrical-coordinate integral.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n"
+"\n"
+"For a unit-radius cylinder of height 2, the cylindrical volume factor is r on 0≤r≤1 and 0≤θ≤2π. Integrate the vertical coordinate first to get 2r, then the radial coordinate to get 1, then the angle. The factor is the nonnegative absolute Jacobian on this domain. The formal goal is the coordinate-side volume integral.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `LimitAtOrigin f L`
+#. §1: `limit_of_continuous`
+#: Game/Levels/MultivariableLandscapes/L04_ALimitFromContinuity.lean:13
+msgid "Objective: Evaluate a multivariable limit using continuity.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity. Earlier levels of Multivariable Landscapes.\n"
+"\n"
+"§0 is a readable name for the actual full neighborhood limit of f at the origin. The proved theorem §1 asks for continuity and the value f(0)=L. Reuse the continuity method and calculate the value separately. This is the standard continuity method for evaluating a multivariable limit.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `fun t => ...`
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:13
+msgid "Objective: Evaluate a polynomial curve at its parameter endpoints.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration.\n"
+"\n"
+"§0 describes a function of the parameter t. A curve assigns a spatial point to each t in its parameter interval. Here the endpoints come from substituting 0 and 1. Use the same component-comparison method as for vector addition.\n"
+"\n"
+"Worked example: For c(t)=(t,2t,1) on [0,1], substitute t=0 and t=1 to find (0,0,1) and (1,2,1).\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `scalarLineIntegral`
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:13
+msgid "Objective: Evaluate a scalar line integral with arc-length weight.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n"
+"\n"
+"A scalar line integral multiplies the scalar density by speed. For this unit-speed wire, the density along the path is t and the speed is 1. Prove the resulting integrand first, replace it in §0, then perform the ordinary integral. Arc-length weight is always nonnegative on the increasing parameter interval.\n"
+"\n"
+"Worked example: A constant scalar density 1 on a path of speed 2, for 0≤t≤3, gives scalar line integral ∫₀³2 dt=6.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:13
+msgid "Objective: Evaluate a triple iterated integral on a box.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments.\n"
+"\n"
+"Evaluate a triple integral from the innermost variable outward. The z integral is 4; integrating that value over the y interval gives 12; the final x interval doubles it. The box has ordered bounds and continuous constant density. This is the three-variable version of the rectangle method.\n"
+"\n"
+"Worked example: A box with side lengths 2, 2, and 3 has constant-density integral 3, then 6, then 12 when integrated from the innermost variable outward.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:13
+msgid "Objective: Evaluate an iterated integral on a rectangle.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments.\n"
+"\n"
+"In an iterated integral, evaluate the innermost variable first. Here integrating 1 with respect to y on [0,3] gives 3. Name that result, substitute it into the x integral, and integrate the remaining constant on [0,2]. All bounds are ordered and the integrands are continuous. The result is the rectangle area.\n"
+"\n"
+"Worked example: On [0,4]×[0,2], first ∫₀²1 dy=2, then ∫₀⁴2 dx=8. Name the inner value and rewrite it in the outer integral.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:13
+msgid "Objective: Evaluate and distinguish vector fields at a point.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors.\n"
+"\n"
+"A vector field assigns a vector to each position. The radial field returns the position itself, while the rotational field rotates and scales its planar components. Evaluate both at the same point to compare their behaviour. Coordinate calculations now use only familiar vector methods.\n"
+"\n"
+"Worked example: For F(x,y,z)=(2x,y,0), substituting (1,3,0) gives (2,3,0). A field evaluation takes a position as input and returns a vector.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `squareCirculation`
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:13
+msgid "Objective: Evaluate circulation directly along a closed boundary.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n"
+"\n"
+"Compute circulation directly by evaluating work on each of the four counterclockwise edges. Only the right edge contributes for F=(0,x,0). Name the four edge values before adding them with §0. This supplies an independent boundary calculation before any use of Green’s theorem.\n"
+"\n"
+"Worked example: For F=(0,2x,0), the upward right edge x=1 has work integrand 2, giving contribution 2 over its unit parameter interval.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:13
+msgid "Objective: Evaluate circulation with the orientation induced by the surface.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n"
+"\n"
+"Evaluate boundary circulation directly for F=(0,2x,0). Use the same four oriented edges as in Green’s Garden. Only the upward right edge contributes, with value 2. This independently checks the boundary side before invoking the surface theorem.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `rw [dot]`
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:13
+msgid "Objective: Evaluate the coordinate formula for an inner product.\n"
+"\n"
+"Mathematical prerequisites: Real arithmetic; vectors in three-dimensional space. Earlier levels of Vector Workshop.\n"
+"\n"
+"The dot product multiplies matching components and adds the results. §0 opens that coordinate formula, just as rewriting opened definitions in the Natural Number Game. Then use the numerical arithmetic tool from the preceding level.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:13
+msgid "Objective: Evaluate the normal-distance formula with a nonzero normal.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n"
+"\n"
+"Distance from q to a plane is |n·(q-p)| divided by the Euclidean length of its nonzero normal. For the plane z=1, choose n=(0,0,1), whose length is 1. Absolute value makes this a nonnegative distance, independent of the side of the plane.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:13
+msgid "Objective: Evaluate the spherical volume density on its standard domain.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n"
+"\n"
+"On 0≤r≤1, 0≤φ≤π, 0≤θ≤2π, the spherical factor is r² sin φ. First justify the absolute-value sign using nonnegativity of a square and of sine on [0,π]. Then perform the radial, polar-angle, and azimuth integrations in that order. This is a proved coordinate-integral calculation; identification with a Cartesian ball by a general substitution theorem remains deferred.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:13
+msgid "Objective: Exhibit both upward and downward directions arbitrarily near a saddle.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Earlier levels of Optimization Arena.\n"
+"\n"
+"For x²-y², the displacements (t,0) and (0,t) give t² and -t². For every nonzero t they lie on opposite sides of the critical value. Since t may be arbitrarily small, these witnesses explain the saddle behaviour. Begin by establishing the sign of t² once and reusing it.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:13
+msgid "Objective: Express a sloping-roof solid with explicit bounds.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments. Earlier levels of Triple Integral Caverns.\n"
+"\n"
+"The solid has roof z=x, with 0≤z≤x≤1 and 0≤y≤1. Translate between the expanded bounds and the shorter nested description. As with triangular regions, x≥0 follows from 0≤z≤x. Read and assemble the inequalities explicitly; the task is choosing valid bounds for a solid.\n"
+"\n"
+"Worked example: For a roof z≤y with z≥0, the inequality y≥0 follows. A solid description must also state both bounds on the independent horizontal coordinate.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `∧`
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:13
+msgid "Objective: Express and verify a domain with explicit inequalities.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity.\n"
+"\n"
+"For √(4-x²-y²)/(x-y), a real-valued geometric domain requires x²+y²≤4 and x-y≠0. At (1,0), these are two concrete checks. §0 collects the independent restrictions. Lean defines division and square root on all real inputs, so recording the intended domain is part of the mathematics.\n"
+"\n"
+"Worked example: For √(9-x²-y²)/(x+y), the point (2,1) meets 2²+1²≤9 and 2+1≠0. Both domain checks are necessary.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:13
+msgid "Objective: Find a point satisfying both geometric constraints.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n"
+"\n"
+"A line-plane intersection must satisfy two geometric conditions. The vertical line reaches height 3 at parameter 3. Supply that witness for line membership, then independently check the plane equation. This is an application of existence, vector comparison, and dot products.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `h.1`
+#. §1: `h.2`
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:13
+msgid "Objective: Find all critical points of a quadratic function.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities.\n"
+"\n"
+"Find every critical point of x²+y² by setting both first partials equal to zero. The notation §0 and §1 retrieves the first and second facts of a conjunction h, just as reading components retrieves coordinates of a vector. Solve both directions: stationarity forces the origin, and the origin satisfies stationarity.\n"
+"\n"
+"Worked example: For f=(x-1)²+y², setting the two first partials to zero locates (1,0). Locating a critical point does not yet classify it.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:13
+msgid "Objective: Integrate a field divergence over the cube.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Earlier levels of Gauss Citadel.\n"
+"\n"
+"For the smooth radial field, the three matching coordinate partials give divergence 3. Establish that formula at an arbitrary point before evaluating its triple integral. The unit cube has unit volume, so integrating this constant gives 3. This is the volume side of the divergence identity.\n"
+"\n"
+"Worked example: For F=(2x,2y,2z), divergence is 6. On a unit cube its volume integral is 6 times volume 1.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:13
+msgid "Objective: Integrate a scalar density with the area factor.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration. Earlier levels of Surface Expedition.\n"
+"\n"
+"A scalar surface integral multiplies the scalar density at the surface point by the area factor. Here the density is u and the factor is 1. Name the normal, evaluate the inner integral as u, and integrate it over [0,1]. The increasing parameter bounds give nonnegative area weighting.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:13
+msgid "Objective: Integrate a vector field against an oriented area vector.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration. Earlier levels of Surface Expedition.\n"
+"\n"
+"Flux of the upward unit field through this upward-oriented patch uses the dot product with the unnormalized parameter normal. Its integrand is 1. Calculate that oriented integrand before integrating; no additional area-factor multiplication is needed.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:13
+msgid "Objective: Integrate a vector field dotted with the curve velocity.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n"
+"\n"
+"Work integrates F(c(t))·c′(t). Substitute the path into the field, compute velocity, and take the dot product before integrating. This integrand has an orientation-sensitive velocity, unlike the speed factor in a scalar line integral.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:13
+msgid "Objective: Integrate position times density.\n"
+"\n"
+"Mathematical prerequisites: Double integrals; solid bounds; density and moments. Earlier levels of Triple Integral Caverns.\n"
+"\n"
+"The x first moment multiplies density x² by position x. After the y and z integrations, use algebra to express the section as x³, then apply the power integral. This distinguishes mass from the moment used in a center-of-mass numerator.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `integral_values`
+#. §1: `constant_integral`
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:13
+msgid "Objective: Integrate the speed of a regular curve on ordered bounds.\n"
+"\n"
+"Mathematical prerequisites: Vector algebra; single-variable differentiation and integration. Earlier levels of Curve Navigator.\n"
+"\n"
+"For increasing bounds, arc length integrates the nonnegative speed. This segment is regular and has constant speed 1. Prove that speed formula first. §0 replaces an integrand by a pointwise equal function, and §1 integrates a constant as interval length times value.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `normal_graph`
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:13
+msgid "Objective: Justify replacing a graph by a planar patch with the same oriented boundary.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n"
+"\n"
+"The raised polynomial graph has exactly the same four oriented boundary traces as the flat patch. Prove those trace equalities first. The graph-normal rule §0 has vertical component 1, and this field has vertical unit curl, so both flux integrands equal 1. Together with the proved flat-patch Stokes family, this justifies the simpler-surface calculation in this concrete case; it does not assume a general surface-independence theorem.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `simp`
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:13
+msgid "Objective: Parametrize a line segment with specified initial and final points.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus.\n"
+"\n"
+"The segment (1-t)A+tB runs from A at parameter 0 to B at parameter 1. Its order gives the path orientation. Verify the endpoint identities using scalar-multiplication identities; §0 removes the zero and unit coefficients.\n"
+"\n"
+"Worked example: The segment from (0,0,0) to (2,0,0) has midpoint (1,0,0) at t=1/2, start at t=0, and finish at t=1.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:13
+msgid "Objective: Prove a feasible point attains a global optimum.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Earlier levels of Optimization Arena.\n"
+"\n"
+"Verify the proposed optimizer (1,1) lies on the constraint and has value 2. For an arbitrary feasible point, the identity (x+y)²+(x-y)²=2(x²+y²) and a nonnegative square bound the objective by 2. This proves a global maximum, not merely a stationary candidate. Use the square-bound method from Gradient Mountain.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `ascent_squares`
+#. §1: `le_of_sq_le_sq`
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:13
+msgid "Objective: Prove a sharp bound for a gradient dotted with a unit direction.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices. Earlier levels of Gradient Mountain.\n"
+"\n"
+"For gradient (3,4,0), the unit-direction rate cannot exceed 5. The supplied algebraic identity §0 decomposes 25|u|² into the squared rate and two nonnegative terms. Use the unit assumption and nonnegativity to bound the squared rate, then §1 with nonnegative upper bound 5. You choose and combine the estimates.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `continuous_fill_origin`
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:13
+msgid "Objective: Prove continuity of a separately defined extension at the origin.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity. Earlier levels of Multivariable Landscapes.\n"
+"\n"
+"Filling in an exceptional point preserves continuity only when its assigned value matches the continuous extension. Apply §0: you must prove that the polynomial is continuous and that its value at the origin is exactly the proposed replacement 0. The support rule handles the equality of the piecewise function, not these mathematical checks.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `Continuous f`
+#. §1: `continuous_sum_squares`
+#. §2: `continuous_apply 0`
+#. §3: `1`
+#. §4: `2`
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:13
+msgid "Objective: Prove joint continuity of a polynomial in three variables.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity. Earlier levels of Multivariable Landscapes.\n"
+"\n"
+"§0 means joint continuity in all coordinates. The rule §1 says that squaring and adding three continuous scalar functions preserves continuity. Apply it and supply continuity of each coordinate projection with §2, §3, and §4. No filter manipulation is needed.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `simp`
+#. §1: `eq_comm`
+#. §2: `simp`
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:13
+msgid "Objective: Recognize an elliptic paraboloid and compute two traces.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n"
+"\n"
+"The surface z=x²+y² is an elliptic paraboloid. Setting y=0 gives a parabola; setting z=1 gives a circle. §0 removes routine identities such as 0²=0. It is useful after choosing the mathematical substitution. §1 states that an equality can be read in either direction.\n"
+"\n"
+"New tools unlocked here:\n"
+"\n"
+"§2: Simplify using elementary identities and the explicitly supplied definitions.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:13
+msgid "Objective: Recover enclosed area from a boundary circulation.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n"
+"\n"
+"The area formula uses the boundary field (-y/2,x/2,0), whose planar curl is 1. Compute the boundary integral directly on the four positively oriented edges, then compare with the double integral of 1. The two nonzero edge contributions are each 1/2. This proves the stated area identity for the unit square.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:13
+msgid "Objective: Relate a level-set equation, its gradient, and tangent directions.\n"
+"\n"
+"Mathematical prerequisites: Partial derivatives; unit directions; chain rule and matrices. Earlier levels of Gradient Mountain.\n"
+"\n"
+"For f(p)=p₀, the level surface f=2 is a plane. A tangent displacement has first coordinate zero, so it preserves the level equation. Compute the gradient and verify its dot product with the tangent direction is zero. This links an equation, a derivative, and geometry without introducing new proof tools.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `work`
+#. §1: `reverse_integral`
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:13
+msgid "Objective: Show that reversing oriented integration negates work.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n"
+"\n"
+"Reversing the parameter bounds reverses oriented work. Open the two occurrences of §0 and apply the interval-reversal rule §1. This statement concerns the oriented integral; it does not negate a geometric arc length.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `mul_left_cancel₀`
+#. §1: `left`
+#. §2: `right`
+#. §3: `mul_eq_zero.mp factor`
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:13
+msgid "Objective: Solve the Lagrange multiplier system and find both candidates.\n"
+"\n"
+"Mathematical prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Earlier levels of Optimization Arena.\n"
+"\n"
+"For x+y on x²+y²=2, the stationarity equations give 1=λ(2x) and 1=λ(2y). First show λ is nonzero, then cancel it using §0. The constraint gives x²=1 after x=y, and factoring produces the two signs. §1 and §2 select the candidate established in each branch. These stationary candidates still require a global comparison. §3 uses the forward direction of the product-zero equivalence to obtain the two factor alternatives.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `onLine p v q`
+#. §1: `use 2`
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:13
+msgid "Objective: Supply a parameter witnessing line membership.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations.\n"
+"\n"
+"§0 says that q=p+t v for some real parameter t. As in an existence proof in NNG, §1 supplies a witness. Then compare the three coordinates with the vector rule from Vector Workshop. A correct parameter must satisfy every coordinate.\n"
+"\n"
+"Worked example: The line p=(0,0,0)+t(1,0,0) contains (3,0,0), witnessed by t=3.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `use`
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:13
+msgid "Objective: Supply a potential and verify it globally.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n"
+"\n"
+"Construct a globally defined potential for (y,x,0) and normalize its value to zero at the origin. Supply the scalar function with §0, check its value, then calculate its gradient at an arbitrary point. Reuse the product partial rule rather than inferring conservativity from curl alone.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `.1`
+#. §1: `.2`
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:13
+msgid "Objective: Translate a triangular region into equivalent bounds.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n"
+"\n"
+"For the triangle 0≤y≤x≤1, the lower bound x≥0 follows from the other inequalities. Prove the two descriptions equivalent. For nested conjunctions, §0 reads the first condition and §1 reads the remaining conditions; repeat these selectors to reach later bounds. No new calculus tactic is involved.\n"
+"\n"
+"Worked example: For 0≤x≤y≤2, one may omit the separate y≥0 bound because 0≤x and x≤y imply it by transitivity.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `work_first_coordinate`
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:13
+msgid "Objective: Use a potential to compare two paths and compute their common work.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n"
+"\n"
+"For potential φ=x, the endpoint rule §0 is proved from the fundamental theorem with the stated path regularity and derivative-integrability hypotheses. Apply it to each path. Their shared start and finish then force equal work, and the first equality gives its value as final x minus initial x. This proves path independence for the specified conservative field.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `gradient_components`
+#. §1: `partial_sum_squares`
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:13
+msgid "Objective: Use a regular gradient to identify a tangent plane.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n"
+"\n"
+"For the unit sphere at (1,0,0), verify the point lies on the surface, calculate its gradient, prove that gradient is nonzero, and identify its point-normal tangent plane. §0 displays the three partials; §1 supplies the squared-coordinate power rule. Regularity is the nonzero-gradient check, which must not be omitted.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `RegularPath`
+#. §1: `PotentialAlong`
+#. §2: `WorkIntegrable`
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:13
+msgid "Objective: Use an established fundamental theorem for line integrals.\n"
+"\n"
+"Mathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n"
+"\n"
+"§0 records differentiability of every coordinate along the interval. §1 states the derivative of the potential along the curve equals F·c′, and §2 records integrability of that actual integrand. These names abbreviate the established derivative and integral conditions; none assumes the desired work equality. Apply the endpoint theorem and supply its two analytic hypotheses.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:13
+msgid "Objective: Verify a change-of-variables equality with an orientation-reversing map.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n"
+"\n"
+"The orientation-reversing map sends the unit square to [0,2]×[-3,0]. Compare the original constant-density integral with the transformed one using the absolute determinant 6. Calculate the rectangle integral and determinant independently, then combine them. This verifies the stated change-of-variables special case by direct integration.\n"
+"\n"
+"Exercise: prove the statement below. Combine earlier methods and justify every hypothesis."
+msgstr ""
+
+#. §0: `↔`
+#. §1: `constructor`
+#. §2: `intro h`
+#. §3: `linarith`
+#. §4: `linarith`
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:13
+msgid "Objective: Verify a plane equation from its point-normal definition.\n"
+"\n"
+"Mathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n"
+"\n"
+"A point q lies in the plane through p with normal n when n·(q-p)=0. The normal (0,0,2) is nonzero. The symbol §0 asks for both directions of an equivalence: use §1, then §2 in each direction. After expanding the plane equation, §3 combines linear real equations; here it turns 2(q₂-3)=0 into q₂=3.\n"
+"\n"
+"Worked example: With normal (0,0,1) and base height 5, the point-normal equation is q₂-5=0, equivalent to q₂=5. A scaled nonzero normal describes the same plane.\n"
+"\n"
+"New tools unlocked here:\n"
+"\n"
+"§4: Solve linear equations or inequalities arising from a plane equation.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `curl_congr`
+#. §1: `divergence_congr`
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:13
+msgid "Objective: Verify curl-of-gradient and divergence-of-curl for explicit smooth fields.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n"
+"\n"
+"First compute the constant gradient of x and the constant curl of the rotational field. The rules §0 and §1 allow replacement of equal fields. Derivatives of constant components then give zero. These are explicit smooth examples of the differential identities, not an assumption that mixed partials commute without regularity.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `squareCirculation`
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:13
+msgid "Objective: Verify endpoints of counterclockwise square edges.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation.\n"
+"\n"
+"A positive planar boundary goes counterclockwise, keeping its region on the left. The square edges run right along the bottom, up the right, left along the top, and down the left. Check that the first two joins match. Their explicit parameter directions determine the orientation used by §0.\n"
+"\n"
+"Worked example: A circle traversed counterclockwise has its disk on the left. Positive square edges obey the same left-of-motion convention.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:13
+msgid "Objective: Verify mixed partial equality for an explicitly smooth polynomial.\n"
+"\n"
+"Mathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n"
+"\n"
+"For the smooth polynomial xy, the first partials are y and x. Differentiating in the other variable gives 1 in both orders. This calculation proves equality for this smooth example, without assuming a general interchange theorem. Identify the fixed factor before choosing the multiplication rule.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `cubeFlux`
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:13
+msgid "Objective: Verify outward orientation on all six cube faces.\n"
+"\n"
+"Mathematical prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases.\n"
+"\n"
+"A closed cube has six faces, and every face must point outward. The parameter order differs between opposite faces. Calculate all six cross-product normals: +x, -x, +y, -y, +z, -z. The same six parametrizations occur in §0, so the closed-boundary orientation is fully explicit.\n"
+"\n"
+"Worked example: On the top plane z=2 of a box, the parameter order (s,t,2) produces an upward normal, away from its interior. Opposite faces require opposite normals.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:13
+msgid "Objective: Verify outward planar flux equals the divergence integral.\n"
+"\n"
+"Mathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n"
+"\n"
+"For F=(x,y,0), compute outward planar flux using the four specified unit conormals, then compute the integral of divergence 2. Right and top edges contribute 1 each; bottom and left contribute zero. Equality of these independent calculations verifies the flux-form Green special case, with outward conormals distinct from boundary tangent directions.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `integral_values`
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:13
+msgid "Objective: Verify reversed bounds by evaluating both integrals.\n"
+"\n"
+"Mathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n"
+"\n"
+"The same triangle has bounds 0≤y≤x≤1 or 0≤y≤1 with y≤x≤1. For density 1, compute the inner integrals as x and 1-y. §0 substitutes these pointwise formulas under the outer integrals. Splitting an integral of a difference requires integrability; continuity of 1 and y on this bounded interval supplies it. This is a directly verified order-reversal special case.\n"
+"\n"
+"Exercise: prove the statement below."
+msgstr ""
+
+#. §0: `partial_xy`
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:13
+msgid "Objective: Verify that a field has a specified potential.\n"
+"\n"
+"Mathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n"
+"\n"
+"For the globally defined scalar potential φ=xy, calculate its gradient as (y,x,0). Use the product partial rule §0 with the component gradient formula. Producing an actual potential proves this field is conservative on all of space; no curl-free domain shortcut is needed.\n"
+"\n"
+"Worked example: For φ=xz, holding the other coordinates fixed gives gradient (z,0,x). A proposed potential is verified by all three partial derivatives.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `patch u v`
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:13
+msgid "Objective: Verify that a patch lies in a specified surface.\n"
+"\n"
+"Mathematical prerequisites: Cross products; partial derivatives; double integration.\n"
+"\n"
+"A surface parametrization has two independent parameters. §0 maps (u,v) to (u,v,0), placing every point in the horizontal plane. Read its height and two planar coordinates directly. The parameter rectangle used later fixes the actual bounded patch.\n"
+"\n"
+"Worked example: For s(u,v)=(u,v,u+v), substituting (1,2) gives (1,2,3). A surface uses two parameter inputs.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#. §0: `squarePotential`
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:13
+msgid "Objective: Verify that a point lies on a specified level surface.\n"
+"\n"
+"Mathematical prerequisites: Domains, level sets, single-variable limits and continuity. Earlier levels of Multivariable Landscapes.\n"
+"\n"
+"A level set consists of points where a scalar function has one fixed value. For x²+y²+z²=9, substitute the proposed point into §0. This verifies membership in the sphere, rather than a bound on its interior.\n"
+"\n"
+"Worked example: At (2,0,0), the sum-of-squares field has value 4, so that point belongs to its level set f=4.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:13
+msgid "Objective: Verify the normal and oriented top boundary agree.\n"
+"\n"
+"Mathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n"
+"\n"
+"The upward parameter normal matches a counterclockwise boundary by the right-hand rule. Along the top edge, the tangent must point in the negative x direction. Verify both the surface normal and this oriented boundary tangent; matching a set of boundary points alone would not determine orientation.\n"
+"\n"
+"Worked example: A downward normal matches clockwise boundary motion when viewed from above. Reversing both orientations preserves the Stokes sign relation.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:13
+msgid "Objective: Verify the radial identity for polar coordinates.\n"
+"\n"
+"Mathematical prerequisites: Multiple integrals; determinants; trigonometric identities.\n"
+"\n"
+"Polar coordinates use x=r cos θ and y=r sin θ. Factor out r² and use sin²θ+cos²θ=1. The identity holds for all real r and θ; using polar coordinates as a single-cover region additionally requires r≥0 and an angular interval of length 2π, with the usual exceptional origin and boundary.\n"
+"\n"
+"Worked example: When r=2, (2 cos θ)²+(2 sin θ)²=4(sin²θ+cos²θ)=4. The variable-radius proof uses the same factorization.\n"
+"\n"
+"Exercise: prove the statement below. The hints guide the main steps."
+msgstr ""
+
+#: Game/Levels/OptimizationArena.lean:9
+msgid "Optimization Arena"
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:11
+msgid "Oriented flux"
+msgstr ""
+
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:11
+msgid "Orthogonality and length"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:15
+msgid "Outward planar flux, using the outward unit conormal of each unit-speed edge."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:30
+msgid "Parameter 2 places the proposed point on the line."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L06_BossReverseThePatch.lean:46
+msgid "Parameter reversal negates flux while preserving scalar surface area."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:16
+msgid "Parametrize a line segment with specified initial and final points."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:11
+msgid "Parametrize a surface"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab.lean:9
+msgid "Partial Derivative Lab"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails.lean:9
+msgid "Path Integral Trails"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:18
+msgid "Point-normal plane equation: dot n (q-p) = 0. A nonzero normal gives a genuine plane."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:17
+msgid "Pointwise equal integrands have equal interval integrals."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:11
+msgid "Polar area factor"
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:11
+msgid "Polar identities"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:11
+msgid "Polynomial continuity"
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L05_ALaminaCentroid.lean:35
+msgid "Positive mass 2 and the two moments give centroid (1,1/2)."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:45
+msgid "Positive second derivatives and a positive second variation justify the minimum classification."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:11
+msgid "Positive second variation"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:17
+msgid "Power rule for the scalar derivative of x raised to a natural-number power. Numeric exponents simplify with norm_num."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:19
+msgid "Power rule with differentiability included: hasDerivAt_pow n t gives derivative n*t^(n-1) of the nth power at t."
+msgstr ""
+
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:15
+msgid "Projection of v onto n: (dot v n / lengthSq n) times n. The geometric formula requires a nonzero direction n."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:16
+msgid "Prove a feasible point attains a global optimum."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:23
+msgid "Prove a sharp bound for a gradient dotted with a unit direction."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:19
+msgid "Prove continuity of a separately defined extension at the origin."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L03_PolynomialContinuity.lean:24
+msgid "Prove joint continuity of a polynomial in three variables."
 msgstr ""
 
 #: Game/Doc/Theorems.lean:6
 msgid "Proven in level 1"
 msgstr ""
 
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:21
+msgid "Real path limits are unique."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:17
+msgid "Reassembling a vector from its three components recovers that vector."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:11
+msgid "Recognize a gradient"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:22
+msgid "Recognize an elliptic paraboloid and compute two traces."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L05_RecoverAMissingFace.lean:11
+msgid "Recover a missing face"
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:16
+msgid "Recover enclosed area from a boundary circulation."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L06_BossTangentToALevelSet.lean:16
+msgid "Relate a level-set equation, its gradient, and tangent directions."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:17
+msgid "Replace the displayed derivative value by an algebraically equal value."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:17
+msgid "Replacing a surface by a pointwise equal parametrization preserves its two derivative tangents and oriented parameter normal."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:15
+msgid "Replacing an equal curve also replaces its component derivatives."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:11
+msgid "Reverse orientation"
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:11
+msgid "Reverse the order"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:30
+msgid "Reversing the parameter bounds negates oriented work."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:29
+msgid "Rewrite using proved equalities."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:22
+msgid "Right-handed curl: the three differences of cross-coordinate partial derivatives in cyclic coordinate order."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L03_SaddleWitnesses.lean:11
+msgid "Saddle witnesses"
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:11
+msgid "Second derivatives"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L04_ReverseOrientation.lean:22
+msgid "Show that reversing oriented integration negates work."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:15
+msgid "Simplify using elementary identities and the explicitly supplied definitions."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:15
+msgid "Sine is nonnegative on the closed interval from 0 to π. Supply both interval bounds."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal.lean:10
+msgid "Six exercises in coordinate portal. Prerequisites: Multiple integrals; determinants; trigonometric identities. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/CurveNavigator.lean:10
+msgid "Six exercises in curve navigator. Prerequisites: Vector algebra; single-variable differentiation and integration. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley.lean:10
+msgid "Six exercises in double integral valley. Prerequisites: Single-variable integration; planar regions; mass and moments. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/GaussCitadel.lean:10
+msgid "Six exercises in gauss citadel. Prerequisites: Divergence; oriented surface flux; triple integrals; integral theorem special cases. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/GradientMountain.lean:10
+msgid "Six exercises in gradient mountain. Prerequisites: Partial derivatives; unit directions; chain rule and matrices. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/GreensGarden.lean:10
+msgid "Six exercises in green’s garden. Prerequisites: Planar line integrals; double integrals; positive orientation. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes.lean:10
+msgid "Six exercises in multivariable landscapes. Prerequisites: Domains, level sets, single-variable limits and continuity. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/OptimizationArena.lean:10
+msgid "Six exercises in optimization arena. Prerequisites: First and second partial derivatives; compact regions; elementary inequalities. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab.lean:10
+msgid "Six exercises in partial derivative lab. Prerequisites: Joint continuity; scalar derivatives; planes and normals. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails.lean:10
+msgid "Six exercises in path integral trails. Prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer.lean:10
+msgid "Six exercises in space explorer. Prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/StokesSummit.lean:10
+msgid "Six exercises in stokes summit. Prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition.lean:10
+msgid "Six exercises in surface expedition. Prerequisites: Cross products; partial derivatives; double integration. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns.lean:10
+msgid "Six exercises in triple integral caverns. Prerequisites: Double integrals; solid bounds; density and moments. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory.lean:10
+msgid "Six exercises in vector field observatory. Prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/Vectors.lean:10
+msgid "Six exercises in vector workshop. Prerequisites: Real arithmetic; vectors in three-dimensional space. Levels 1–2 are guided, 3–4 develop independent calculation, 5 applies the ideas, and 6 combines them."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L03_FluxByBoundaryPieces.lean:15
+msgid "Six square parametrizations whose parameter cross products point outward."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:15
+msgid "Solve linear equations or inequalities arising from a plane equation."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:19
+msgid "Solve the Lagrange multiplier system and find both candidates."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer.lean:9
+msgid "Space Explorer"
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:11
+msgid "Spherical volume"
+msgstr ""
+
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:15
+msgid "Split a conjunction or construct a structured proof."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:17
+msgid "Split an integral of f-g into the difference of integrals. Both functions must be interval integrable."
+msgstr ""
+
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:18
+msgid "Squared Euclidean length: dot v v. No square root is needed for unit-vector and orthogonality calculations."
+msgstr ""
+
+#: Game/Levels/StokesSummit.lean:9
+msgid "Stokes Summit"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:15
+msgid "Stokes' identity for a linear shear on an upward unit-square patch."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:15
+msgid "Sum the three matching-coordinate partials of a vector field; cross-coordinate partials do not enter divergence."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L01_APointOnALine.lean:19
+msgid "Supply a parameter witnessing line membership."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:31
+msgid "Supply a parameter witnessing membership in a parametric line."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:19
+msgid "Supply a potential and verify it globally."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition.lean:9
+msgid "Surface Expedition"
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:11
+msgid "Tangents and normal"
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:17
+msgid "The 2 by 2 determinant formula: top-left times bottom-right minus top-right times bottom-left."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:26
+msgid "The 2 by 2 matrix whose columns are the actual first and second parameter derivatives of a planar map."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:20
+msgid "The Euclidean length of velocity, always nonnegative."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:11
+msgid "The ascent bound"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L06_BossRepairTheOrigin.lean:31
+msgid "The assigned origin value matches the polynomial extension, making the piecewise function continuous."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L04_TheBoundaryCalculation.lean:11
+msgid "The boundary calculation"
+msgstr ""
+
+#: Game/Levels/StokesSummit/L01_TheBoundaryOfAPatch.lean:11
+msgid "The boundary of a patch"
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L03_LineMeetsPlane.lean:30
+msgid "The chosen point belongs to both the line and the plane."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:60
+msgid "The circle has the stated unit tangent and curvature 1 at parameter zero."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L03_AlongAParametrizedPath.lean:42
+msgid "The composite has derivative 4t³ by the chain rule."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L01_ARectangularBox.lean:30
+msgid "The constant-density box integral equals its volume 24."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:34
+msgid "The cross product is (0,0,1) and is perpendicular to its first input."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L03_CurlThroughAPatch.lean:31
+msgid "The curl dotted with the oriented patch normal equals 1."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L03_CylindricalVolume.lean:33
+msgid "The cylindrical coordinate-side volume integral evaluates to 2π with its radial factor."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:15
+msgid "The derivative columns give the oriented parameter normal."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:17
+msgid "The derivative of t ↦ a*t is the constant a."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:15
+msgid "The derivative of t ↦ a-t is -1, preserving the sign of a reversed parameter."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:35
+msgid "The derivative-along-path and integrability hypotheses justify endpoint evaluation."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:55
+msgid "The derived polar determinant has absolute factor r on r≥0, and the coordinate-side area integral is π."
+msgstr ""
+
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:11
+msgid "The dot product"
+msgstr ""
+
+#: Game/Levels/Vectors/L03_TheDotProduct.lean:27
+msgid "The dot product is 3+0-4=-1."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L06_BossAGlobalConstrainedOptimum.lean:33
+msgid "The feasible point (1,1) attains 2, and no feasible point has a larger value."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:34
+msgid "The field xy/(x²+y²). Its value at the origin does not repair its different limiting values along two paths."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:30
+msgid "The field-velocity work integral has value 2."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L01_AssembleAGradient.lean:30
+msgid "The first coordinate has gradient (1,0,0)."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:28
+msgid "The first polar coordinate function: r cos θ."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L02_CirculationByEdges.lean:38
+msgid "The four independent edge calculations give circulation 1."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:15
+msgid "The fundamental theorem along a path: if the potential derivative is the work integrand and that integrand is interval integrable, work equals the potential endpoint difference."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:30
+msgid "The globally defined potential xy has gradient (y,x,0)."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:18
+msgid "The graph (u,v,u(1-u)v(1-v)) on the unit parameter square. Its height vanishes on all four boundary edges."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:45
+msgid "The helix has the stated starting point and velocity, with squared speed 2 everywhere."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:15
+msgid "The horizontal parametrization (u,v,0). On the unit parameter square it gives an upward-oriented square patch."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:25
+msgid "The horizontal path is constantly zero."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L05_TheAscentBound.lean:15
+msgid "The identity behind the concrete (3,4,0) steepest-ascent bound."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:40
+msgid "The identity map has the identity Jacobian matrix."
+msgstr ""
+
+#: Game/Levels/GradientMountain/L04_AJacobianMatrix.lean:15
+msgid "The identity matrix has ones on its diagonal and zeros elsewhere."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:17
+msgid "The integral of sine on a..b is cos a minus cos b."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:11
+msgid "The interior integrand"
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L01_ARectangle.lean:27
+msgid "The iterated constant integral gives rectangle area 6."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:34
+msgid "The keyword in belongs to interval-integral notation; it is not a tactic."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L05_ATangentApproximation.lean:23
+msgid "The linear approximation leaves exactly the quadratic error h²+k²."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:23
+msgid "The nonzero part of the diagonal path is constantly one half."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L01_ACriticalPoint.lean:35
+msgid "The origin is the unique critical point of the quadratic."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L03_AreaFactor.lean:36
+msgid "The parameter normal has Euclidean length 1, the required scalar area factor."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L02_TangentsAndNormal.lean:47
+msgid "The parameter tangents give the upward oriented normal (0,0,1)."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L01_EndpointsOfACurve.lean:31
+msgid "The parametrization has the stated initial and final points."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:15
+msgid "The partial derivatives of a scaled coordinate."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:15
+msgid "The planar rotational field (-y/2,x/2,0), whose vertical curl is one."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L04_DistanceToAPlane.lean:29
+msgid "The point is distance 3 from the plane z=1."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:27
+msgid "The point lies on the level surface x²+y²+z²=9."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:34
+msgid "The point-normal equation describes precisely the plane z=3."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:25
+msgid "The polar coordinate identity preserves squared radius."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:18
+msgid "The potential differentiated along the path equals the work integrand."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:15
+msgid "The product xy has coordinate partials y, x, and zero."
+msgstr ""
+
+#: Game/Levels/Vectors/L06_BossResolveAVector.lean:34
+msgid "The projection is (2,2,0); the remainder is orthogonal to (1,1,0)."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L01_AConstrainedDomain.lean:25
+msgid "The proposed point meets both the square-root and denominator domain restrictions."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L04_ApplyGaussOnACube.lean:26
+msgid "The proved diagonal-field Gauss identity applies to the outward unit cube."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L04_GreenForAShearField.lean:26
+msgid "The proved shear-family Green identity applies with coefficient 3 and the stated boundary orientation."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L05_ApplyStokesSquarePatch.lean:26
+msgid "The proved shear-family Stokes identity applies to the upward square patch."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:32
+msgid "The radial field F(p)=p, pointing directly away from the origin."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L03_Divergence.lean:27
+msgid "The radial field has divergence 3."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L06_BossChooseASimplerSurface.lean:62
+msgid "The raised and flat patches have the same oriented boundary and equal computed curl flux in this concrete case."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:18
+msgid "The real cosine function, with angles in radians."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:24
+msgid "The real number π. Standard polar and azimuthal angular intervals have length 2π, measured in radians."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:20
+msgid "The real sine function, with angles in radians."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L04_AreaAndVolume.lean:27
+msgid "The rectangle has area 6 and volume 24 below height 4."
+msgstr ""
+
+#: Game/Levels/Vectors/L05_CrossingDirections.lean:18
+msgid "The right-handed cross product in coordinate order. Its direction changes when the two input vectors are exchanged."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L06_BossAreaFromTheBoundary.lean:37
+msgid "The rotational boundary integral equals the square’s area 1."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L04_Curl.lean:37
+msgid "The rotational field has right-handed curl (0,0,1)."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L02_DifferentiateACurve.lean:22
+msgid "The scalar derivative value deriv f t. The derivative rules in the inventory justify the calculations used here."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:15
+msgid "The scalar field x²+y²+z², measuring squared Euclidean distance from the origin."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L02_AWeightedWire.lean:30
+msgid "The scalar line integral includes the speed weight and has value 2."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L04_AScalarSurfaceIntegral.lean:36
+msgid "The scalar surface integral of the first coordinate equals 1/2."
+msgstr ""
+
+#: Game/Levels/Vectors/L01_ZeroAdd.lean:48
+msgid "The second component of the vector is -1."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:30
+msgid "The second polar coordinate function: r sin θ."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L04_ArcLengthOfASegment.lean:35
+msgid "The segment has constant unit speed and arc length 3."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L01_ChooseAnOrientation.lean:25
+msgid "The segment parametrization runs from A to B in the stated orientation."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L02_PolarAreaFactor.lean:22
+msgid "The signed determinant of a square matrix. Change-of-variables area and volume use its absolute value."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:30
+msgid "The solid’s volume is 1/2."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:18
+msgid "The spatial curve t ↦ (cos t, sin t, t), combining circular motion with uniform vertical motion."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:31
+msgid "The specified square edges join in the positive counterclockwise traversal."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:48
+msgid "The sphere point is regular and its gradient determines the stated tangent plane."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L04_SphericalVolume.lean:48
+msgid "The spherical factor has the required sign, and its coordinate-side volume integral is 4π/3."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L03_TheInteriorIntegrand.lean:30
+msgid "The square integral of the planar curl equals 1."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:17
+msgid "The squared-distance field has partial derivative twice the chosen coordinate."
+msgstr ""
+
+#: Game/Levels/OptimizationArena/L05_LagrangeEquations.lean:61
+msgid "The stationarity system and constraint yield exactly the two listed candidates."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L06_BossConstructAPotential.lean:34
+msgid "The supplied globally defined potential has the required gradient and normalization."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L05_ANonpolarJacobian.lean:28
+msgid "The transformation reverses orientation with signed determinant -6 and area factor 6."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L06_BossATriangularLamina.lean:44
+msgid "The triangular lamina has mass 1/2 and centroid (2/3,1/3)."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L06_BossTheHelix.lean:15
+msgid "The trigonometric identity sin(t)^2 + cos(t)^2 = 1."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L02_BoundsForASolid.lean:45
+msgid "The two descriptions specify the same sloping-roof solid."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:28
+msgid "The two directly evaluated integrals agree using the absolute determinant, verifying the stated substitution special case."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:29
+msgid "The two mixed partials of the smooth product xy are equal."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:33
+msgid "The two paths have equal work because their potential endpoint values coincide."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:57
+msgid "The two punctured paths force incompatible limit values, so no multivariable limit exists."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:40
+msgid "The two sets of inequalities describe the same triangular region."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L05_AParaboloidAndItsTraces.lean:31
+msgid "The two substitutions produce a parabolic trace and a circular trace."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L01_CompareTwoFields.lean:31
+msgid "The two vector fields give the stated different outputs at the same point."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:30
+msgid "The two-parameter map lies in the horizontal plane and retains its planar coordinates."
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:22
+msgid "The unit circle parametrization t ↦ (cos t, sin t, 0). Increasing t gives counterclockwise motion."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:27
+msgid "The unit-cube density x² has positive total mass 1/3."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L02_DivergenceInTheSolid.lean:26
+msgid "The unit-cube divergence volume integral equals 3."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:36
+msgid "The upward normal matches the negative-x tangent on the top boundary edge."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L05_OrientedFlux.lean:36
+msgid "The upward unit field has flux 1 through the upward patch."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:20
+msgid "The vector of a scalar field’s three coordinate partial derivatives, in x, y, z order."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:32
+msgid "The vector sum is (1,0,6), verified in all three coordinates."
+msgstr ""
+
+#: Game/Levels/Vectors/L04_OrthogonalityAndLength.lean:33
+msgid "The vectors are orthogonal, and the squared length of (1,1,0) is 2."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L06_FinalBossThreeIntegralBridges.lean:47
+msgid "The verified Green, Stokes, and Gauss bridges give circulation 2 and flux 3, with combined value 5."
+msgstr ""
+
 #: Game/Doc/Tactics.lean:3
 msgid "The way to proof reflexivity."
 msgstr ""
 
-#: Game.lean:10
-msgid "This conclusion is shown on the game overview once all worlds are completed."
+#: Game/Levels/TripleIntegralCaverns/L05_AFirstMoment.lean:27
+msgid "The x first moment for density x² is 1/4."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L03_SecondDerivatives.lean:29
+msgid "The xx partial is 2 and the yx partial is zero."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:27
+msgid "There is no witness satisfying P exactly when every proposed witness fails. Rewrite with this equivalence, then introduce a proposed witness and its claimed property."
+msgstr ""
+
+#: Game/Levels/Vectors/L02_AddingAndScaling.lean:18
+msgid "Three component equalities suffice to prove equality of spatial vectors."
 msgstr ""
 
 #: Game/Doc/Tactics.lean:6
 msgid "To change the goal using equalities."
 msgstr ""
 
+#: Game/Levels/OptimizationArena/L02_PositiveSecondVariation.lean:15
+msgid "To use a hypothesis P or Q, prove the goal assuming P and prove it again assuming Q. apply Or.elim h produces these two branches."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L02_ATriangularRegion.lean:19
+msgid "Translate a triangular region into equivalent bounds."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns.lean:9
+msgid "Triple Integral Caverns"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L05_TurningOnTheCircle.lean:11
+msgid "Turning on the circle"
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:11
+msgid "Two differential identities"
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L05_TwoPathsDisagree.lean:11
+msgid "Two paths disagree"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L06_BossPathIndependence.lean:22
+msgid "Use a potential to compare two paths and compute their common work."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L06_BossAnImplicitTangentPlane.lean:24
+msgid "Use a regular gradient to identify a tangent plane."
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L05_ApplyTheEndpointTheorem.lean:26
+msgid "Use an established fundamental theorem for line integrals."
+msgstr ""
+
 #: Game/Doc/Tactics.lean:18
 msgid "Use an existing result."
 msgstr ""
 
-#. §0: `zero_add`
-#: Game/Levels/Vectors/L01_ZeroAdd.lean:24
-msgid "Use §0 to prove the equality of each coordinate."
+#: Game/Levels/TripleIntegralCaverns/L04_VariableDensity.lean:11
+msgid "Variable density"
 msgstr ""
 
-#. §0: `funext`
-#: Game/Levels/Vectors/L01_ZeroAdd.lean:22
-msgid "Use §0 to reduce the goal to proving the equality of each coordinate."
+#: Game/Levels/PartialDerivativeLab/L01_HoldYFixed.lean:18
+msgid "Vary the first real argument and hold the second fixed: deriv (fun t => f t y) x."
 msgstr ""
 
-#: Game/Levels/Vectors.lean:4
-msgid "Vectors and coordinates"
+#: Game.lean:18
+msgid "Vector Calculus in Lean"
 msgstr ""
 
-#: Game.lean:5
-msgid "Welcome"
+#: Game/Levels/VectorFieldObservatory.lean:9
+msgid "Vector Field Observatory"
 msgstr ""
 
-#. §0: `v`
-#. §1: `v`
-#: Game/Levels/Vectors/L01_ZeroAdd.lean:31
-msgid "You have now proven that adding the zero vector to any vector §0 results in §1 itself.\n"
-"This is a fundamental property of vector addition in three-dimensional space."
+#: Game/Levels/Vectors.lean:9
+msgid "Vector Workshop"
+msgstr ""
+
+#: Game/Levels/CurveNavigator/L03_MotionAtAnInstant.lean:46
+msgid "Velocity, acceleration, and Euclidean speed at the chosen instant are verified separately."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L06_BossAnAbsoluteJacobian.lean:16
+msgid "Verify a change-of-variables equality with an orientation-reversing map."
+msgstr ""
+
+#: Game/Levels/SpaceExplorer/L02_APlaneFromANormal.lean:22
+msgid "Verify a plane equation from its point-normal definition."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L05_TwoDifferentialIdentities.lean:21
+msgid "Verify curl-of-gradient and divergence-of-curl for explicit smooth fields."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L01_APositiveBoundary.lean:16
+msgid "Verify endpoints of counterclockwise square edges."
+msgstr ""
+
+#: Game/Levels/PartialDerivativeLab/L04_MixedPartialsAgree.lean:21
+msgid "Verify mixed partial equality for an explicitly smooth polynomial."
+msgstr ""
+
+#: Game/Levels/GaussCitadel/L01_AnOutwardClosedBoundary.lean:16
+msgid "Verify outward orientation on all six cube faces."
+msgstr ""
+
+#: Game/Levels/GreensGarden/L05_GreenInFluxForm.lean:19
+msgid "Verify outward planar flux equals the divergence integral."
+msgstr ""
+
+#: Game/Levels/DoubleIntegralValley/L03_ReverseTheOrder.lean:21
+msgid "Verify reversed bounds by evaluating both integrals."
+msgstr ""
+
+#: Game/Levels/VectorFieldObservatory/L02_RecognizeAGradient.lean:19
+msgid "Verify that a field has a specified potential."
+msgstr ""
+
+#: Game/Levels/SurfaceExpedition/L01_ParametrizeASurface.lean:19
+msgid "Verify that a patch lies in a specified surface."
+msgstr ""
+
+#: Game/Levels/MultivariableLandscapes/L02_ALevelSet.lean:19
+msgid "Verify that a point lies on a specified level surface."
+msgstr ""
+
+#: Game/Levels/StokesSummit/L02_MatchOrientations.lean:16
+msgid "Verify the normal and oriented top boundary agree."
+msgstr ""
+
+#: Game/Levels/CoordinatePortal/L01_PolarIdentities.lean:16
+msgid "Verify the radial identity for polar coordinates."
+msgstr ""
+
+#: Game/Levels/TripleIntegralCaverns/L03_VolumeBelowARoof.lean:11
+msgid "Volume below a roof"
+msgstr ""
+
+#: Game/Levels/PathIntegralTrails/L03_WorkAlongACurve.lean:11
+msgid "Work along a curve"
+msgstr ""
+
+#: Game.lean:20
+msgid "You have completed 96 vector calculus proofs, from coordinates to justified integral-theorem special cases."
 msgstr ""
