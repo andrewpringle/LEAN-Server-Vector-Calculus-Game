@@ -16,9 +16,19 @@ foreach ($relative in ($included + $excluded)) {
   [IO.File]::WriteAllText($file, 'Packaging test fixture; not a compiled game.')
 }
 
+# A fresh detached dependency may have no branch/tag refs. Preserve its empty
+# Git directories so Lake can recognize it after import outside a Git checkout.
+$gitFixture = Join-Path $fixture '.lake/packages/Fixture'
+& git -c init.defaultBranch=main -c init.templateDir= init --quiet $gitFixture
+if ($LASTEXITCODE -ne 0) { throw 'Could not initialize the dependency Git fixture.' }
+$emptyGitDirectories = @('.lake/packages/Fixture/.git/refs/', '.lake/packages/Fixture/.git/objects/')
+
 $listed = @(& (Join-Path $PSScriptRoot 'package-game.ps1') -Root $fixture -ListOnly)
 foreach ($relative in $included) {
   if ($relative -notin $listed) { throw "Required file missing from package list: $relative" }
+}
+foreach ($relative in $emptyGitDirectories) {
+  if ($relative -notin $listed) { throw "Required empty Git directory missing from package list: $relative" }
 }
 foreach ($relative in $excluded) {
   if ($relative -in $listed) { throw "Development file leaked into package list: $relative" }
@@ -30,6 +40,9 @@ try {
   foreach ($relative in $included) {
     if ($relative -notin $names) { throw "Required ZIP entry missing: $relative" }
   }
+  foreach ($relative in $emptyGitDirectories) {
+    if ($relative -notin $names) { throw "Required empty Git directory missing from ZIP: $relative" }
+  }
   foreach ($relative in $excluded) {
     if ($relative -in $names) { throw "Development file leaked into ZIP: $relative" }
   }
@@ -37,4 +50,15 @@ try {
     throw 'ZIP entries must have portable relative paths.'
   }
 } finally { $archive.Dispose() }
+$unpacked = Join-Path $fixture 'unpacked'
+[IO.Compression.ZipFile]::ExtractToDirectory((Join-Path $fixture 'fixture.zip'),$unpacked)
+$previousCeiling = $env:GIT_CEILING_DIRECTORIES
+try {
+  $env:GIT_CEILING_DIRECTORIES = $fixture
+  $gitDir = & git -C (Join-Path $unpacked '.lake/packages/Fixture') rev-parse --git-dir
+  if ($LASTEXITCODE -ne 0 -or $gitDir -ne '.git') {
+    throw 'The unpacked dependency is not recognized as its own Git repository.'
+  }
+} finally { $env:GIT_CEILING_DIRECTORIES = $previousCeiling }
+Write-Output 'PASS: an unpacked fresh dependency remains a valid Git repository outside the parent checkout.'
 Write-Output 'PASS: package list and real ZIP preserve hidden Lean build files and exclude the local runtime, database, process IDs, and validation data.'

@@ -23,10 +23,18 @@ $inputs = @('Game.lean','Game','Test','scripts','images','.i18n','lean-toolchain
   'LICENSE','README.md','CURRICULUM.md','SOURCES.md','STATUS.md','TACTIC_UNLOCKS.md',
   'HOSTING_REPORT.md','.lake/config','.lake/build','.lake/gamedata','.lake/packages')
 $files = [Collections.Generic.List[string]]::new()
+$directories = [Collections.Generic.List[string]]::new()
 foreach ($inputPath in $inputs) {
   $absolute = Join-Path $rootPath $inputPath
   if (-not (Test-Path -LiteralPath $absolute)) { continue }
   if ([IO.Directory]::Exists($absolute)) {
+    # Git requires its refs/ and objects/ directories even when they are empty.
+    # Fresh detached Lake dependencies can have no files under refs/; a files-only
+    # ZIP loses that directory and is no longer recognized as a Git repository.
+    $directories.Add($absolute)
+    foreach ($directory in [IO.Directory]::EnumerateDirectories($absolute,'*',[IO.SearchOption]::AllDirectories)) {
+      $directories.Add($directory)
+    }
     foreach ($file in [IO.Directory]::EnumerateFiles($absolute,'*',[IO.SearchOption]::AllDirectories)) {
       if ([IO.Path]::GetExtension($file) -eq '.mo') { continue }
       $files.Add($file)
@@ -35,6 +43,7 @@ foreach ($inputPath in $inputs) {
 }
 
 if ($ListOnly) {
+  foreach ($directory in $directories) { [IO.Path]::GetRelativePath($rootPath,$directory).Replace('\','/') + '/' }
   foreach ($file in $files) { [IO.Path]::GetRelativePath($rootPath,$file).Replace('\','/') }
   return
 }
@@ -47,6 +56,13 @@ if (Test-Path -LiteralPath $archivePath) {
 }
 $archive = [IO.Compression.ZipFile]::Open($archivePath,[IO.Compression.ZipArchiveMode]::Create)
 try {
+  foreach ($directory in $directories) {
+    $entryName = [IO.Path]::GetRelativePath($rootPath,$directory).Replace('\','/') + '/'
+    if ($entryName.StartsWith('../') -or [IO.Path]::IsPathRooted($entryName)) {
+      throw "Release input escapes the game directory: $entryName"
+    }
+    $archive.CreateEntry($entryName) | Out-Null
+  }
   foreach ($file in $files) {
     $entryName = [IO.Path]::GetRelativePath($rootPath,$file).Replace('\','/')
     if ($entryName.StartsWith('../') -or [IO.Path]::IsPathRooted($entryName)) {
@@ -56,5 +72,5 @@ try {
       $archive,$file,$entryName,[IO.Compression.CompressionLevel]::Optimal) | Out-Null
   }
 } finally { $archive.Dispose() }
-Write-Output "Packaged $($files.Count) files into $archivePath"
+Write-Output "Packaged $($files.Count) files and $($directories.Count) directories into $archivePath"
 Write-Output 'This command only creates a local ZIP. It does not upload, import, or publish the game.'

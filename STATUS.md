@@ -14,12 +14,12 @@ All 96 level statements, instructor proofs, explanations, hints, world descripti
 | `lake build --no-build` | Passed; all 6,073 jobs up to date. |
 | `lake build GameServer --no-build` | Passed; all 73 jobs up to date. |
 | `node scripts/check-curriculum.mjs` | Passed 16/96 registration, prerequisites, reachability, blank templates, hints, and all 1,344 visible tactic lock states. |
-| `pwsh -File scripts/test-package-game.ps1` | Passed real ZIP fixture; both old and versioned local runtimes excluded. |
+| `pwsh -File scripts/test-package-game.ps1` | Passed real ZIP extraction and fresh-Git-dependency regression; both old and versioned local runtimes excluded. |
 | Official v4.36.0 local runtime on ports 3001/8001 | Passed HTTP checks of all 96 level records and a successful first-level proof at strict difficulty with no diagnostics. |
 
 The normal legacy-module/Mathlib interoperation warnings and informational default-docstring messages remain nonfatal. Browser automation could not start because of a Windows process-launch failure; the runtime checks above are API checks, not a new visual browser inspection. The same game presentation sources are preserved.
 
-The Linux release build and development import must follow this commit. Their current results are available through this repository's GitHub Actions and the development import page; local verification alone does not establish hosted acceptance. Local logs are under `.lake/validation/lean436-*`. All verification records below this section describe earlier Lean 4.35.0 work unless explicitly dated otherwise.
+The first Linux release workflow passed ([run 45421999969](https://github.com/andrewpringle/LEAN-Server-Vector-Calculus-Game/actions/runs/45421999969), commit `d616f59`, artifact `14936032347`). The development importer completed its download and installation, but warned that both `lake build --no-build` checks failed with Git exit code 128 (`not a git repository`). A files-only ZIP can omit empty `.git/refs` and `.git/objects` directories, making fresh detached dependencies invalid Git repositories; this was reproduced locally with parent-repository discovery disabled. The packager now preserves directory entries as well as files. A new regression test initializes a fresh dependency, packages and extracts it, and confirms Git recognizes that dependency outside the parent checkout. The revised packaging test passes locally. A replacement Linux artifact and development re-import follow this packaging fix; check the latest Actions and importer results for hosted acceptance. Local logs are under `.lake/validation/lean436-*`. All verification records below this section describe earlier Lean 4.35.0 work unless explicitly dated otherwise.
 
 # Implementation and verification status
 
