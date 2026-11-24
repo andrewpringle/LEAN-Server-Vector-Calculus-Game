@@ -16,6 +16,8 @@ jobs:
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      # GameSkeleton's release-tag dependencies are resolved in the committed manifest.
+      # CI uses that lock so the tested revisions are the ones shipped to the server.
       - name: fetch locked dependencies and Mathlib cache
         run: lake exe cache get
       - name: build game

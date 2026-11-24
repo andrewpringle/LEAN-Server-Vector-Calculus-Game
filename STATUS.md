@@ -1,3 +1,26 @@
+## Lean 4.36.0 upgrade — 2026-11-24
+
+The existing game now targets `leanprover/lean4:v4.36.0`. Mathlib is locked to `fc4f59e577feb1a4956671bc04ac18aaaf8cd842` and GameServer to `d35ca713145fdce6d7b0bc450e64295b36ae38f5`, with their compatible transitive dependencies in `lake-manifest.json`. This dependency update is required for the toolchain upgrade requested by the server maintainer in [issue #634](https://github.com/leanprover-community/lean4game/issues/634).
+
+The lakefile was refreshed from the current official [GameSkeleton](https://github.com/leanprover-community/lean4game/tree/main/GameSkeleton), retaining Mathlib and this game's five test modules. Its default target now includes GameServer and image/translation inputs. The container setup was compared with the current template and remains compatible; Docker itself was not executed. CI retains the committed dependency lock, game tests, and allowlisted ZIP packaging, and points to the maintainer-requested [development importer](https://adam-dev.math.hhu.de/import). The native launcher selects the matching official runtime version from `lean-toolchain` into a versioned ignored directory.
+
+All 96 level statements, instructor proofs, explanations, hints, world descriptions, root metadata, tactic schedule, and cover artwork remain unchanged. A SHA-256 comparison checked 120 preserved curriculum and presentation inputs. No mathematical support code or frontend styling changed. The regenerated English catalogue changes only its Lean-version header and creation date.
+
+| Executed local check with Lean 4.36.0 | Result |
+|---|---|
+| `lake update -R --keep-toolchain` | Passed; matching release dependencies and 9,117 cached files downloaded and extracted. |
+| `lake build` | Passed, 6,073 jobs, including all 96 instructor solutions, 16 world imports, root game, and GameServer. |
+| `lake test` | Passed all five test modules, including the axiom audit and every intended proof through the strict player runner. |
+| `lake build --no-build` | Passed; all 6,073 jobs up to date. |
+| `lake build GameServer --no-build` | Passed; all 73 jobs up to date. |
+| `node scripts/check-curriculum.mjs` | Passed 16/96 registration, prerequisites, reachability, blank templates, hints, and all 1,344 visible tactic lock states. |
+| `pwsh -File scripts/test-package-game.ps1` | Passed real ZIP fixture; both old and versioned local runtimes excluded. |
+| Official v4.36.0 local runtime on ports 3001/8001 | Passed HTTP checks of all 96 level records and a successful first-level proof at strict difficulty with no diagnostics. |
+
+The normal legacy-module/Mathlib interoperation warnings and informational default-docstring messages remain nonfatal. Browser automation could not start because of a Windows process-launch failure; the runtime checks above are API checks, not a new visual browser inspection. The same game presentation sources are preserved.
+
+The Linux release build and development import must follow this commit. Their current results are available through this repository's GitHub Actions and the development import page; local verification alone does not establish hosted acceptance. Local logs are under `.lake/validation/lean436-*`. All verification records below this section describe earlier Lean 4.35.0 work unless explicitly dated otherwise.
+
 # Implementation and verification status
 
 Date: 2026-11-22. Changes are local to the specified existing repository; nothing has been pushed, published, forked, or deployed. The workspace was empty, so the existing repository was cloned here before editing. No dependency versions were changed.

@@ -15,7 +15,7 @@ On this Windows checkout, run:
 .\scripts\start-local-game.ps1
 ```
 
-Then open the local game URL printed by the script. It starts the existing Lean4Game browser client on port 3000 and the proof server on port 8000, both bound to this computer. Node.js, npm, Git, and the pinned Lean toolchain must be available. On the first run it downloads the matching official `lean4game` v4.35.0 runtime and its locked npm dependencies into the ignored `.lake/leangame-runtime` folder. It uses this same game's compiled files; no second game project is created. Runtime logs and process IDs are in `.lake/local-game/`. Leave the background processes running while playing. The first level can take a short time to initialize Lean before its tactic box becomes available.
+Then open the local game URL printed by the script. It starts the existing Lean4Game browser client on port 3000 and the proof server on port 8000, both bound to this computer. Node.js, npm, Git, and the pinned Lean toolchain must be available. On the first run it downloads the matching official `lean4game` v4.36.0 runtime and its locked npm dependencies into the ignored `.lake/leangame-runtime-v4.36.0` folder. It uses this same game's compiled files; no second game project is created. Runtime logs and process IDs are in `.lake/local-game/`. Leave the background processes running while playing. The first level can take a short time to initialize Lean before its tactic box becomes available.
 
 The runtime's sibling-folder discovery is given an explicit local games directory so the downloaded dependency can stay inside `.lake`. This small adjustment applies only to the ignored runtime checkout. No game dependency versions are changed.
 
@@ -27,7 +27,7 @@ Alternatively, use the existing development container:
 
 ## Build and verify
 
-Install elan and Git. Keep `lean-toolchain` and `lake-manifest.json`: Lean 4.35.0 and compatible Mathlib/GameServer revisions are pinned. From this checkout:
+Install elan and Git. Keep `lean-toolchain` and `lake-manifest.json`: Lean 4.36.0 and compatible Mathlib/GameServer revisions are pinned. From this checkout:
 
 ```sh
 lake exe cache get
@@ -37,7 +37,7 @@ lake test
 node scripts/check-curriculum.mjs
 ```
 
-The initial Mathlib cache extraction can take several minutes on Windows. Do not run `lake update` just to build: it can change locked versions. This curriculum requires no dependency changes.
+The initial Mathlib cache extraction can take several minutes on Windows. Do not run `lake update` just to build: it can change locked versions. Only update dependencies deliberately when upgrading Lean; the checked-in manifest records the compatible revisions.
 
 The Lean test target explicitly includes the verification and player-runner tests. The existing hidden `.sofi-test-folders` files are shell-script fixtures containing deliberately invalid Lean and are preserved outside that target.
 
@@ -47,7 +47,7 @@ The existing development container builds the game and starts the existing Lean4
 
 The Lean Game Server supplies the shared layout used by its hosted games, including the Natural Number Game. This repository supplies the game's text, images, world graph, and supported display settings; local client/CSS edits are not shipped as game customizations. See [HOSTING_REPORT.md](HOSTING_REPORT.md) for the comparison, documentation audit, and changes made.
 
-When you decide to publish, use this existing repository and its successful Linux GitHub Actions build. The main-branch workflow creates a `build-for-server-import` artifact containing `game.zip`; then follow the [official import procedure](https://github.com/leanprover-community/lean4game/blob/main/doc/game/publish_game.md). A main-page listing is arranged separately with the server maintainers. Nothing is uploaded by the local launch or packaging scripts.
+When you decide to publish, use this existing repository and its successful Linux GitHub Actions build. The main-branch workflow creates a `build-for-server-import` artifact containing `game.zip`; then import through [the development server](https://adam-dev.math.hhu.de/import), as requested by the maintainers in [issue #634](https://github.com/leanprover-community/lean4game/issues/634). Enter owner `andrewpringle` and repository `LEAN-Server-Vector-Calculus-Game`, wait for `Done`, and open the resulting game link. See also the [official import procedure](https://github.com/leanprover-community/lean4game/blob/main/doc/game/publish_game.md). A main-page listing is arranged separately with the server maintainers. Nothing is uploaded by the local launch or packaging scripts.
 
 For local archive inspection with PowerShell 7:
 
@@ -56,7 +56,7 @@ For local archive inspection with PowerShell 7:
 ./scripts/test-package-game.ps1
 ```
 
-The packager excludes `.lake/leangame-runtime`, `.lake/local-game`, and `.lake/validation`, while retaining the Lean dependencies, build files, generated game data, and assets required by the importer. Create a full archive with `./scripts/package-game.ps1` only when needed; the native Windows archive is not a substitute for the Linux CI artifact.
+The packager excludes `.lake/leangame-runtime-v4.36.0`, `.lake/local-game`, and `.lake/validation`, while retaining the Lean dependencies, build files, generated game data, and assets required by the importer. Create a full archive with `./scripts/package-game.ps1` only when needed; the native Windows archive is not a substitute for the Linux CI artifact.
 
 ## Review and author
 

@@ -8,6 +8,7 @@ $included = @('Game.lean','Game/Levels/Fixture.lean','images/cover.svg','lean-to
   '.lake/packages/GameServer/.lake/build/lib/lean/GameServer.olean',
   '.lake/packages/Fixture/.lake/build/lib/lean/Fixture.olean')
 $excluded = @('.git/config','.lake/leangame-runtime/node_modules/not-a-game.txt',
+  '.lake/leangame-runtime-v4.36.0/node_modules/not-a-game.txt',
   '.lake/local-game/leangame.db','.lake/local-game/processes.json','.lake/validation/progress.json')
 foreach ($relative in ($included + $excluded)) {
   $file = Join-Path $fixture $relative

@@ -5,7 +5,12 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $gameRoot = Split-Path -Parent $PSScriptRoot
-$runtimeRoot = Join-Path $gameRoot '.lake/leangame-runtime'
+$toolchain = (Get-Content -LiteralPath (Join-Path $gameRoot 'lean-toolchain') -Raw).Trim()
+if ($toolchain -notmatch '^leanprover/lean4:(v\d+\.\d+\.\d+)$') {
+  throw 'The local launcher requires a released Lean toolchain version.'
+}
+$runtimeVersion = $Matches[1]
+$runtimeRoot = Join-Path $gameRoot ".lake/leangame-runtime-$runtimeVersion"
 $runDirectory = Join-Path $gameRoot '.lake/local-game'
 $gameName = [uri]::EscapeDataString((Split-Path -Leaf $gameRoot).ToLowerInvariant())
 $gameUrl = "http://localhost:$ClientPort/g/local/$gameName"
@@ -17,7 +22,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $gameRoot '.lake/gamedata/game.json'
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $runtimeRoot 'package.json'))) {
-  & git clone --depth 1 --branch v4.35.0 https://github.com:443/leanprover-community/lean4game.git $runtimeRoot
+  & git clone --depth 1 --branch $runtimeVersion https://github.com:443/leanprover-community/lean4game.git $runtimeRoot
   if ($LASTEXITCODE -ne 0) { throw 'Could not download the matching official Lean4Game runtime.' }
 }
 
