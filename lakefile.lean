@@ -129,4 +129,4 @@ lean_lib Game where
 @[test_driver]
 lean_lib test where
   globs := #[.one `Test.Verification, .one `Test.PlayerMode, .one `Test.SolutionProtection,
-    .one `Test.TacticLocks, .one `Test.LearnerProgression]
+    .one `Test.TacticLocks, .one `Test.LearnerProgression, .one `Test.ToolExamples]

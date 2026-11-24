@@ -13,6 +13,23 @@ Title "A rectangular box"
 Introduction "Objective: Evaluate a triple iterated integral on a box.\n\nMathematical prerequisites: Double integrals; solid bounds; density and moments.\n\nEvaluate a triple integral from the innermost variable outward. The z integral is 4; integrating that value over the y interval gives 12; the final x interval doubles it. The box has ordered bounds and continuous constant density. This is the three-variable version of the rectangle method.\n\nWorked example: A box with side lengths 2, 2, and 3 has constant-density integral 3, then 6, then 12 when integrated from the innermost variable outward.\n\nExercise: prove the statement below. The hints guide the main steps."
 
 
+/-- Evaluate a triple iterated integral on a box.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..3, ∫ (z : ℝ) in 0..4, (1 : ℝ) = (2 : ℝ) * 24 := by
+  have established := exercise_TripleIntegralCaverns_1
+  rw [established]
+``` -/
+TheoremDoc exercise_TripleIntegralCaverns_1 as "exercise_TripleIntegralCaverns_1" in "[anonymous]"
+
 /-- Evaluate a triple iterated integral on a box. -/
 Statement exercise_TripleIntegralCaverns_1 : (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..3, ∫ z : ℝ in 0..4, (1:ℝ)) = 24 := by
   Hint "1. Name the z integral first."

@@ -13,6 +13,23 @@ Title "Endpoints of a curve"
 Introduction "Objective: Evaluate a polynomial curve at its parameter endpoints.\n\nMathematical prerequisites: Vector algebra; single-variable differentiation and integration.\n\n`fun t => ...` describes a function of the parameter t. A curve assigns a spatial point to each t in its parameter interval. Here the endpoints come from substituting 0 and 1. Use the same component-comparison method as for vector addition.\n\nWorked example: For c(t)=(t,2t,1) on [0,1], substitute t=0 and t=1 to find (0,0,1) and (1,2,1).\n\nExercise: prove the statement below. The hints guide the main steps."
 
 
+/-- Evaluate a polynomial curve at its parameter endpoints.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) • (fun t : ℝ => (![t, t ^ 2, 0] : Vec)) 0 = (2 : ℝ) • (![0, 0, 0] : Vec) := by
+  have established := exercise_CurveNavigator_1.left
+  rw [established]
+``` -/
+TheoremDoc exercise_CurveNavigator_1 as "exercise_CurveNavigator_1" in "[anonymous]"
+
 /-- Evaluate a polynomial curve at its parameter endpoints. -/
 Statement exercise_CurveNavigator_1 : (fun t : ℝ => (![t,t^2,0] : Vec)) 0 = ![0,0,0] ∧ (fun t : ℝ => (![t,t^2,0] : Vec)) 1 = ![1,1,0] := by
   Hint "1. Separate the initial and final endpoint."

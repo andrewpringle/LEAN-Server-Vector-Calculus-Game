@@ -1,3 +1,27 @@
+## Worked inventory examples — 2026-11-24
+
+The inventory help now includes an independent worked Lean example for each of the 175 registered theorems (79 reusable tools and 96 completed-level results) and all 14 visible tactics. Completed-level examples demonstrate later reuse in a different goal; the current-statement guard still rejects applying a theorem to its own exercise. The hidden `in` tile is integral notation, not an additional tactic.
+
+The examples are canonical JSON records in `scripts/theorem-examples.json` and `scripts/tactic-examples.json`. The existing curriculum renderer places them in `TheoremDoc`/`TacticDoc` help and generates `Test/ToolExamples.lean` from the exact same code. That test module is outside the game import graph, so its example proofs do not become player lemmas. `scripts/check-tool-examples.mjs` checks complete coverage, verbatim display/test agreement, use of the named theorem, and absence of unproved placeholders. Both CI workflows run this check and the Lean test driver includes the new module.
+
+All 96 statements, hints, instructor proofs and conclusions remain byte-identical to the previous commit; the level order, prerequisites, tactic schedule, artwork, and original inventory labels/categories are retained. The description of `deriv_neg` was corrected to match the actual library lemma for the derivative of the function `t ↦ -t`.
+
+Verified locally with Lean 4.36.0:
+
+| Check | Result |
+|---|---|
+| `lake build` | Passed, 6,073 jobs; all 96 levels and 16 worlds compile with the new help. |
+| `lake test` | Passed all six modules, including all 189 displayed examples, all 96 strict player proofs, tactic locks, solution protection, and the standard-axiom audit. |
+| `lake build --no-build` | Passed; all 6,073 jobs up to date. |
+| `node scripts/check-curriculum.mjs` | Passed; all levels, prerequisites, blank editors, hints, and tactic lock states preserved. |
+| `node scripts/check-tool-examples.mjs` | Passed all 189 source-to-test and emitted-help comparisons. |
+| Inventory preservation comparison | All names, display labels, categories, hidden flags, and insertion templates match the previously hosted version. |
+| Exercise preservation comparison | All 96 statements, hints, instructor proofs and conclusions are byte-identical to the previous commit. |
+| `pwsh -File scripts/test-package-game.ps1` | Passed ZIP extraction and independent Git-dependency recognition regression. |
+
+The framework keeps the earliest documentation entry. The renderer therefore updates `Game/Doc/Tactics.lean` as well as first-use level help; this fixes six stale template descriptions that had overridden later explanations. Adding documentation does not unlock tactics. The new examples are present in all 175 emitted theorem help records and all 14 visible tactic records.
+
+Logs are under `.lake/validation/tool-examples-*`. The next Linux build and development import publish this documentation update; their status is available through the repository's latest Actions and the development importer.
 ## Lean 4.36.0 upgrade — 2026-11-24
 
 The existing game now targets `leanprover/lean4:v4.36.0`. Mathlib is locked to `fc4f59e577feb1a4956671bc04ac18aaaf8cd842` and GameServer to `d35ca713145fdce6d7b0bc450e64295b36ae38f5`, with their compatible transitive dependencies in `lake-manifest.json`. This dependency update is required for the toolchain upgrade requested by the server maintainer in [issue #634](https://github.com/leanprover-community/lean4game/issues/634).
@@ -19,7 +43,7 @@ All 96 level statements, instructor proofs, explanations, hints, world descripti
 
 The normal legacy-module/Mathlib interoperation warnings and informational default-docstring messages remain nonfatal. Browser automation could not start because of a Windows process-launch failure; the runtime checks above are API checks, not a new visual browser inspection. The same game presentation sources are preserved.
 
-The first Linux release workflow passed ([run 45421999969](https://github.com/andrewpringle/LEAN-Server-Vector-Calculus-Game/actions/runs/45421999969), commit `d616f59`, artifact `14936032347`). The development importer completed its download and installation, but warned that both `lake build --no-build` checks failed with Git exit code 128 (`not a git repository`). A files-only ZIP can omit empty `.git/refs` and `.git/objects` directories, making fresh detached dependencies invalid Git repositories; this was reproduced locally with parent-repository discovery disabled. The packager now preserves directory entries as well as files. A new regression test initializes a fresh dependency, packages and extracts it, and confirms Git recognizes that dependency outside the parent checkout. The revised packaging test passes locally. A replacement Linux artifact and development re-import follow this packaging fix; check the latest Actions and importer results for hosted acceptance. Local logs are under `.lake/validation/lean436-*`. All verification records below this section describe earlier Lean 4.35.0 work unless explicitly dated otherwise.
+The first Linux release workflow passed ([run 45421999969](https://github.com/andrewpringle/LEAN-Server-Vector-Calculus-Game/actions/runs/45421999969), commit `d616f59`, artifact `14936032347`). The development importer completed its download and installation, but warned that both `lake build --no-build` checks failed with Git exit code 128 (`not a git repository`). A files-only ZIP can omit empty `.git/refs` and `.git/objects` directories, making fresh detached dependencies invalid Git repositories; this was reproduced locally with parent-repository discovery disabled. The packager now preserves directory entries as well as files. A new regression test initializes a fresh dependency, packages and extracts it, and confirms Git recognizes that dependency outside the parent checkout. The revised packaging test passes locally. The replacement Linux workflow passed ([run 45427517530](https://github.com/andrewpringle/LEAN-Server-Vector-Calculus-Game/actions/runs/45427517530), commit `160137f`, artifact `14937776377`). Its development import finished with no warnings and reported that the game is fully built. Hosted checks verified all 96 level records, the full prerequisite chain and unchanged cover artwork; first, middle, and final-boss proofs succeeded at strict difficulty without diagnostics. Local logs are under `.lake/validation/lean436-*`. All verification records below this section describe earlier Lean 4.35.0 work unless explicitly dated otherwise.
 
 # Implementation and verification status
 

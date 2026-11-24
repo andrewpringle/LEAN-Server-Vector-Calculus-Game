@@ -13,6 +13,23 @@ Title "Line meets plane"
 Introduction "Objective: Find a point satisfying both geometric constraints.\n\nMathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n\nA line-plane intersection must satisfy two geometric conditions. The vertical line reaches height 3 at parameter 3. Supply that witness for line membership, then independently check the plane equation. This is an application of existence, vector comparison, and dot products.\n\nExercise: prove the statement below."
 
 
+/-- Find a point satisfying both geometric constraints.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Reuse a verified intersection point to prove existence of a line-plane intersection.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∃ q : Vec, onLine ![0,0,0] ![0,0,1] q ∧ onPlane ![0,0,1] ![0,0,3] q := by
+  use ![0,0,3]
+  exact exercise_SpaceExplorer_3
+``` -/
+TheoremDoc exercise_SpaceExplorer_3 as "exercise_SpaceExplorer_3" in "[anonymous]"
+
 /-- Find a point satisfying both geometric constraints. -/
 Statement exercise_SpaceExplorer_3 : onLine ![0, 0, 0] ![0, 0, 1] ![0, 0, 3] ∧ onPlane ![0, 0, 1] ![0, 0, 3] ![0, 0, 3] := by
   Hint "1. Separate line membership and plane membership."

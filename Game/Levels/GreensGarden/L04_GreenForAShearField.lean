@@ -12,9 +12,42 @@ Title "Green for a shear field"
 
 Introduction "Objective: Apply a proved circulation-form Green special case.\n\nMathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n\nApply the established Green circulation identity for the smooth shear family F=(0,kx,0) on the positively oriented unit square. Here k=3. The theorem is a fully proved special case for this family and boundary, not a claim about arbitrary regions or fields. The earlier levels verified both sides directly for k=1.\n\nExercise: prove the statement below."
 
-/-- Green's circulation identity for a linear shear on the unit square. -/
+/-- Green's circulation identity for a linear shear on the unit square.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (k : ℝ),
+  ((2 : ℝ) * squareCirculation fun p => (![0, k * p 0, 0] : Vec)) =
+    (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, k * p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 := by
+  intro k
+  have established := green_shear k
+  rw [established]
+``` -/
 TheoremDoc VectorCalculus.green_shear as "green_shear" in "Calculus"
 NewTheorem VectorCalculus.green_shear
+
+/-- Apply a proved circulation-form Green special case.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ((2 : ℝ) * squareCirculation fun p => (![0, 3 * p 0, 0] : Vec)) =
+  (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, 3 * p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 := by
+  have established := exercise_GreensGarden_4
+  rw [established]
+``` -/
+TheoremDoc exercise_GreensGarden_4 as "exercise_GreensGarden_4" in "[anonymous]"
 
 /-- Apply a proved circulation-form Green special case. -/
 Statement exercise_GreensGarden_4 : squareCirculation (fun p => ![0,3*p 0,0]) = ∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (curl (fun p => ![0,3*p 0,0]) ![x,y,0]) 2 := by

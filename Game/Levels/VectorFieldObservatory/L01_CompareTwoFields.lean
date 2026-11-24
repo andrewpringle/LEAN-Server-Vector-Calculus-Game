@@ -16,6 +16,23 @@ Introduction "Objective: Evaluate and distinguish vector fields at a point.\n\nM
 DefinitionDoc VectorCalculus.rotation as "rotation" in "Calculus notation"
 NewDefinition VectorCalculus.rotation
 
+/-- Evaluate and distinguish vector fields at a point.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) • radial (![2, 0, 0] : Vec) = (2 : ℝ) • (![2, 0, 0] : Vec) := by
+  have established := exercise_VectorFieldObservatory_1.left
+  rw [established]
+``` -/
+TheoremDoc exercise_VectorFieldObservatory_1 as "exercise_VectorFieldObservatory_1" in "[anonymous]"
+
 /-- Evaluate and distinguish vector fields at a point. -/
 Statement exercise_VectorFieldObservatory_1 : radial ![2,0,0] = (![2,0,0] : Vec) ∧ rotation ![2,0,0] = (![0,1,0] : Vec) := by
   Hint "1. Separate the two field evaluations."

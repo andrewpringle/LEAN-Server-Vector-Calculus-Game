@@ -12,15 +12,55 @@ Title "Hold x fixed"
 
 Introduction "Objective: Compute the first y partial derivative.\n\nMathematical prerequisites: Joint continuity; scalar derivatives; planes and normals. Earlier levels of Partial Derivative Lab.\n\nNow hold x fixed and vary y. The same power rule gives 2y, written here as y+y. `ring` proves polynomial identities such as 2y=y+y; it does not decide which variable to differentiate. Use it after applying the calculus rules.\n\nWorked example: For f(x,y)=xy, holding x fixed gives the y partial x. Switching the varying coordinate changes which factor is constant.\n\nNew tools unlocked here:\n\n`ring`: Check polynomial identities, including the tangent-plane approximation error.\n\nExercise: prove the statement below. The hints guide the main steps."
 
-/-- Check polynomial identities, including the tangent-plane approximation error. -/
+/-- Check polynomial identities, including the tangent-plane approximation error.
+
+### Worked usage example
+
+Expand and cancel polynomial terms; this example uses a different offset from the tangent-plane exercise.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example (x : ℝ) : (x + 3)^2 - (x^2 + 6*x) = 9 := by
+  ring
+``` -/
 TacticDoc «ring»
 NewTactic «ring»
-/-- A constant added before a scalar function does not change its derivative. -/
+/-- A constant added before a scalar function does not change its derivative.
+
+### Worked usage example
+
+Specialize the scalar derivative rule to a real-valued function and a fixed numerical constant.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example (f : ℝ → ℝ) (t : ℝ) : deriv (fun s : ℝ => 8 + f s) t = deriv f t := by
+  rw [deriv_const_add]
+``` -/
 TheoremDoc deriv_const_add as "deriv_const_add" in "Calculus"
 NewTheorem deriv_const_add
 /-- Hold the first real argument fixed and vary the second: deriv (fun t => f x t) y. -/
 DefinitionDoc VectorCalculus.partialY as "partialY" in "Calculus notation"
 NewDefinition VectorCalculus.partialY
+
+/-- Compute the first y partial derivative.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (x y : ℝ), (2 : ℝ) * partialY (fun s t => s ^ 2 + t ^ 2) x y = (2 : ℝ) * (y + y) := by
+  intro x y
+  have established := exercise_PartialDerivativeLab_2 x y
+  rw [established]
+``` -/
+TheoremDoc exercise_PartialDerivativeLab_2 as "exercise_PartialDerivativeLab_2" in "[anonymous]"
 
 /-- Compute the first y partial derivative. -/
 Statement exercise_PartialDerivativeLab_2 (x y : ℝ) : partialY (fun s t => s^2+t^2) x y = y+y := by

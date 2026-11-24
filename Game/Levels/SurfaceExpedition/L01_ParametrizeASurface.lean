@@ -16,6 +16,24 @@ Introduction "Objective: Verify that a patch lies in a specified surface.\n\nMat
 DefinitionDoc VectorCalculus.patch as "patch" in "Calculus notation"
 NewDefinition VectorCalculus.patch
 
+/-- Verify that a patch lies in a specified surface.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (u v : ℝ), (2 : ℝ) * patch u v 2 = (2 : ℝ) * 0 := by
+  intro u v
+  have established := (exercise_SurfaceExpedition_1 u v).left
+  rw [established]
+``` -/
+TheoremDoc exercise_SurfaceExpedition_1 as "exercise_SurfaceExpedition_1" in "[anonymous]"
+
 /-- Verify that a patch lies in a specified surface. -/
 Statement exercise_SurfaceExpedition_1 (u v : ℝ) : (patch u v) 2 = 0 ∧ (patch u v) 0 = u ∧ (patch u v) 1 = v := by
   Hint "1. Separate the height and the two planar coordinates."

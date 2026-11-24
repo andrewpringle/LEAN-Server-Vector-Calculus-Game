@@ -12,11 +12,52 @@ Title "Boss: a triangular lamina"
 
 Introduction "Objective: Combine variable bounds, mass, and a first moment.\n\nMathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n\nFor uniform density on 0≤y≤x≤1, derive the inner mass and moment integrals as x, x², and x²/2. Integrating these gives mass 1/2 and moments 1/3 and 1/6. Divide by the positive mass to obtain the full centroid (2/3,1/3). Reuse pointwise replacement and the power rule; the boss introduces no new proof syntax.\n\nExercise: prove the statement below. Combine earlier methods and justify every hypothesis."
 
-/-- Integrate a natural power using the next power divided by the next exponent. -/
+/-- Integrate a natural power using the next power divided by the next exponent.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ {a b : ℝ} (n : ℕ), (2 : ℝ) * ∫ (x : ℝ) in a..b, x ^ n = (2 : ℝ) * ((b ^ (n + 1) - a ^ (n + 1)) / (↑n + 1)) := by
+  intro a b n
+  have established := integral_pow (a := a) (b := b) n
+  rw [established]
+``` -/
 TheoremDoc integral_pow as "integral_pow" in "Calculus"
-/-- Division by a fixed scalar commutes with interval integration. -/
+/-- Division by a fixed scalar commutes with interval integration.
+
+### Worked usage example
+
+A constant denominator can be moved outside an interval integral.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example (f : ℝ → ℝ) : (∫ t : ℝ in 0..4, f t/3) = (∫ t : ℝ in 0..4, f t)/3 := by
+  rw [intervalIntegral.integral_div]
+``` -/
 TheoremDoc intervalIntegral.integral_div as "integral_div" in "Calculus"
 NewTheorem integral_pow intervalIntegral.integral_div
+
+/-- Combine variable bounds, mass, and a first moment.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * ∫ (x : ℝ) in 0..1, ∫ (y : ℝ) in 0..x, (1 : ℝ) = (2 : ℝ) * (1 / 2) := by
+  have established := exercise_DoubleIntegralValley_6.left
+  rw [established]
+``` -/
+TheoremDoc exercise_DoubleIntegralValley_6 as "exercise_DoubleIntegralValley_6" in "[anonymous]"
 
 /-- Combine variable bounds, mass, and a first moment. -/
 Statement exercise_DoubleIntegralValley_6 : (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, (1:ℝ)) = 1/2 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, x) / (1/2) = 2/3 ∧ (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..x, y) / (1/2) = 1/3 := by

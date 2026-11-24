@@ -16,6 +16,23 @@ Introduction "Objective: Verify that a point lies on a specified level surface.\
 DefinitionDoc VectorCalculus.squarePotential as "squarePotential" in "Calculus notation"
 NewDefinition VectorCalculus.squarePotential
 
+/-- Verify that a point lies on a specified level surface.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * squarePotential (![1, 2, 2] : Vec) = (2 : ℝ) * 9 := by
+  have established := exercise_MultivariableLandscapes_2
+  rw [established]
+``` -/
+TheoremDoc exercise_MultivariableLandscapes_2 as "exercise_MultivariableLandscapes_2" in "[anonymous]"
+
 /-- Verify that a point lies on a specified level surface. -/
 Statement exercise_MultivariableLandscapes_2 : squarePotential ![1,2,2] = 9 := by
   Hint "1. Open the formula for `squarePotential`."

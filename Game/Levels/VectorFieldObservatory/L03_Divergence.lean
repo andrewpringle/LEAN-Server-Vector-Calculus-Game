@@ -16,6 +16,24 @@ Introduction "Objective: Compute a field divergence using the appropriate coordi
 DefinitionDoc VectorCalculus.divergence as "divergence" in "Calculus notation"
 NewDefinition VectorCalculus.divergence
 
+/-- Compute a field divergence using the appropriate coordinate derivatives.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (p : Vec), (2 : ℝ) * divergence radial p = (2 : ℝ) * 3 := by
+  intro p
+  have established := exercise_VectorFieldObservatory_3 p
+  rw [established]
+``` -/
+TheoremDoc exercise_VectorFieldObservatory_3 as "exercise_VectorFieldObservatory_3" in "[anonymous]"
+
 /-- Compute a field divergence using the appropriate coordinate derivatives. -/
 Statement exercise_VectorFieldObservatory_3 (p : Vec) : divergence radial p = 3 := by
   Hint "1. Open the sum in `divergence`."

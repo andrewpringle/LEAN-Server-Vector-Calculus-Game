@@ -12,7 +12,23 @@ Title "Apply the endpoint theorem"
 
 Introduction "Objective: Use an established fundamental theorem for line integrals.\n\nMathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus. Earlier levels of Path Integral Trails.\n\n`RegularPath` records differentiability of every coordinate along the interval. `PotentialAlong` states the derivative of the potential along the curve equals F·c′, and `WorkIntegrable` records integrability of that actual integrand. These names abbreviate the established derivative and integral conditions; none assumes the desired work equality. Apply the endpoint theorem and supply its two analytic hypotheses.\n\nExercise: prove the statement below."
 
-/-- The fundamental theorem along a path: if the potential derivative is the work integrand and that integrand is interval integrable, work equals the potential endpoint difference. -/
+/-- The fundamental theorem along a path: if the potential derivative is the work integrand and that integrand is interval integrable, work equals the potential endpoint difference.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (F : VectorCalculus.Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ),
+  (∀ t ∈ Set.uIcc a b, HasDerivAt (fun s => f (c s)) (dot (F (c t)) (velocity c t)) t) →
+    IntervalIntegrable (fun t : ℝ => dot (F (c t)) (velocity c t)) volume a b →
+      (2 : ℝ) * work F c a b = (2 : ℝ) * (f (c b) - f (c a)) := by
+  intro F f c a b hchain hint
+  have established := work_eq_endpoint F f c a b hchain hint
+  rw [established]
+``` -/
 TheoremDoc VectorCalculus.work_eq_endpoint as "work_eq_endpoint" in "Calculus"
 NewTheorem VectorCalculus.work_eq_endpoint
 /-- The potential differentiated along the path equals the work integrand. -/
@@ -22,6 +38,26 @@ DefinitionDoc VectorCalculus.RegularPath as "RegularPath" in "Calculus notation"
 /-- Integrability of the actual work integrand on the ordered or reversed interval. -/
 DefinitionDoc VectorCalculus.WorkIntegrable as "WorkIntegrable" in "Calculus notation"
 NewDefinition VectorCalculus.PotentialAlong VectorCalculus.RegularPath VectorCalculus.WorkIntegrable
+
+/-- Use an established fundamental theorem for line integrals.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (F : VectorCalculus.Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ),
+  RegularPath c a b →
+    PotentialAlong F f c a b → WorkIntegrable F c a b → (2 : ℝ) * work F c a b = (2 : ℝ) * (f (c b) - f (c a)) := by
+  intro F f c a b hcurve hc hi
+  have established := exercise_PathIntegralTrails_5 F f c a b hcurve hc hi
+  rw [established]
+``` -/
+TheoremDoc exercise_PathIntegralTrails_5 as "exercise_PathIntegralTrails_5" in "[anonymous]"
 
 /-- Use an established fundamental theorem for line integrals. -/
 Statement exercise_PathIntegralTrails_5 (F : Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ) (hcurve : RegularPath c a b) (hc : PotentialAlong F f c a b) (hi : WorkIntegrable F c a b) : work F c a b = f (c b)-f (c a) := by

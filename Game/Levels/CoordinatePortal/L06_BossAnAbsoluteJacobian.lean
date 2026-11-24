@@ -13,6 +13,23 @@ Title "Boss: an absolute Jacobian"
 Introduction "Objective: Verify a change-of-variables equality with an orientation-reversing map.\n\nMathematical prerequisites: Multiple integrals; determinants; trigonometric identities. Earlier levels of Coordinate Portal.\n\nThe orientation-reversing map sends the unit square to [0,2]×[-3,0]. Compare the original constant-density integral with the transformed one using the absolute determinant 6. Calculate the rectangle integral and determinant independently, then combine them. This verifies the stated change-of-variables special case by direct integration.\n\nExercise: prove the statement below. Combine earlier methods and justify every hypothesis."
 
 
+/-- Verify a change-of-variables equality with an orientation-reversing map.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in -3..0, (1 : ℝ) = (2 : ℝ) * ∫ (u : ℝ) (v : ℝ) in 0..1, |(!![2, 0; 0, -3] : Matrix (Fin 2) (Fin 2) ℝ).det| := by
+  have established := exercise_CoordinatePortal_6
+  rw [established]
+``` -/
+TheoremDoc exercise_CoordinatePortal_6 as "exercise_CoordinatePortal_6" in "[anonymous]"
+
 /-- Verify a change-of-variables equality with an orientation-reversing map. -/
 Statement exercise_CoordinatePortal_6 : (∫ x : ℝ in 0..2, ∫ y : ℝ in (-3)..0, (1:ℝ)) = (∫ u : ℝ in 0..1, ∫ v : ℝ in 0..1, |Matrix.det (!![(2:ℝ),0;0,-3])|) := by
   Hint "1. Compute the absolute determinant, retaining its positive sign."

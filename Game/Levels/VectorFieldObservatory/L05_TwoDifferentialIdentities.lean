@@ -12,11 +12,56 @@ Title "Two differential identities"
 
 Introduction "Objective: Verify curl-of-gradient and divergence-of-curl for explicit smooth fields.\n\nMathematical prerequisites: Gradients, partial derivatives, and three-dimensional vectors. Earlier levels of Vector Field Observatory.\n\nFirst compute the constant gradient of x and the constant curl of the rotational field. The rules `curl_congr` and `divergence_congr` allow replacement of equal fields. Derivatives of constant components then give zero. These are explicit smooth examples of the differential identities, not an assumption that mixed partials commute without regularity.\n\nExercise: prove the statement below."
 
-/-- Equal vector fields have equal curls. -/
+/-- Equal vector fields have equal curls.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ {F G : VectorCalculus.Field}, (∀ (p : Vec), F p = G p) → ∀ (p : Vec), (2 : ℝ) • curl F p = (2 : ℝ) • curl G p := by
+  intro F G h p
+  have established := curl_congr h p
+  rw [established]
+``` -/
 TheoremDoc VectorCalculus.curl_congr as "curl_congr" in "Calculus"
-/-- Equal vector fields have equal divergences. -/
+/-- Equal vector fields have equal divergences.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ {F G : VectorCalculus.Field},
+  (∀ (p : Vec), F p = G p) → ∀ (p : Vec), (2 : ℝ) * divergence F p = (2 : ℝ) * divergence G p := by
+  intro F G h p
+  have established := divergence_congr h p
+  rw [established]
+``` -/
 TheoremDoc VectorCalculus.divergence_congr as "divergence_congr" in "Calculus"
 NewTheorem VectorCalculus.curl_congr VectorCalculus.divergence_congr
+
+/-- Verify curl-of-gradient and divergence-of-curl for explicit smooth fields.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (p : Vec), (2 : ℝ) • curl (gradient fun q => q 0) p = (2 : ℝ) • 0 := by
+  intro p
+  have established := (exercise_VectorFieldObservatory_5 p).left
+  rw [established]
+``` -/
+TheoremDoc exercise_VectorFieldObservatory_5 as "exercise_VectorFieldObservatory_5" in "[anonymous]"
 
 /-- Verify curl-of-gradient and divergence-of-curl for explicit smooth fields. -/
 Statement exercise_VectorFieldObservatory_5 (p : Vec) : curl (gradient (fun q => q 0)) p = (0 : Vec) ∧ divergence (curl rotation) p = 0 := by

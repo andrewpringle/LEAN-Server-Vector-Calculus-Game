@@ -29,4 +29,5 @@ jobs:
         run: |
           lake test
           node scripts/check-curriculum.mjs
+          node scripts/check-tool-examples.mjs
           pwsh -File scripts/test-package-game.ps1

@@ -16,6 +16,25 @@ Introduction "Objective: Supply a potential and verify it globally.\n\nMathemati
 DefinitionDoc VectorCalculus.ScalarField as "ScalarField" in "Calculus notation"
 NewDefinition VectorCalculus.ScalarField
 
+/-- Supply a potential and verify it globally.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Forget the normalization at the origin while retaining the existence of a potential. Exists.elim introduces the established witness and its properties.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∃ f : ScalarField, ∀ p, gradient f p = (![p 1,p 0,0] : Vec) := by
+  apply Exists.elim exercise_VectorFieldObservatory_6
+  intro f hf
+  use f
+  exact hf.2
+``` -/
+TheoremDoc exercise_VectorFieldObservatory_6 as "exercise_VectorFieldObservatory_6" in "[anonymous]"
+
 /-- Supply a potential and verify it globally. -/
 Statement exercise_VectorFieldObservatory_6 : ∃ f : ScalarField, f ![0,0,0] = 0 ∧ ∀ p, gradient f p = (![p 1,p 0,0] : Vec) := by
   Hint "1. Integrate the first component y with respect to x to propose a potential."

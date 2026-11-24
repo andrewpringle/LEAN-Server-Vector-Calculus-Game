@@ -18,6 +18,23 @@ DefinitionDoc VectorCalculus.length as "length" in "Calculus notation"
 DefinitionDoc VectorCalculus.planeDistance as "planeDistance" in "Calculus notation"
 NewDefinition VectorCalculus.length VectorCalculus.planeDistance
 
+/-- Evaluate the normal-distance formula with a nonzero normal.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * planeDistance (![0, 0, 1] : Vec) (![0, 0, 1] : Vec) (![2, -3, 4] : Vec) = (2 : ℝ) * 3 := by
+  have established := exercise_SpaceExplorer_4
+  rw [established]
+``` -/
+TheoremDoc exercise_SpaceExplorer_4 as "exercise_SpaceExplorer_4" in "[anonymous]"
+
 /-- Evaluate the normal-distance formula with a nonzero normal. -/
 Statement exercise_SpaceExplorer_4 : planeDistance ![0, 0, 1] ![0, 0, 1] ![2, -3, 4] = 3 := by
   Hint "1. Rewrite `planeDistance` and the length definitions."

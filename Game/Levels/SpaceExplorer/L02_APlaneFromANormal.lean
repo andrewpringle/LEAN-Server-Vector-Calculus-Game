@@ -12,12 +12,41 @@ Title "A plane from a normal"
 
 Introduction "Objective: Verify a plane equation from its point-normal definition.\n\nMathematical prerequisites: Vector Workshop; parametric lines, normals, and quadratic equations. Earlier levels of Space Explorer.\n\nA point q lies in the plane through p with normal n when n·(q-p)=0. The normal (0,0,2) is nonzero. The symbol `↔` asks for both directions of an equivalence: use `constructor`, then `intro h` in each direction. After expanding the plane equation, `linarith` combines linear real equations; here it turns 2(q₂-3)=0 into q₂=3.\n\nWorked example: With normal (0,0,1) and base height 5, the point-normal equation is q₂-5=0, equivalent to q₂=5. A scaled nonzero normal describes the same plane.\n\nNew tools unlocked here:\n\n`linarith`: Solve linear equations or inequalities arising from a plane equation.\n\nExercise: prove the statement below. The hints guide the main steps."
 
-/-- Solve linear equations or inequalities arising from a plane equation. -/
+/-- Solve linear equations or inequalities arising from a plane equation.
+
+### Worked usage example
+
+Combine linear equations to eliminate y and determine x.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example (x y : ℝ) (hsum : x + y = 5) (hy : y = 2) : x = 3 := by
+  linarith
+``` -/
 TacticDoc «linarith»
 NewTactic «linarith»
 /-- Point-normal plane equation: dot n (q-p) = 0. A nonzero normal gives a genuine plane. -/
 DefinitionDoc VectorCalculus.onPlane as "onPlane" in "Calculus notation"
 NewDefinition VectorCalculus.onPlane
+
+/-- Verify a plane equation from its point-normal definition.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (q : Vec), q 2 = 3 ↔ onPlane (![0, 0, 2] : Vec) (![0, 0, 3] : Vec) q := by
+  intro q
+  have established := exercise_SpaceExplorer_2 q
+  exact established.symm
+``` -/
+TheoremDoc exercise_SpaceExplorer_2 as "exercise_SpaceExplorer_2" in "[anonymous]"
 
 /-- Verify a plane equation from its point-normal definition. -/
 Statement exercise_SpaceExplorer_2 (q : Vec) : onPlane ![0, 0, 2] ![0, 0, 3] q ↔ q 2 = 3 := by

@@ -1,0 +1,58 @@
+{
+  "rfl": {
+    "explanation": "Read the third coordinate of a new vector. Coordinates are numbered from zero.",
+    "code": "example : (![8, 4, -2] : Vec) 2 = -2 := by\n  rfl"
+  },
+  "exact": {
+    "explanation": "Use a hypothesis whose type is exactly the current goal.",
+    "code": "example (x : ℝ) (h : x ≤ 4) : x ≤ 4 := by\n  exact h"
+  },
+  "apply": {
+    "explanation": "Apply a rule, then supply the premise it requests. Here step is an explicitly given implication.",
+    "code": "example (x : ℝ) (h : x ≤ 4) (step : x ≤ 4 → x ≤ 5) : x ≤ 5 := by\n  apply step\n  exact h"
+  },
+  "rw": {
+    "explanation": "Replace equal vectors inside a dot product.",
+    "code": "example (u v w : Vec) (h : u = v) : dot u w = dot v w := by\n  rw [h]"
+  },
+  "intro": {
+    "explanation": "Introduce the parameter before proving an identity that holds for every real number.",
+    "code": "example : ∀ x : ℝ, x = x := by\n  intro x\n  rfl"
+  },
+  "have": {
+    "explanation": "Name a useful equality before using it in the goal.",
+    "code": "example (x y z : ℝ) (hxy : x = y) (hyz : y = z) : x = z := by\n  have firstStep : x = y := hxy\n  rw [firstStep]\n  exact hyz"
+  },
+  "use": {
+    "explanation": "Choose a parameter that makes the requested coordinate equal to five.",
+    "code": "example : ∃ t : ℝ, (![t, 3, 0] : Vec) 0 = 5 := by\n  use 5\n  rfl"
+  },
+  "left": {
+    "explanation": "Prove the first alternative of a disjunction from the supplied coordinate fact.",
+    "code": "example (p : Vec) (h : p 0 = 2) : p 0 = 2 ∨ p 0 = 5 := by\n  left\n  exact h"
+  },
+  "right": {
+    "explanation": "Prove the second alternative when that is the fact you know.",
+    "code": "example (p : Vec) (h : p 0 = 5) : p 0 = 2 ∨ p 0 = 5 := by\n  right\n  exact h"
+  },
+  "constructor": {
+    "explanation": "Prove the two parts of a conjunction in separate branches.",
+    "code": "example (p : Vec) (hx : p 0 = 2) (hy : p 1 = 7) : p 0 = 2 ∧ p 1 = 7 := by\n  constructor\n  · exact hx\n  · exact hy"
+  },
+  "norm_num": {
+    "explanation": "Check an explicit real-number calculation.",
+    "code": "example : (2 : ℝ) + 3 * 4 = 14 := by\n  norm_num"
+  },
+  "simp": {
+    "explanation": "Simplify a standard identity without calculating a particular value of x.",
+    "code": "example (x : ℝ) : x + 0 = x := by\n  simp"
+  },
+  "linarith": {
+    "explanation": "Combine linear equations to eliminate y and determine x.",
+    "code": "example (x y : ℝ) (hsum : x + y = 5) (hy : y = 2) : x = 3 := by\n  linarith"
+  },
+  "ring": {
+    "explanation": "Expand and cancel polynomial terms; this example uses a different offset from the tangent-plane exercise.",
+    "code": "example (x : ℝ) : (x + 3)^2 - (x^2 + 6*x) = 9 := by\n  ring"
+  }
+}

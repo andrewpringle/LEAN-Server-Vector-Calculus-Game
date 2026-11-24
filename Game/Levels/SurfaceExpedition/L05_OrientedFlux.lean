@@ -16,6 +16,23 @@ Introduction "Objective: Integrate a vector field against an oriented area vecto
 DefinitionDoc VectorCalculus.surfaceFlux as "surfaceFlux" in "Calculus notation"
 NewDefinition VectorCalculus.surfaceFlux
 
+/-- Integrate a vector field against an oriented area vector.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * surfaceFlux (fun x => (![0, 0, 1] : Vec)) patch 0 1 0 1 = (2 : ℝ) * 1 := by
+  have established := exercise_SurfaceExpedition_5
+  rw [established]
+``` -/
+TheoremDoc exercise_SurfaceExpedition_5 as "exercise_SurfaceExpedition_5" in "[anonymous]"
+
 /-- Integrate a vector field against an oriented area vector. -/
 Statement exercise_SurfaceExpedition_5 : surfaceFlux (fun _ => ![0,0,1]) patch 0 1 0 1 = 1 := by
   Hint "1. Reuse the upward parameter normal."

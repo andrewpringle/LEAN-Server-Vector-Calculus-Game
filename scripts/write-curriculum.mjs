@@ -9,6 +9,15 @@ const write = (file, content) => {
   if(fs.existsSync(file)&&fs.readFileSync(file,'utf8')===content) return;
   fs.mkdirSync(path.dirname(file), {recursive:true}); fs.writeFileSync(file, content, 'utf8');
 };
+const theoremExamples = JSON.parse(fs.readFileSync('scripts/theorem-examples.json','utf8'));
+const tacticExamples = JSON.parse(fs.readFileSync('scripts/tactic-examples.json','utf8'));
+const workedDoc = (name,description,kind) => {
+  const example = (kind === 'tactic' ? tacticExamples : theoremExamples)[name];
+  if (!example?.code || !example?.explanation) throw Error('Missing worked example: '+name);
+  const later = name.startsWith('exercise_') ? '\n\nThis is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.' : '';
+  const fence = String.fromCharCode(96).repeat(3);
+  return (description || 'Use this established result with the hypotheses shown below.') + later + '\n\n### Worked usage example\n\n' + example.explanation + '\n\nExamples use the namespaces and notation opened in the calculus levels.\n\n' + fence + 'lean\n' + example.code + '\n' + fence;
+};
 const qualify = t => ['dot_cross_left','work_eq_endpoint','green_shear','stokes_shear_patch','gauss_diagonal'].includes(t)?'VectorCalculus.'+t:t==='intervalIntegrable_id'?'intervalIntegral.'+t:t;
 // This snapshot comes from Lean's actual proof-syntax inventory, not a hand-built
 // approximation. Keep it updated with InventoryAudit.lean after changing proofs.
@@ -155,7 +164,7 @@ const readableDocs = {
   'deriv_mul_const_field': 'A fixed right scalar factor pulls outside the scalar derivative.',
   'deriv_const_mul_id': 'The derivative of t ↦ a*t is the constant a.',
   'deriv_const_sub_id': 'The derivative of t ↦ a-t is -1, preserving the sign of a reversed parameter.',
-  'deriv_neg': 'Negating a scalar function negates its derivative.',
+  'deriv_neg': 'The scalar function t ↦ -t has derivative -1 at every real point.',
   'deriv_const': 'A constant scalar function has derivative zero.',
   'eq_comm': 'An equality may be read in either direction: a=b is equivalent to b=a.',
   'integral_id': 'Integrate the identity function using (b²-a²)/2.',
@@ -179,6 +188,11 @@ for (const [wi,w] of worlds.entries()) for (const [li,l] of w.levels.entries()) 
 for (const [name] of firstUse.tactics) {
   if (!tacticDescriptions[name]) throw Error(`Undocumented tactic unlock: ${name}`);
 }
+// The framework keeps the first documentation entry; the shared file must
+// contain these examples before any level registers a tactic. Templates do not unlock tools.
+const tacticInsert = {rfl:'rfl',rw:'rw [$,]',have:'have $_ : $+ := by $;'};
+write('Game/Doc/Tactics.lean', 'import GameApi\n\n' + Object.entries(tacticDescriptions).map(([name,description]) =>
+  '/-- '+workedDoc(name,description,'tactic')+' -/\nTacticDoc «'+name+'»'+(Object.hasOwn(tacticInsert,name) ? ' insert '+quote(tacticInsert[name]) : '')+'\n').join('\n'));
 const tacticSchedule = [...firstUse.tactics].map(([name,index])=>({
   name, world:worlds[Math.floor(index/6)].id, level:index%6+1,
   baseline:baselineTactics.includes(name), explanation:tacticDescriptions[name]
@@ -196,16 +210,17 @@ for (const [wi,w] of worlds.entries()) {
     const toolIntroduction = newTactics.filter(t=>!t.baseline).map(t=>`\`${t.name}\`: ${t.explanation}`).join('\n\n');
     const levelExplanation = l.explanation + (toolIntroduction ? `\n\nNew tools unlocked here:\n\n${toolIntroduction}` : '');
     let text = `import Game.Metadata\nimport Game.Rules\n\nopen VectorCalculus\nopen MeasureTheory intervalIntegral\nopen scoped Topology\nnoncomputable section\n\nWorld ${quote(w.id)}\nLevel ${li+1}\nTitle ${quote(l.title)}\n\nIntroduction ${quote(`Objective: ${l.objective}\n\nMathematical prerequisites: ${w.prerequisites}${li ? ` Earlier levels of ${w.title}.` : ''}\n\n${levelExplanation}\n\nExercise: prove the statement below.${li===5?' Combine earlier methods and justify every hypothesis.':li<2?' The hints guide the main steps.':''}`)}\n\n`;
-    for (const t of newTactics) text += `/-- ${t.explanation} -/\nTacticDoc «${t.name}»\n`;
+    for (const t of newTactics) text += `/-- ${workedDoc(t.name,t.explanation,"tactic")} -/\nTacticDoc «${t.name}»\n`;
     if (newTactics.length) text += `NewTactic ${newTactics.map(t=>`«${t.name}»`).join(' ')}\n`;
     // This pinned GameServer scans every alphabetic syntax atom as a tactic.
     // Permit the interval-integral keyword globally without a spurious UI tile.
     if(wi===0 && li===0) text += '/-- The keyword in belongs to interval-integral notation; it is not a tactic. -/\nTacticDoc «in»\nNewHiddenTactic «in»\n';
     const qualifiedTools = newTools;
-    for (const t of qualifiedTools) text += (localDocs.get(t)?`/-- ${localDocs.get(t)} -/\n`:'')+`TheoremDoc ${t} as ${quote(t.split('.').at(-1))} in "Calculus"\n`;
+    for (const t of qualifiedTools) text += `/-- ${workedDoc(t,localDocs.get(t),"theorem")} -/\n`+`TheoremDoc ${t} as ${quote(t.split('.').at(-1))} in "Calculus"\n`;
     if (qualifiedTools.length) text += `NewTheorem ${qualifiedTools.join(' ')}\n`;
     for (const t of newDefinitions) text += (localDocs.get(t)?`/-- ${localDocs.get(t)} -/\n`:'')+`DefinitionDoc ${t} as ${quote(t.split('.').at(-1))} in "Calculus notation"\n`;
     if (newDefinitions.length) text += `NewDefinition ${newDefinitions.join(' ')}\n`;
+    text += `\n/-- ${workedDoc(name,l.objective,"theorem")} -/\nTheoremDoc ${name} as ${quote(name)} in "[anonymous]"\n`;
     text += `\n/-- ${l.objective} -/\nStatement ${name} ${l.statement} := by\n`;
     l.hints.forEach((h,i)=>text += `  Hint${i ? ' (hidden := true)' : ''} ${quote(`${i+1}. ${h}`)}\n`);
     text += l.proof.split('\n').map(line=>'  '+line).join('\n');
@@ -226,3 +241,6 @@ console.log(`Wrote ${worlds.length} worlds and ${worlds.reduce((s,w)=>s+w.levels
 // inventory and Regular rules. These tests are never imported by the game.
 write('Test/LearnerProgression.lean', 'import Game\nimport GameServer\n\nopen VectorCalculus\nopen MeasureTheory intervalIntegral\nopen scoped Topology\nnoncomputable section\n\n/-! All 96 intended solutions must be playable with only the tools available at that level. -/\n\n'+worlds.flatMap(w=>w.levels.map((l,i)=>`-- ${w.title}: ${l.title}\nRunner "MyGame" "${w.id}" ${i+1} (difficulty := 2) (inventory := []) := by\n${l.proof.split('\n').map(s=>'  '+s).join('\n')}\n`)).join('\n'));
 
+
+// Compile the exact displayed examples separately: none become player lemmas.
+write('Test/ToolExamples.lean', 'import Game\n\nopen VectorCalculus MeasureTheory intervalIntegral\nopen scoped Topology\nnoncomputable section\n\n' + [...Object.entries(theoremExamples),...Object.entries(tacticExamples)].sort(([a],[b])=>a.localeCompare(b)).map(([name,e])=>'-- '+name+'\n'+e.code+'\n').join('\n'));

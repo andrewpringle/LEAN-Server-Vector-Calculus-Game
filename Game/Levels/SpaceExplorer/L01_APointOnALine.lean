@@ -16,6 +16,23 @@ Introduction "Objective: Supply a parameter witnessing line membership.\n\nMathe
 DefinitionDoc VectorCalculus.onLine as "onLine" in "Calculus notation"
 NewDefinition VectorCalculus.onLine
 
+/-- Supply a parameter witnessing line membership.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+A known point on a line can witness that the line is nonempty.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∃ q : Vec, onLine ![1,0,2] ![1,2,-1] q := by
+  use ![3,4,0]
+  exact exercise_SpaceExplorer_1
+``` -/
+TheoremDoc exercise_SpaceExplorer_1 as "exercise_SpaceExplorer_1" in "[anonymous]"
+
 /-- Supply a parameter witnessing line membership. -/
 Statement exercise_SpaceExplorer_1 : onLine ![1, 0, 2] ![1, 2, -1] ![3, 4, 0] := by
   Hint "1. Solve the first coordinate for the parameter."

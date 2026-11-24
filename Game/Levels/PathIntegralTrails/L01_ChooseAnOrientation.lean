@@ -13,6 +13,24 @@ Title "Choose an orientation"
 Introduction "Objective: Parametrize a line segment with specified initial and final points.\n\nMathematical prerequisites: Regular parametrized curves; vector fields; the fundamental theorem of calculus.\n\nThe segment (1-t)A+tB runs from A at parameter 0 to B at parameter 1. Its order gives the path orientation. Verify the endpoint identities using scalar-multiplication identities; `simp` removes the zero and unit coefficients.\n\nWorked example: The segment from (0,0,0) to (2,0,0) has midpoint (1,0,0) at t=1/2, start at t=0, and finish at t=1.\n\nExercise: prove the statement below. The hints guide the main steps."
 
 
+/-- Parametrize a line segment with specified initial and final points.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (A B : Vec), (2 : ℝ) • (fun t : ℝ => (1 - t) • A + t • B) 0 = (2 : ℝ) • A := by
+  intro A B
+  have established := (exercise_PathIntegralTrails_1 A B).left
+  rw [established]
+``` -/
+TheoremDoc exercise_PathIntegralTrails_1 as "exercise_PathIntegralTrails_1" in "[anonymous]"
+
 /-- Parametrize a line segment with specified initial and final points. -/
 Statement exercise_PathIntegralTrails_1 (A B : Vec) : (fun t : ℝ => (1-t) • A + t • B) 0 = A ∧ (fun t : ℝ => (1-t) • A + t • B) 1 = B := by
   Hint "1. Separate the initial and final endpoint."

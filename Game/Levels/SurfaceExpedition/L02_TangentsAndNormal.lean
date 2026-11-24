@@ -16,6 +16,24 @@ Introduction "Objective: Compute the two parameter tangents and their oriented c
 DefinitionDoc VectorCalculus.surfaceNormal as "surfaceNormal" in "Calculus notation"
 NewDefinition VectorCalculus.surfaceNormal
 
+/-- Compute the two parameter tangents and their oriented cross product.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (u v : ℝ), (2 : ℝ) • velocity (fun t : ℝ => patch t v) u = (2 : ℝ) • (![1, 0, 0] : Vec) := by
+  intro u v
+  have established := (exercise_SurfaceExpedition_2 u v).left
+  rw [established]
+``` -/
+TheoremDoc exercise_SurfaceExpedition_2 as "exercise_SurfaceExpedition_2" in "[anonymous]"
+
 /-- Compute the two parameter tangents and their oriented cross product. -/
 Statement exercise_SurfaceExpedition_2 (u v : ℝ) : velocity (fun t => patch t v) u = (![1,0,0] : Vec) ∧ velocity (patch u) v = (![0,1,0] : Vec) ∧ surfaceNormal patch u v = (![0,0,1] : Vec) := by
   Hint "1. Name the derivative in each parameter direction."

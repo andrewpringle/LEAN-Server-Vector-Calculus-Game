@@ -12,12 +12,43 @@ Title "Boss: choose a simpler surface"
 
 Introduction "Objective: Justify replacing a graph by a planar patch with the same oriented boundary.\n\nMathematical prerequisites: Curl; positively oriented boundaries; parametrized surface flux. Earlier levels of Stokes Summit.\n\nThe raised polynomial graph has exactly the same four oriented boundary traces as the flat patch. Prove those trace equalities first. The graph-normal rule `normal_graph` has vertical component 1, and this field has vertical unit curl, so both flux integrands equal 1. Together with the proved flat-patch Stokes family, this justifies the simpler-surface calculation in this concrete case; it does not assume a general surface-independence theorem.\n\nExercise: prove the statement below. Combine earlier methods and justify every hypothesis."
 
-/-- Graph normals have vertical component one, without assuming a unit normal. -/
+/-- Graph normals have vertical component one, without assuming a unit normal.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : ∀ (f : ℝ → ℝ → ℝ) (u v : ℝ),
+  (2 : ℝ) • surfaceNormal (fun s t => (![s, t, f s t] : Vec)) u v = (2 : ℝ) • (![-partialX f u v, -partialY f u v, 1] : Vec) := by
+  intro f u v
+  have established := normal_graph f u v
+  rw [established]
+``` -/
 TheoremDoc VectorCalculus.normal_graph as "normal_graph" in "Calculus"
 NewTheorem VectorCalculus.normal_graph
 /-- The graph (u,v,u(1-u)v(1-v)) on the unit parameter square. Its height vanishes on all four boundary edges. -/
 DefinitionDoc VectorCalculus.liftedPatch as "liftedPatch" in "Calculus notation"
 NewDefinition VectorCalculus.liftedPatch
+
+/-- Justify replacing a graph by a planar patch with the same oriented boundary.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale the already verified equal-flux result by two. The .2 projection selects the flux equality rather than the boundary statement.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * surfaceFlux (curl (fun p => ![0,p 0,0])) liftedPatch 0 1 0 1 =
+    (2 : ℝ) * surfaceFlux (curl (fun p => ![0,p 0,0])) patch 0 1 0 1 := by
+  rw [exercise_StokesSummit_6.2]
+``` -/
+TheoremDoc exercise_StokesSummit_6 as "exercise_StokesSummit_6" in "[anonymous]"
 
 /-- Justify replacing a graph by a planar patch with the same oriented boundary. -/
 Statement exercise_StokesSummit_6 : (∀ t : ℝ, liftedPatch t 0 = patch t 0 ∧ liftedPatch 1 t = patch 1 t ∧ liftedPatch (1-t) 1 = patch (1-t) 1 ∧ liftedPatch 0 (1-t) = patch 0 (1-t)) ∧ surfaceFlux (curl (fun p => ![0,p 0,0])) liftedPatch 0 1 0 1 = surfaceFlux (curl (fun p => ![0,p 0,0])) patch 0 1 0 1 := by

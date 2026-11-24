@@ -1,0 +1,702 @@
+{
+  "abs_of_nonneg": {
+    "explanation": "Prove the sign before removing the absolute value.",
+    "code": "example (x : ℝ) (hx : 0 ≤ x) : |x + 2| = x + 2 := by\n  apply abs_of_nonneg\n  linarith"
+  },
+  "add_nonneg": {
+    "explanation": "Supply the sign of each summand explicitly.",
+    "code": "example (x y : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y) : 0 ≤ x + y := by\n  exact add_nonneg hx hy"
+  },
+  "add_pos_of_nonneg_of_pos": {
+    "explanation": "The first summand is nonnegative and the second strictly positive.",
+    "code": "example (y : ℝ) (hy : 0 < y) : 0 < 3 + y := by\n  apply add_pos_of_nonneg_of_pos\n  · norm_num\n  · exact hy"
+  },
+  "add_pos_of_pos_of_nonneg": {
+    "explanation": "The first summand is strictly positive and the second nonnegative.",
+    "code": "example (x : ℝ) (hx : 0 < x) : 0 < x + 3 := by\n  apply add_pos_of_pos_of_nonneg hx\n  norm_num"
+  },
+  "continuous_apply": {
+    "explanation": "A coordinate projection is continuous; the index 2 selects the third coordinate.",
+    "code": "example : Continuous (fun p : Vec => p 2) := by\n  exact continuous_apply 2"
+  },
+  "deriv_add_const": {
+    "explanation": "Specialize the scalar derivative rule to a real-valued function and a fixed numerical constant.",
+    "code": "example (f : ℝ → ℝ) (t : ℝ) : deriv (fun s : ℝ => f s + 8) t = deriv f t := by\n  rw [deriv_add_const]"
+  },
+  "deriv_const": {
+    "explanation": "A different constant field has zero scalar derivative.",
+    "code": "example (t : ℝ) : deriv (fun _ : ℝ => (9 : ℝ)) t = 0 := by\n  exact deriv_const t 9"
+  },
+  "deriv_const_add": {
+    "explanation": "Specialize the scalar derivative rule to a real-valued function and a fixed numerical constant.",
+    "code": "example (f : ℝ → ℝ) (t : ℝ) : deriv (fun s : ℝ => 8 + f s) t = deriv f t := by\n  rw [deriv_const_add]"
+  },
+  "deriv_const_mul_field": {
+    "explanation": "Specialize the scalar derivative rule to a real-valued function and a fixed numerical constant.",
+    "code": "example (f : ℝ → ℝ) (t : ℝ) : deriv (fun s : ℝ => 7 * f s) t = 7 * deriv f t := by\n  rw [deriv_const_mul_field]"
+  },
+  "deriv_const_mul_id": {
+    "explanation": "A line of slope five has derivative five at every parameter.",
+    "code": "example (t : ℝ) : deriv (fun s : ℝ => 5*s) t = 5 := by\n  exact deriv_const_mul_id 5"
+  },
+  "deriv_const_sub_id": {
+    "explanation": "A reversed affine parameter has derivative minus one.",
+    "code": "example (t : ℝ) : deriv (fun s : ℝ => 8-s) t = -1 := by\n  exact deriv_const_sub_id 8"
+  },
+  "deriv_mul_const_field": {
+    "explanation": "Specialize the scalar derivative rule to a real-valued function and a fixed numerical constant.",
+    "code": "example (f : ℝ → ℝ) (t : ℝ) : deriv (fun s : ℝ => f s * 5) t = deriv f t * 5 := by\n  rw [deriv_mul_const_field]"
+  },
+  "deriv_neg": {
+    "explanation": "This particular lemma differentiates the negation function t ↦ -t.",
+    "code": "example (t : ℝ) : deriv (fun s : ℝ => -s) t = -1 := by\n  exact deriv_neg t"
+  },
+  "deriv_pow_field": {
+    "explanation": "Differentiate a cube, then simplify its numerical exponent and coefficient.",
+    "code": "example (t : ℝ) : deriv (fun s : ℝ => s^3) t = 3*t^2 := by\n  rw [deriv_pow_field]\n  norm_num"
+  },
+  "eq_comm": {
+    "explanation": "An equality can be read in either direction. Supply the two sides so the equivalence is fully determined.",
+    "code": "example (x y : ℝ) : x = y ↔ y = x := by\n  exact eq_comm (a := x) (b := y)"
+  },
+  "Eq.trans": {
+    "explanation": "Use the equality in the opposite direction. Rewriting works inside a goal, including when the known value is on its left.",
+    "code": "example : ∀ {α : Type} {a b c : α}, a = b → b = c → c = a := by\n  intro α a b c h₁ h₂\n  have established := Eq.trans h₁ h₂\n  rw [established]"
+  },
+  "exercise_CoordinatePortal_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (r t : ℝ), (2 : ℝ) * ((r * Real.cos t) ^ 2 + (r * Real.sin t) ^ 2) = (2 : ℝ) * r ^ 2 := by\n  intro r t\n  have established := exercise_CoordinatePortal_1 r t\n  rw [established]"
+  },
+  "exercise_CoordinatePortal_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (r t : ℝ), 0 ≤ r → (2 : ℝ) * |(planarJacobian polarX polarY r t).det| = (2 : ℝ) * r := by\n  intro r t hr\n  have established := (exercise_CoordinatePortal_2 r t hr).left\n  rw [established]"
+  },
+  "exercise_CoordinatePortal_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (t : ℝ) in 0..(2 : ℝ) * Real.pi, ∫ (r : ℝ) in 0..1, ∫ (z : ℝ) in 0..2, r = (2 : ℝ) * ((2 : ℝ) * Real.pi) := by\n  have established := exercise_CoordinatePortal_3\n  rw [established]"
+  },
+  "exercise_CoordinatePortal_4": {
+    "explanation": "Double the verified spherical-coordinate integral. This reuses a coordinate-side calculation, not a general change-of-variables theorem.",
+    "code": "example : (2 : ℝ) * (∫ t : ℝ in 0..(2*Real.pi), ∫ p : ℝ in 0..Real.pi, ∫ r : ℝ in 0..1, r^2*Real.sin p) = 8*Real.pi/3 := by\n  rw [exercise_CoordinatePortal_4.2]\n  ring"
+  },
+  "exercise_CoordinatePortal_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * (planarJacobian (fun u x => (2 : ℝ) * u) (fun x v => -3 * v) 0 0).det = (2 : ℝ) * -6 := by\n  have established := exercise_CoordinatePortal_5.left\n  rw [established]"
+  },
+  "exercise_CoordinatePortal_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in -3..0, (1 : ℝ) = (2 : ℝ) * ∫ (u : ℝ) (v : ℝ) in 0..1, |(!![2, 0; 0, -3] : Matrix (Fin 2) (Fin 2) ℝ).det| := by\n  have established := exercise_CoordinatePortal_6\n  rw [established]"
+  },
+  "exercise_CurveNavigator_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • (fun t : ℝ => (![t, t ^ 2, 0] : Vec)) 0 = (2 : ℝ) • (![0, 0, 0] : Vec) := by\n  have established := exercise_CurveNavigator_1.left\n  rw [established]"
+  },
+  "exercise_CurveNavigator_2": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (t : ℝ), (2 : ℝ) • velocity (fun s => (![s, s ^ 2, 0] : Vec)) t = (2 : ℝ) • (![1, (2 : ℝ) * t, 0] : Vec) := by\n  intro t\n  have established := exercise_CurveNavigator_2 t\n  rw [established]"
+  },
+  "exercise_CurveNavigator_3": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • velocity (fun s => (![s, s ^ 2, 0] : Vec)) 0 = (2 : ℝ) • (![1, 0, 0] : Vec) := by\n  have established := exercise_CurveNavigator_3.left\n  rw [established]"
+  },
+  "exercise_CurveNavigator_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * arcLength (fun t : ℝ => (![t, 0, 0] : Vec)) 0 3 = (2 : ℝ) * 3 := by\n  have established := exercise_CurveNavigator_4\n  rw [established]"
+  },
+  "exercise_CurveNavigator_5": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • unitTangent circle 0 = (2 : ℝ) • (![0, 1, 0] : Vec) := by\n  have established := exercise_CurveNavigator_5.left\n  rw [established]"
+  },
+  "exercise_CurveNavigator_6": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example (t : ℝ) : 2 * lengthSq (velocity helix t) = 4 := by\n  rw [(exercise_CurveNavigator_6 t).2.2]\n  norm_num"
+  },
+  "exercise_DoubleIntegralValley_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..3, (1 : ℝ) = (2 : ℝ) * 6 := by\n  have established := exercise_DoubleIntegralValley_1\n  rw [established]"
+  },
+  "exercise_DoubleIntegralValley_2": {
+    "explanation": "Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.",
+    "code": "example : ∀ (x y : ℝ), 0 ≤ y ∧ y ≤ x ∧ x ≤ 1 ↔ 0 ≤ x ∧ x ≤ 1 ∧ 0 ≤ y ∧ y ≤ x := by\n  intro x y\n  have established := exercise_DoubleIntegralValley_2 x y\n  exact established.symm"
+  },
+  "exercise_DoubleIntegralValley_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..1, ∫ (y : ℝ) in 0..x, (1 : ℝ) = (2 : ℝ) * ∫ (y : ℝ) in 0..1, ∫ (x : ℝ) in y..1, (1 : ℝ) := by\n  have established := exercise_DoubleIntegralValley_3\n  rw [established]"
+  },
+  "exercise_DoubleIntegralValley_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..3, (1 : ℝ) = (2 : ℝ) * 6 := by\n  have established := exercise_DoubleIntegralValley_4.left\n  rw [established]"
+  },
+  "exercise_DoubleIntegralValley_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..1, (1 : ℝ) = (2 : ℝ) * 2 := by\n  have established := exercise_DoubleIntegralValley_5.left\n  rw [established]"
+  },
+  "exercise_DoubleIntegralValley_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..1, ∫ (y : ℝ) in 0..x, (1 : ℝ) = (2 : ℝ) * (1 / 2) := by\n  have established := exercise_DoubleIntegralValley_6.left\n  rw [established]"
+  },
+  "exercise_GaussCitadel_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (u v : ℝ), (2 : ℝ) • surfaceNormal (fun s t => (![1, s, t] : Vec)) u v = (2 : ℝ) • (![1, 0, 0] : Vec) := by\n  intro u v\n  have established := (exercise_GaussCitadel_1 u v).left\n  rw [established]"
+  },
+  "exercise_GaussCitadel_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1, divergence radial (![x, y, z] : Vec) = (2 : ℝ) * 3 := by\n  have established := exercise_GaussCitadel_2\n  rw [established]"
+  },
+  "exercise_GaussCitadel_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * cubeFlux radial = (2 : ℝ) * 3 := by\n  have established := exercise_GaussCitadel_3\n  rw [established]"
+  },
+  "exercise_GaussCitadel_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * cubeFlux fun p => (![(2 : ℝ) * p 0, 3 * p 1, 4 * p 2] : Vec)) =\n  2 *\n    ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1, divergence (fun p => (![(2 : ℝ) * p 0, 3 * p 1, 4 * p 2] : Vec)) (![x, y, z] : Vec) := by\n  have established := exercise_GaussCitadel_4\n  rw [established]"
+  },
+  "exercise_GaussCitadel_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (top : ℝ), (cubeFlux fun p => (![(2 : ℝ) * p 0, 3 * p 1, 4 * p 2] : Vec)) = 5 + top → (2 : ℝ) * top = (2 : ℝ) * 4 := by\n  intro top h\n  have established := exercise_GaussCitadel_5 top h\n  rw [established]"
+  },
+  "exercise_GaussCitadel_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareCirculation fun p => (![0, (2 : ℝ) * p 0, 0] : Vec)) =\n  (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, (2 : ℝ) * p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 := by\n  have established := exercise_GaussCitadel_6.left\n  rw [established]"
+  },
+  "exercise_GradientMountain_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) • gradient (fun q => q 0) p = (2 : ℝ) • (![1, 0, 0] : Vec) := by\n  intro p\n  have established := exercise_GradientMountain_1 p\n  rw [established]"
+  },
+  "exercise_GradientMountain_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (p u : Vec), lengthSq u = 1 → (2 : ℝ) * directional (fun q => q 0) p u = (2 : ℝ) * u 0 := by\n  intro p u hu\n  have established := exercise_GradientMountain_2 p u hu\n  rw [established]"
+  },
+  "exercise_GradientMountain_3": {
+    "explanation": "Evaluate the established derivative formula at parameter two, simplifying its numerical value.",
+    "code": "example : HasDerivAt (fun s : ℝ => (s^2)^2) 32 2 := by\n  have h := exercise_GradientMountain_3 2\n  norm_num at h\n  exact h"
+  },
+  "exercise_GradientMountain_4": {
+    "explanation": "Use the completed Jacobian formula to read an off-diagonal entry. Matrix.one_apply evaluates an entry of the identity matrix.",
+    "code": "example (p : Vec) : (jacobian (fun q => ![q 0,q 1,q 2]) p) 0 2 = 0 := by\n  rw [exercise_GradientMountain_4 p]\n  norm_num [Matrix.one_apply]"
+  },
+  "exercise_GradientMountain_5": {
+    "explanation": "Double an established bound. The positive multiplier preserves the inequality; `linarith` combines the supplied linear facts.",
+    "code": "example : ∀ (u : Vec), lengthSq u = 1 → (2 : ℝ) * dot (![3, 4, 0] : Vec) u ≤ (2 : ℝ) * 5 := by\n  intro u hu\n  have established := exercise_GradientMountain_5 u hu\n  linarith [established]"
+  },
+  "exercise_GradientMountain_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (p v : Vec), p 0 = 2 → v 0 = 0 → (2 : ℝ) * (p + v) 0 = (2 : ℝ) * 2 := by\n  intro p v hp hv\n  have established := (exercise_GradientMountain_6 p v hp hv).left\n  rw [established]"
+  },
+  "exercise_GreensGarden_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • (![1, 0, 0] : Vec) = (2 : ℝ) • (fun t : ℝ => (![1, t, 0] : Vec)) 0 := by\n  have established := exercise_GreensGarden_1.left\n  rw [established]"
+  },
+  "exercise_GreensGarden_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareCirculation fun p => (![0, p 0, 0] : Vec)) = (2 : ℝ) * 1 := by\n  have established := exercise_GreensGarden_2\n  rw [established]"
+  },
+  "exercise_GreensGarden_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 = (2 : ℝ) * 1 := by\n  have established := exercise_GreensGarden_3\n  rw [established]"
+  },
+  "exercise_GreensGarden_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareCirculation fun p => (![0, 3 * p 0, 0] : Vec)) =\n  (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, 3 * p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 := by\n  have established := exercise_GreensGarden_4\n  rw [established]"
+  },
+  "exercise_GreensGarden_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareOutwardFlux fun p => (![p 0, p 1, 0] : Vec)) =\n  (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, divergence (fun p => (![p 0, p 1, 0] : Vec)) (![x, y, 0] : Vec) := by\n  have established := exercise_GreensGarden_5\n  rw [established]"
+  },
+  "exercise_GreensGarden_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * squareCirculation rotation = (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, (1 : ℝ) := by\n  have established := exercise_GreensGarden_6.left\n  rw [established]"
+  },
+  "exercise_MultivariableLandscapes_1": {
+    "explanation": "Double an established bound. The positive multiplier preserves the inequality; `linarith` combines the supplied linear facts.",
+    "code": "example : (2 : ℝ) * (1 ^ 2 + 0 ^ 2) ≤ (2 : ℝ) * 4 := by\n  have established := exercise_MultivariableLandscapes_1.left\n  linarith [established]"
+  },
+  "exercise_MultivariableLandscapes_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * squarePotential (![1, 2, 2] : Vec) = (2 : ℝ) * 9 := by\n  have established := exercise_MultivariableLandscapes_2\n  rw [established]"
+  },
+  "exercise_MultivariableLandscapes_3": {
+    "explanation": "Use the completed global-continuity result at a new point. The .continuousAt lemma passes from global continuity to continuity at one point.",
+    "code": "example : ContinuousAt squarePotential (![2, 0, 1] : Vec) := by\n  exact exercise_MultivariableLandscapes_3.continuousAt"
+  },
+  "exercise_MultivariableLandscapes_4": {
+    "explanation": "Use uniqueness of limits to rule out any different proposed value. tendsto_nhds_unique compares two limits of the same function along the same nontrivial filter.",
+    "code": "example (L : ℝ) (h : LimitAtOrigin squarePotential L) : L = 0 := by\n  exact tendsto_nhds_unique h exercise_MultivariableLandscapes_4"
+  },
+  "exercise_MultivariableLandscapes_5": {
+    "explanation": "The completed nonexistence result rules out the specific proposed limit three.",
+    "code": "example : ¬ PuncturedLimit pathRatio 3 := by\n  intro h\n  apply exercise_MultivariableLandscapes_5\n  use 3"
+  },
+  "exercise_MultivariableLandscapes_6": {
+    "explanation": "The completed extension theorem gives continuity at a nonzero point too.",
+    "code": "example : ContinuousAt (fun p : Vec => if p = 0 then 0 else squarePotential p) (![2, 0, 1] : Vec) := by\n  exact exercise_MultivariableLandscapes_6.continuousAt"
+  },
+  "exercise_OptimizationArena_1": {
+    "explanation": "Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.",
+    "code": "example : ∀ (x y : ℝ),\n  x = 0 ∧ y = 0 ↔\n    partialX (fun a b => a ^ 2 + b ^ 2) x y = 0 ∧ partialY (fun a b => a ^ 2 + b ^ 2) x y = 0 := by\n  intro x y\n  have established := exercise_OptimizationArena_1 x y\n  exact established.symm"
+  },
+  "exercise_OptimizationArena_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * partialX (fun x y => partialX (fun a b => a ^ 2 + b ^ 2) x y) 0 0 = (2 : ℝ) * 2 := by\n  have established := exercise_OptimizationArena_2.left.left\n  rw [established]"
+  },
+  "exercise_OptimizationArena_3": {
+    "explanation": "Double an established bound. The positive multiplier preserves the inequality; `linarith` combines the supplied linear facts.",
+    "code": "example : ∀ (t : ℝ), t ≠ 0 → (2 : ℝ) * 0 < (2 : ℝ) * (t ^ 2 - 0 ^ 2) := by\n  intro t ht\n  have established := (exercise_OptimizationArena_3 t ht).left\n  linarith [established]"
+  },
+  "exercise_OptimizationArena_4": {
+    "explanation": "Double an established bound. The positive multiplier preserves the inequality; `linarith` combines the supplied linear facts.",
+    "code": "example : ∀ (x y : ℝ), x ^ 2 + y ^ 2 ≤ 1 → (2 : ℝ) * 0 ≤ (2 : ℝ) * (x ^ 2 + y ^ 2) := by\n  intro x y h\n  have established := (exercise_OptimizationArena_4 x y h).left\n  linarith [established]"
+  },
+  "exercise_OptimizationArena_5": {
+    "explanation": "Both multiplier-system candidates have equal coordinates. The .1 and .2.1 projections extract the coordinate equalities from each conjunction.",
+    "code": "example (x y l : ℝ) (hx : 1=l*(2*x)) (hy : 1=l*(2*y)) (hc : x^2+y^2=2) : x = y := by\n  apply Or.elim (exercise_OptimizationArena_5 x y l hx hy hc)\n  · intro h\n    rw [h.1, h.2.1]\n  · intro h\n    rw [h.1, h.2.1]"
+  },
+  "exercise_OptimizationArena_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ((1 : ℝ)^2 + 1^2) = 4 := by\n  rw [exercise_OptimizationArena_6.1.1]\n  norm_num"
+  },
+  "exercise_PartialDerivativeLab_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (x y : ℝ), (2 : ℝ) * partialX (fun s t => s ^ 2 + t ^ 2) x y = (2 : ℝ) * ((2 : ℝ) * x) := by\n  intro x y\n  have established := exercise_PartialDerivativeLab_1 x y\n  rw [established]"
+  },
+  "exercise_PartialDerivativeLab_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (x y : ℝ), (2 : ℝ) * partialY (fun s t => s ^ 2 + t ^ 2) x y = (2 : ℝ) * (y + y) := by\n  intro x y\n  have established := exercise_PartialDerivativeLab_2 x y\n  rw [established]"
+  },
+  "exercise_PartialDerivativeLab_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (x y : ℝ), (2 : ℝ) * partialX (fun s t => partialX (fun a b => a ^ 2 + b ^ 2) s t) x y = (2 : ℝ) * 2 := by\n  intro x y\n  have established := (exercise_PartialDerivativeLab_3 x y).left\n  rw [established]"
+  },
+  "exercise_PartialDerivativeLab_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (x y : ℝ),\n  (2 : ℝ) * partialY (fun s t => partialX (fun a b => a * b) s t) x y =\n    (2 : ℝ) * partialX (fun s t => partialY (fun a b => a * b) s t) x y := by\n  intro x y\n  have established := exercise_PartialDerivativeLab_4 x y\n  rw [established]"
+  },
+  "exercise_PartialDerivativeLab_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (h k : ℝ), (2 : ℝ) * ((1 + h) ^ 2 + (1 + k) ^ 2 - (2 + (2 : ℝ) * h + (2 : ℝ) * k)) = (2 : ℝ) * (h ^ 2 + k ^ 2) := by\n  intro h k\n  have established := exercise_PartialDerivativeLab_5 h k\n  rw [established]"
+  },
+  "exercise_PartialDerivativeLab_6": {
+    "explanation": "Use the completed tangent-plane criterion in the opposite direction: a point with first coordinate one belongs to the tangent plane.",
+    "code": "example (q : Vec) (h : q 0 = 1) : onPlane ![2,0,0] ![1,0,0] q := by\n  apply (exercise_PartialDerivativeLab_6 q).2.2.2.mpr\n  exact h"
+  },
+  "exercise_PathIntegralTrails_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (A B : Vec), (2 : ℝ) • (fun t : ℝ => (1 - t) • A + t • B) 0 = (2 : ℝ) • A := by\n  intro A B\n  have established := (exercise_PathIntegralTrails_1 A B).left\n  rw [established]"
+  },
+  "exercise_PathIntegralTrails_2": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * scalarLineIntegral (fun p => p 0) (fun t : ℝ => (![t, 0, 0] : Vec)) 0 2 = (2 : ℝ) * 2 := by\n  have established := exercise_PathIntegralTrails_2\n  rw [established]"
+  },
+  "exercise_PathIntegralTrails_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * work (fun p => (![p 0, 0, 0] : Vec)) (fun t : ℝ => (![t, 0, 0] : Vec)) 0 2 = (2 : ℝ) * 2 := by\n  have established := exercise_PathIntegralTrails_3\n  rw [established]"
+  },
+  "exercise_PathIntegralTrails_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (F : VectorCalculus.Field) (c : ℝ → Vec) (a b : ℝ), (2 : ℝ) * work F c b a = (2 : ℝ) * -work F c a b := by\n  intro F c a b\n  have established := exercise_PathIntegralTrails_4 F c a b\n  rw [established]"
+  },
+  "exercise_PathIntegralTrails_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (F : VectorCalculus.Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ),\n  RegularPath c a b →\n    PotentialAlong F f c a b → WorkIntegrable F c a b → (2 : ℝ) * work F c a b = (2 : ℝ) * (f (c b) - f (c a)) := by\n  intro F f c a b hcurve hc hi\n  have established := exercise_PathIntegralTrails_5 F f c a b hcurve hc hi\n  rw [established]"
+  },
+  "exercise_PathIntegralTrails_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (c d : ℝ → Vec),\n  c 0 = d 0 →\n    c 1 = d 1 →\n      RegularPath c 0 1 →\n        RegularPath d 0 1 →\n          IntervalIntegrable (fun t : ℝ => deriv (fun s => c s 0) t) volume 0 1 →\n            IntervalIntegrable (fun t : ℝ => deriv (fun s => d s 0) t) volume 0 1 →\n              (2 : ℝ) * work (fun x => (![1, 0, 0] : Vec)) c 0 1 = (2 : ℝ) * (c 1 0 - c 0 0) := by\n  intro c d h0 h1 hc hd hic hid\n  have established := (exercise_PathIntegralTrails_6 c d h0 h1 hc hd hic hid).left\n  rw [established]"
+  },
+  "exercise_SpaceExplorer_1": {
+    "explanation": "A known point on a line can witness that the line is nonempty.",
+    "code": "example : ∃ q : Vec, onLine ![1,0,2] ![1,2,-1] q := by\n  use ![3,4,0]\n  exact exercise_SpaceExplorer_1"
+  },
+  "exercise_SpaceExplorer_2": {
+    "explanation": "Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.",
+    "code": "example : ∀ (q : Vec), q 2 = 3 ↔ onPlane (![0, 0, 2] : Vec) (![0, 0, 3] : Vec) q := by\n  intro q\n  have established := exercise_SpaceExplorer_2 q\n  exact established.symm"
+  },
+  "exercise_SpaceExplorer_3": {
+    "explanation": "Reuse a verified intersection point to prove existence of a line-plane intersection.",
+    "code": "example : ∃ q : Vec, onLine ![0,0,0] ![0,0,1] q ∧ onPlane ![0,0,1] ![0,0,3] q := by\n  use ![0,0,3]\n  exact exercise_SpaceExplorer_3"
+  },
+  "exercise_SpaceExplorer_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * planeDistance (![0, 0, 1] : Vec) (![0, 0, 1] : Vec) (![2, -3, 4] : Vec) = (2 : ℝ) * 3 := by\n  have established := exercise_SpaceExplorer_4\n  rw [established]"
+  },
+  "exercise_SpaceExplorer_5": {
+    "explanation": "Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.",
+    "code": "example : ∀ (x y z : ℝ), z = x ^ 2 ↔ z = x ^ 2 + 0 ^ 2 := by\n  intro x y z\n  have established := (exercise_SpaceExplorer_5 x y z).left\n  exact established.symm"
+  },
+  "exercise_SpaceExplorer_6": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • cross ((![1, 0, 0] : Vec) - (![0, 0, 0] : Vec)) ((![0, 1, 0] : Vec) - (![0, 0, 0] : Vec)) = (2 : ℝ) • (![0, 0, 1] : Vec) := by\n  have established := exercise_SpaceExplorer_6.left\n  rw [established]"
+  },
+  "exercise_StokesSummit_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (t : ℝ), (2 : ℝ) • patch t 0 = (2 : ℝ) • (![t, 0, 0] : Vec) := by\n  intro t\n  have established := (exercise_StokesSummit_1 t).left\n  rw [established]"
+  },
+  "exercise_StokesSummit_2": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (t : ℝ), (2 : ℝ) • surfaceNormal patch 0 0 = (2 : ℝ) • (![0, 0, 1] : Vec) := by\n  intro t\n  have established := (exercise_StokesSummit_2 t).left\n  rw [established]"
+  },
+  "exercise_StokesSummit_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (u v : ℝ), (2 : ℝ) * dot (curl (fun p => (![0, p 0, 0] : Vec)) (patch u v)) (surfaceNormal patch u v) = (2 : ℝ) * 1 := by\n  intro u v\n  have established := exercise_StokesSummit_3 u v\n  rw [established]"
+  },
+  "exercise_StokesSummit_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareCirculation fun p => (![0, (2 : ℝ) * p 0, 0] : Vec)) = (2 : ℝ) * 2 := by\n  have established := exercise_StokesSummit_4\n  rw [established]"
+  },
+  "exercise_StokesSummit_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ((2 : ℝ) * squareCirculation fun p => (![0, (2 : ℝ) * p 0, 0] : Vec)) =\n  (2 : ℝ) * surfaceFlux (curl fun p => (![0, (2 : ℝ) * p 0, 0] : Vec)) patch 0 1 0 1 := by\n  have established := exercise_StokesSummit_5\n  rw [established]"
+  },
+  "exercise_StokesSummit_6": {
+    "explanation": "Scale the already verified equal-flux result by two. The .2 projection selects the flux equality rather than the boundary statement.",
+    "code": "example : (2 : ℝ) * surfaceFlux (curl (fun p => ![0,p 0,0])) liftedPatch 0 1 0 1 =\n    (2 : ℝ) * surfaceFlux (curl (fun p => ![0,p 0,0])) patch 0 1 0 1 := by\n  rw [exercise_StokesSummit_6.2]"
+  },
+  "exercise_SurfaceExpedition_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (u v : ℝ), (2 : ℝ) * patch u v 2 = (2 : ℝ) * 0 := by\n  intro u v\n  have established := (exercise_SurfaceExpedition_1 u v).left\n  rw [established]"
+  },
+  "exercise_SurfaceExpedition_2": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (u v : ℝ), (2 : ℝ) • velocity (fun t : ℝ => patch t v) u = (2 : ℝ) • (![1, 0, 0] : Vec) := by\n  intro u v\n  have established := (exercise_SurfaceExpedition_2 u v).left\n  rw [established]"
+  },
+  "exercise_SurfaceExpedition_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (u v : ℝ), (2 : ℝ) * length (surfaceNormal patch u v) = (2 : ℝ) * 1 := by\n  intro u v\n  have established := exercise_SurfaceExpedition_3 u v\n  rw [established]"
+  },
+  "exercise_SurfaceExpedition_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * surfaceIntegral (fun p => p 0) patch 0 1 0 1 = (2 : ℝ) * (1 / 2) := by\n  have established := exercise_SurfaceExpedition_4\n  rw [established]"
+  },
+  "exercise_SurfaceExpedition_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * surfaceFlux (fun x => (![0, 0, 1] : Vec)) patch 0 1 0 1 = (2 : ℝ) * 1 := by\n  have established := exercise_SurfaceExpedition_5\n  rw [established]"
+  },
+  "exercise_SurfaceExpedition_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * surfaceFlux (fun x => (![0, 0, 1] : Vec)) (fun u v => (![v, u, 0] : Vec)) 0 1 0 1 =\n  (2 : ℝ) * -surfaceFlux (fun x => (![0, 0, 1] : Vec)) patch 0 1 0 1 := by\n  have established := exercise_SurfaceExpedition_6.left\n  rw [established]"
+  },
+  "exercise_TripleIntegralCaverns_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..3, ∫ (z : ℝ) in 0..4, (1 : ℝ) = (2 : ℝ) * 24 := by\n  have established := exercise_TripleIntegralCaverns_1\n  rw [established]"
+  },
+  "exercise_TripleIntegralCaverns_2": {
+    "explanation": "Reverse an equivalence with `.symm`. This is a lemma applied to an existing proof, rather than an additional tactic.",
+    "code": "example : ∀ (x y z : ℝ), 0 ≤ z ∧ z ≤ x ∧ x ≤ 1 ∧ 0 ≤ y ∧ y ≤ 1 ↔ 0 ≤ x ∧ x ≤ 1 ∧ 0 ≤ y ∧ y ≤ 1 ∧ 0 ≤ z ∧ z ≤ x := by\n  intro x y z\n  have established := exercise_TripleIntegralCaverns_2 x y z\n  exact established.symm"
+  },
+  "exercise_TripleIntegralCaverns_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, ∫ (z : ℝ) in 0..x, (1 : ℝ) = (2 : ℝ) * (1 / 2) := by\n  have established := exercise_TripleIntegralCaverns_3\n  rw [established]"
+  },
+  "exercise_TripleIntegralCaverns_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1, x ^ 2 = (2 : ℝ) * (1 / 3) := by\n  have established := exercise_TripleIntegralCaverns_4\n  rw [established]"
+  },
+  "exercise_TripleIntegralCaverns_5": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1, x * x ^ 2 = (2 : ℝ) * (1 / 4) := by\n  have established := exercise_TripleIntegralCaverns_5\n  rw [established]"
+  },
+  "exercise_TripleIntegralCaverns_6": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1, (1 : ℝ) = (2 : ℝ) * 1 := by\n  have established := exercise_TripleIntegralCaverns_6.left\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_1": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • radial (![2, 0, 0] : Vec) = (2 : ℝ) • (![2, 0, 0] : Vec) := by\n  have established := exercise_VectorFieldObservatory_1.left\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_2": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) • gradient (fun q => q 0 * q 1) p = (2 : ℝ) • (![p 1, p 0, 0] : Vec) := by\n  intro p\n  have established := exercise_VectorFieldObservatory_2 p\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) * divergence radial p = (2 : ℝ) * 3 := by\n  intro p\n  have established := exercise_VectorFieldObservatory_3 p\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_4": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) • curl rotation p = (2 : ℝ) • (![0, 0, 1] : Vec) := by\n  intro p\n  have established := exercise_VectorFieldObservatory_4 p\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_5": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) • curl (gradient fun q => q 0) p = (2 : ℝ) • 0 := by\n  intro p\n  have established := (exercise_VectorFieldObservatory_5 p).left\n  rw [established]"
+  },
+  "exercise_VectorFieldObservatory_6": {
+    "explanation": "Forget the normalization at the origin while retaining the existence of a potential. Exists.elim introduces the established witness and its properties.",
+    "code": "example : ∃ f : ScalarField, ∀ p, gradient f p = (![p 1,p 0,0] : Vec) := by\n  apply Exists.elim exercise_VectorFieldObservatory_6\n  intro f hf\n  use f\n  exact hf.2"
+  },
+  "exercise_Vectors_1": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * (![2, -1, 3] : Vec) 1 = (2 : ℝ) * -1 := by\n  have established := exercise_Vectors_1\n  rw [established]"
+  },
+  "exercise_Vectors_2": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • ((![1, 2, 0] : Vec) + (2 : ℝ) • (![0, -1, 3] : Vec)) = (2 : ℝ) • (![1, 0, 6] : Vec) := by\n  have established := exercise_Vectors_2\n  rw [established]"
+  },
+  "exercise_Vectors_3": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * dot (![1, 2, -1] : Vec) (![3, 0, 4] : Vec) = (2 : ℝ) * -1 := by\n  have established := exercise_Vectors_3\n  rw [established]"
+  },
+  "exercise_Vectors_4": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : (2 : ℝ) * dot (![1, 1, 0] : Vec) (![1, -1, 0] : Vec) = (2 : ℝ) * 0 := by\n  have established := exercise_Vectors_4.left\n  rw [established]"
+  },
+  "exercise_Vectors_5": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • cross (![1, 0, 0] : Vec) (![0, 1, 0] : Vec) = (2 : ℝ) • (![0, 0, 1] : Vec) := by\n  have established := exercise_Vectors_5.left\n  rw [established]"
+  },
+  "exercise_Vectors_6": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : (2 : ℝ) • projection (![3, 1, 2] : Vec) (![1, 1, 0] : Vec) = (2 : ℝ) • (![2, 2, 0] : Vec) := by\n  have established := exercise_Vectors_6.left\n  rw [established]"
+  },
+  "hasDerivAt_pow": {
+    "explanation": "The power rule supplies differentiability and its value together. norm_num at h simplifies the proved statement.",
+    "code": "example (t : ℝ) : HasDerivAt (fun s : ℝ => s^3) (3*t^2) t := by\n  have h := hasDerivAt_pow 3 t\n  norm_num at h\n  exact h"
+  },
+  "integral_id": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {a b : ℝ}, (2 : ℝ) * ∫ (x : ℝ) in a..b, x = (2 : ℝ) * ((b ^ 2 - a ^ 2) / 2) := by\n  intro a b\n  have established := integral_id (a := a) (b := b)\n  rw [established]"
+  },
+  "integral_pow": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {a b : ℝ} (n : ℕ), (2 : ℝ) * ∫ (x : ℝ) in a..b, x ^ n = (2 : ℝ) * ((b ^ (n + 1) - a ^ (n + 1)) / (↑n + 1)) := by\n  intro a b n\n  have established := integral_pow (a := a) (b := b) n\n  rw [established]"
+  },
+  "integral_sin": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {a b : ℝ}, (2 : ℝ) * ∫ (x : ℝ) in a..b, Real.sin x = (2 : ℝ) * (Real.cos a - Real.cos b) := by\n  intro a b\n  have established := integral_sin (a := a) (b := b)\n  rw [established]"
+  },
+  "intervalIntegral.integral_const_mul": {
+    "explanation": "Pull a fixed real coefficient outside the integral on the displayed interval.",
+    "code": "example (f : ℝ → ℝ) : (∫ t : ℝ in 0..4, 3*f t) = 3*(∫ t : ℝ in 0..4, f t) := by\n  rw [intervalIntegral.integral_const_mul]"
+  },
+  "intervalIntegral.integral_div": {
+    "explanation": "A constant denominator can be moved outside an interval integral.",
+    "code": "example (f : ℝ → ℝ) : (∫ t : ℝ in 0..4, f t/3) = (∫ t : ℝ in 0..4, f t)/3 := by\n  rw [intervalIntegral.integral_div]"
+  },
+  "intervalIntegral.integral_mul_const": {
+    "explanation": "A fixed right-hand coefficient can also be taken outside.",
+    "code": "example (f : ℝ → ℝ) : (∫ t : ℝ in 0..4, f t*3) = (∫ t : ℝ in 0..4, f t)*3 := by\n  rw [intervalIntegral.integral_mul_const]"
+  },
+  "intervalIntegral.integral_sub": {
+    "explanation": "Both integrability assumptions are needed to split a difference.",
+    "code": "example (f g : ℝ → ℝ) (hf : IntervalIntegrable f volume 0 4) (hg : IntervalIntegrable g volume 0 4) :\n    (∫ t : ℝ in 0..4, f t-g t) = (∫ t : ℝ in 0..4, f t) - (∫ t : ℝ in 0..4, g t) := by\n  rw [intervalIntegral.integral_sub hf hg]"
+  },
+  "le_of_sq_le_sq": {
+    "explanation": "A nonnegative upper bound is essential when passing from a bound on squares to a bound on the value.",
+    "code": "example (x : ℝ) (h : x^2 ≤ (7 : ℝ)^2) : x ≤ 7 := by\n  apply le_of_sq_le_sq h\n  norm_num"
+  },
+  "le_trans": {
+    "explanation": "Use an intermediate upper bound, then compare two numerical bounds.",
+    "code": "example (x : ℝ) (h : x ≤ 3) : x ≤ 8 := by\n  apply le_trans h\n  norm_num"
+  },
+  "Matrix.det_fin_two": {
+    "explanation": "Expand a new two-by-two determinant before doing arithmetic.",
+    "code": "example : Matrix.det ((!![(3 : ℝ), 1; 0, 2] : Matrix (Fin 2) (Fin 2) ℝ)) = 6 := by\n  rw [Matrix.det_fin_two]\n  norm_num"
+  },
+  "Matrix.one_apply": {
+    "explanation": "The identity matrix has a zero in an off-diagonal position.",
+    "code": "example : (1 : Matrix (Fin 3) (Fin 3) ℝ) 0 2 = 0 := by\n  rw [Matrix.one_apply]\n  norm_num"
+  },
+  "mul_left_cancel₀": {
+    "explanation": "The common factor must be nonzero before it can be cancelled.",
+    "code": "example (x y : ℝ) (h : 3*x = 3*y) : x = y := by\n  apply mul_left_cancel₀ (by norm_num : (3 : ℝ) ≠ 0)\n  exact h"
+  },
+  "mul_nonneg": {
+    "explanation": "A nonnegative variable times a positive numerical constant is nonnegative.",
+    "code": "example (x : ℝ) (hx : 0 ≤ x) : 0 ≤ x * 5 := by\n  apply mul_nonneg hx\n  norm_num"
+  },
+  "not_exists": {
+    "explanation": "Reverse the standard equivalence to turn failure of every proposed witness into nonexistence.",
+    "code": "example (P : ℝ → Prop) : (∀ t, ¬ P t) ↔ ¬ ∃ t, P t := by\n  exact (not_exists (p := P)).symm"
+  },
+  "one_mul": {
+    "explanation": "Remove a unit coefficient in a new scalar expression.",
+    "code": "example (x : ℝ) : 1 * (x + 4) = x + 4 := by\n  exact one_mul (x + 4)"
+  },
+  "Or.elim": {
+    "explanation": "Handle both candidates to obtain a bound that holds in either case.",
+    "code": "example (x : ℝ) (h : x = 2 ∨ x = 5) : 2 ≤ x := by\n  apply Or.elim h\n  · intro hx\n    rw [hx]\n  · intro hx\n    rw [hx]\n    norm_num"
+  },
+  "Real.sin_nonneg_of_mem_Icc": {
+    "explanation": "Double an established bound. The positive multiplier preserves the inequality; `linarith` combines the supplied linear facts.",
+    "code": "example : ∀ {x : ℝ}, x ∈ Set.Icc 0 Real.pi → (2 : ℝ) * 0 ≤ (2 : ℝ) * Real.sin x := by\n  intro x hx\n  have established := Real.sin_nonneg_of_mem_Icc hx\n  linarith [established]"
+  },
+  "Real.sin_sq_add_cos_sq": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (x : ℝ), (2 : ℝ) * (Real.sin x ^ 2 + Real.cos x ^ 2) = (2 : ℝ) * 1 := by\n  intro x\n  have established := Real.sin_sq_add_cos_sq x\n  rw [established]"
+  },
+  "sq_nonneg": {
+    "explanation": "Apply nonnegativity to a shifted coordinate, rather than only to x itself.",
+    "code": "example (x : ℝ) : 0 ≤ (x - 3)^2 := by\n  exact sq_nonneg (x - 3)"
+  },
+  "sq_pos_of_ne_zero": {
+    "explanation": "First establish that the shifted value is nonzero, then apply strict positivity of a square.",
+    "code": "example (x : ℝ) (h : x ≠ 2) : 0 < (x - 2)^2 := by\n  apply sq_pos_of_ne_zero\n  intro hz\n  apply h\n  linarith"
+  },
+  "VectorCalculus.ascent_squares": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (u : Vec),\n  (2 : ℝ) * ((3 * u 0 + 4 * u 1) ^ 2 + (4 * u 0 - 3 * u 1) ^ 2 + 25 * u 2 ^ 2) = (2 : ℝ) * (25 * lengthSq u) := by\n  intro u\n  have established := ascent_squares u\n  rw [established]"
+  },
+  "VectorCalculus.constant_integral": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (a b k : ℝ), (2 : ℝ) * ∫ (x : ℝ) in a..b, k = (2 : ℝ) * ((b - a) * k) := by\n  intro a b k\n  have established := constant_integral a b k\n  rw [established]"
+  },
+  "VectorCalculus.continuous_fill_origin": {
+    "explanation": "Keep the value-at-zero hypothesis explicit before specializing the continuous extension to a point.",
+    "code": "example (f : ScalarField) (hc : Continuous f) (h0 : f 0 = 0) :\n    ContinuousAt (fun p : Vec => if p = 0 then 0 else f p) (![3, 1, 0] : Vec) := by\n  exact (continuous_fill_origin hc h0).continuousAt"
+  },
+  "VectorCalculus.continuous_sum_squares": {
+    "explanation": "Joint continuity of three real fields implies continuity of their sum of squares at the displayed spatial point. The .continuousAt lemma specializes global continuity to a point.",
+    "code": "example (f g h : ScalarField) (hf : Continuous f) (hg : Continuous g) (hh : Continuous h) :\n    ContinuousAt (fun p => f p^2 + g p^2 + h p^2) (![2, 3, 0] : Vec) := by\n  exact (continuous_sum_squares hf hg hh).continuousAt"
+  },
+  "VectorCalculus.curl_congr": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ {F G : VectorCalculus.Field}, (∀ (p : Vec), F p = G p) → ∀ (p : Vec), (2 : ℝ) • curl F p = (2 : ℝ) • curl G p := by\n  intro F G h p\n  have established := curl_congr h p\n  rw [established]"
+  },
+  "VectorCalculus.derivative_chain": {
+    "explanation": "Compose a cube with a square. The two power-rule facts provide the required differentiability assumptions.",
+    "code": "example (t : ℝ) : HasDerivAt (fun s : ℝ => (s^2)^3) ((3*(t^2)^2)*(2*t)) t := by\n  apply derivative_chain (f := fun s : ℝ => s^3) (g := fun s : ℝ => s^2) (a := 3*(t^2)^2) (b := 2*t)\n  · have h := hasDerivAt_pow 3 (t^2)\n    norm_num at h\n    exact h\n  · have h := hasDerivAt_pow 2 t\n    norm_num at h\n    exact h"
+  },
+  "VectorCalculus.derivative_value": {
+    "explanation": "Change the displayed derivative value only after proving the two expressions are equal.",
+    "code": "example (f : ℝ → ℝ) (a t : ℝ) (h : HasDerivAt f a t) : HasDerivAt f (a+0) t := by\n  apply derivative_value h\n  ring"
+  },
+  "VectorCalculus.directional_coordinate": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (j : Fin 3) (p u : Vec), (2 : ℝ) * directional (fun q => q j) p u = (2 : ℝ) * u j := by\n  intro j p u\n  have established := directional_coordinate j p u\n  rw [established]"
+  },
+  "VectorCalculus.divergence_congr": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {F G : VectorCalculus.Field},\n  (∀ (p : Vec), F p = G p) → ∀ (p : Vec), (2 : ℝ) * divergence F p = (2 : ℝ) * divergence G p := by\n  intro F G h p\n  have established := divergence_congr h p\n  rw [established]"
+  },
+  "VectorCalculus.divergence_diagonal": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (a b c : ℝ) (p : Vec), (2 : ℝ) * divergence (fun q => (![a * q 0, b * q 1, c * q 2] : Vec)) p = (2 : ℝ) * (a + b + c) := by\n  intro a b c p\n  have established := divergence_diagonal a b c p\n  rw [established]"
+  },
+  "VectorCalculus.dot_cross_left": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (u v : Vec), (2 : ℝ) * dot u (cross u v) = (2 : ℝ) * 0 := by\n  intro u v\n  have established := dot_cross_left u v\n  rw [established]"
+  },
+  "VectorCalculus.gauss_diagonal": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (a b c : ℝ),\n  ((2 : ℝ) * cubeFlux fun p => (![a * p 0, b * p 1, c * p 2] : Vec)) =\n    2 *\n      ∫ (x : ℝ) (y : ℝ) (z : ℝ) in 0..1,\n        divergence (fun p => (![a * p 0, b * p 1, c * p 2] : Vec)) (![x, y, z] : Vec) := by\n  intro a b c\n  have established := gauss_diagonal a b c\n  rw [established]"
+  },
+  "VectorCalculus.gradient_components": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (f : ScalarField) (p : Vec),\n  (2 : ℝ) • gradient f p = (2 : ℝ) • (![coordPartial f p 0, coordPartial f p 1, coordPartial f p 2] : Vec) := by\n  intro f p\n  have established := gradient_components f p\n  rw [established]"
+  },
+  "VectorCalculus.green_shear": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (k : ℝ),\n  ((2 : ℝ) * squareCirculation fun p => (![0, k * p 0, 0] : Vec)) =\n    (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, curl (fun p => (![0, k * p 0, 0] : Vec)) (![x, y, 0] : Vec) 2 := by\n  intro k\n  have established := green_shear k\n  rw [established]"
+  },
+  "VectorCalculus.integral_values": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {f g : ℝ → ℝ} {a b : ℝ},\n  (∀ (t : ℝ), f t = g t) → (2 : ℝ) * ∫ (t : ℝ) in a..b, f t = (2 : ℝ) * ∫ (t : ℝ) in a..b, g t := by\n  intro f g a b h\n  have established := integral_values (a := a) (b := b) h\n  rw [established]"
+  },
+  "VectorCalculus.limit_diagonal": {
+    "explanation": "The diagonal path must have the same limit if the spatial limit exists.",
+    "code": "example (f : ScalarField) (h : PuncturedLimit f 7) : PathLimit (fun t : ℝ => f ![t,t,0]) 7 := by\n  exact limit_diagonal h"
+  },
+  "VectorCalculus.limit_horizontal": {
+    "explanation": "Restrict a hypothesized punctured spatial limit to one path; this does not assert the converse.",
+    "code": "example (f : ScalarField) (h : PuncturedLimit f 5) : PathLimit (fun t : ℝ => f ![t,0,0]) 5 := by\n  exact limit_horizontal h"
+  },
+  "VectorCalculus.limit_of_continuous": {
+    "explanation": "A full multivariable limit follows from continuity and the actual value at the origin.",
+    "code": "example (f : ScalarField) (hc : Continuous f) (hv : f 0 = 4) : LimitAtOrigin f 4 := by\n  exact limit_of_continuous hc hv"
+  },
+  "VectorCalculus.matrix_eq": {
+    "explanation": "Use the equality in the opposite direction. Rewriting works inside a goal, including when the known value is on its left.",
+    "code": "example : ∀ {A B : Matrix (Fin 3) (Fin 3) ℝ},\n  A 0 0 = B 0 0 →\n    A 0 1 = B 0 1 →\n      A 0 2 = B 0 2 →\n        A 1 0 = B 1 0 →\n          A 1 1 = B 1 1 → A 1 2 = B 1 2 → A 2 0 = B 2 0 → A 2 1 = B 2 1 → A 2 2 = B 2 2 → B = A := by\n  intro A B h00 h01 h02 h10 h11 h12 h20 h21 h22\n  have established := matrix_eq h00 h01 h02 h10 h11 h12 h20 h21 h22\n  rw [established]"
+  },
+  "VectorCalculus.normal_components": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (x y z : ℝ → ℝ → ℝ) (u v : ℝ),\n  (2 : ℝ) • surfaceNormal (fun s t => (![x s t, y s t, z s t] : Vec)) u v =\n    (2 : ℝ) •\n      cross (![partialX x u v, partialX y u v, partialX z u v] : Vec)\n        (![partialY x u v, partialY y u v, partialY z u v] : Vec) := by\n  intro x y z u v\n  have established := normal_components x y z u v\n  rw [established]"
+  },
+  "VectorCalculus.normal_congr": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ {s t : ℝ → ℝ → Vec},\n  (∀ (u v : ℝ), s u v = t u v) → ∀ (u v : ℝ), (2 : ℝ) • surfaceNormal s u v = (2 : ℝ) • surfaceNormal t u v := by\n  intro s t h u v\n  have established := normal_congr h u v\n  rw [established]"
+  },
+  "VectorCalculus.normal_graph": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (f : ℝ → ℝ → ℝ) (u v : ℝ),\n  (2 : ℝ) • surfaceNormal (fun s t => (![s, t, f s t] : Vec)) u v = (2 : ℝ) • (![-partialX f u v, -partialY f u v, 1] : Vec) := by\n  intro f u v\n  have established := normal_graph f u v\n  rw [established]"
+  },
+  "VectorCalculus.partial_constant": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (a : ℝ) (p : Vec) (i : Fin 3), (2 : ℝ) * coordPartial (fun x => a) p i = (2 : ℝ) * 0 := by\n  intro a p i\n  have established := partial_constant a p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_coordinate": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (j : Fin 3) (p : Vec) (i : Fin 3),\n  (2 : ℝ) * coordPartial (fun q => q j) p i = (2 : ℝ) * if i = j then 1 else 0 := by\n  intro j p i\n  have established := partial_coordinate j p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_div_const": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (f : ScalarField) (a : ℝ) (p : Vec) (i : Fin 3),\n  (2 : ℝ) * coordPartial (fun q => f q / a) p i = (2 : ℝ) * (coordPartial f p i / a) := by\n  intro f a p i\n  have established := partial_div_const f a p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_neg": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (f : ScalarField) (p : Vec) (i : Fin 3),\n  (2 : ℝ) * coordPartial (fun q => -f q) p i = (2 : ℝ) * -coordPartial f p i := by\n  intro f p i\n  have established := partial_neg f p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_scaled_coordinate": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (a : ℝ) (j : Fin 3) (p : Vec) (i : Fin 3),\n  (2 : ℝ) * coordPartial (fun q => a * q j) p i = (2 : ℝ) * if i = j then a else 0 := by\n  intro a j p i\n  have established := partial_scaled_coordinate a j p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_sum_squares": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (p : Vec) (i : Fin 3), (2 : ℝ) * coordPartial squarePotential p i = (2 : ℝ) * ((2 : ℝ) * p i) := by\n  intro p i\n  have established := partial_sum_squares p i\n  rw [established]"
+  },
+  "VectorCalculus.partial_xy": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (p : Vec) (i : Fin 3),\n  (2 : ℝ) * coordPartial (fun q => q 0 * q 1) p i = (2 : ℝ) * if i = 0 then p 1 else if i = 1 then p 0 else 0 := by\n  intro p i\n  have established := partial_xy p i\n  rw [established]"
+  },
+  "VectorCalculus.path_limit_of_values": {
+    "explanation": "Specify a value away from zero; the value at the excluded parameter is irrelevant.",
+    "code": "example (g : ℝ → ℝ) (h : ∀ t, t ≠ 0 → g t = 3) : PathLimit g 3 := by\n  exact path_limit_of_values h"
+  },
+  "VectorCalculus.path_limit_unique": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ {g : ℝ → ℝ} {a b : ℝ}, PathLimit g a → PathLimit g b → (2 : ℝ) * a = (2 : ℝ) * b := by\n  intro g a b ha hb\n  have established := path_limit_unique ha hb\n  rw [established]"
+  },
+  "VectorCalculus.ratio_diagonal": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (t : ℝ), t ≠ 0 → (2 : ℝ) * pathRatio (![t, t, 0] : Vec) = (2 : ℝ) * (1 / 2) := by\n  intro t ht\n  have established := ratio_diagonal t ht\n  rw [established]"
+  },
+  "VectorCalculus.ratio_horizontal": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (t : ℝ), (2 : ℝ) * pathRatio (![t, 0, 0] : Vec) = (2 : ℝ) * 0 := by\n  intro t\n  have established := ratio_horizontal t\n  rw [established]"
+  },
+  "VectorCalculus.reverse_integral": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (g : ℝ → ℝ) (a b : ℝ), (2 : ℝ) * ∫ (t : ℝ) in b..a, g t = (2 : ℝ) * -∫ (t : ℝ) in a..b, g t := by\n  intro g a b\n  have established := reverse_integral g a b\n  rw [established]"
+  },
+  "VectorCalculus.stokes_shear_patch": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (k : ℝ),\n  ((2 : ℝ) * squareCirculation fun p => (![0, k * p 0, 0] : Vec)) =\n    (2 : ℝ) * surfaceFlux (curl fun p => (![0, k * p 0, 0] : Vec)) patch 0 1 0 1 := by\n  intro k\n  have established := stokes_shear_patch k\n  rw [established]"
+  },
+  "VectorCalculus.vector_components": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (p : Vec), (2 : ℝ) • (![p 0, p 1, p 2] : Vec) = (2 : ℝ) • p := by\n  intro p\n  have established := vector_components p\n  rw [established]"
+  },
+  "VectorCalculus.vector_eq": {
+    "explanation": "Compare a different pair of vectors coordinate by coordinate. The three bullets correspond to indices 0, 1, and 2.",
+    "code": "example : (![2, 4, 0] : Vec) + ![1, 0, 3] = ![3, 4, 3] := by\n  apply vector_eq\n  · norm_num\n  · norm_num\n  · norm_num"
+  },
+  "VectorCalculus.vector_ne_zero": {
+    "explanation": "One nonzero coordinate certifies that this new vector is not zero.",
+    "code": "example : (![0,7,0] : Vec) ≠ 0 := by\n  apply vector_ne_zero 1\n  norm_num"
+  },
+  "VectorCalculus.velocity_components": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ (x y z : ℝ → ℝ) (t : ℝ),\n  (2 : ℝ) • velocity (fun s => (![x s, y s, z s] : Vec)) t = (2 : ℝ) • (![deriv x t, deriv y t, deriv z t] : Vec) := by\n  intro x y z t\n  have established := velocity_components x y z t\n  rw [established]"
+  },
+  "VectorCalculus.velocity_congr": {
+    "explanation": "Scale both vectors by two, using the established vector equality inside the new goal.",
+    "code": "example : ∀ {c d : ℝ → Vec}, (∀ (t : ℝ), c t = d t) → ∀ (t : ℝ), (2 : ℝ) • velocity c t = (2 : ℝ) • velocity d t := by\n  intro c d h t\n  have established := velocity_congr h t\n  rw [established]"
+  },
+  "VectorCalculus.work_eq_endpoint": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (F : VectorCalculus.Field) (f : ScalarField) (c : ℝ → Vec) (a b : ℝ),\n  (∀ t ∈ Set.uIcc a b, HasDerivAt (fun s => f (c s)) (dot (F (c t)) (velocity c t)) t) →\n    IntervalIntegrable (fun t : ℝ => dot (F (c t)) (velocity c t)) volume a b →\n      (2 : ℝ) * work F c a b = (2 : ℝ) * (f (c b) - f (c a)) := by\n  intro F f c a b hchain hint\n  have established := work_eq_endpoint F f c a b hchain hint\n  rw [established]"
+  },
+  "VectorCalculus.work_first_coordinate": {
+    "explanation": "Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.",
+    "code": "example : ∀ (c : ℝ → Vec) (a b : ℝ),\n  RegularPath c a b →\n    IntervalIntegrable (fun t : ℝ => deriv (fun s => c s 0) t) volume a b →\n      (2 : ℝ) * work (fun x => (![1, 0, 0] : Vec)) c a b = (2 : ℝ) * (c b 0 - c a 0) := by\n  intro c a b hc hi\n  have established := work_first_coordinate c a b hc hi\n  rw [established]"
+  }
+}

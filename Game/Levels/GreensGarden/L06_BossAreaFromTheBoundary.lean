@@ -13,6 +13,23 @@ Title "Boss: area from the boundary"
 Introduction "Objective: Recover enclosed area from a boundary circulation.\n\nMathematical prerequisites: Planar line integrals; double integrals; positive orientation. Earlier levels of Green’s Garden.\n\nThe area formula uses the boundary field (-y/2,x/2,0), whose planar curl is 1. Compute the boundary integral directly on the four positively oriented edges, then compare with the double integral of 1. The two nonzero edge contributions are each 1/2. This proves the stated area identity for the unit square.\n\nExercise: prove the statement below. Combine earlier methods and justify every hypothesis."
 
 
+/-- Recover enclosed area from a boundary circulation.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * squareCirculation rotation = (2 : ℝ) * ∫ (x : ℝ) (y : ℝ) in 0..1, (1 : ℝ) := by
+  have established := exercise_GreensGarden_6.left
+  rw [established]
+``` -/
+TheoremDoc exercise_GreensGarden_6 as "exercise_GreensGarden_6" in "[anonymous]"
+
 /-- Recover enclosed area from a boundary circulation. -/
 Statement exercise_GreensGarden_6 : squareCirculation rotation = (∫ x : ℝ in 0..1, ∫ y : ℝ in 0..1, (1:ℝ)) ∧ squareCirculation rotation = 1 := by
   Hint "1. Use the rotational field and the positive square boundary."

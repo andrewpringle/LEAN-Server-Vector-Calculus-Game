@@ -16,6 +16,23 @@ Introduction "Objective: Integrate a vector field dotted with the curve velocity
 DefinitionDoc VectorCalculus.work as "work" in "Calculus notation"
 NewDefinition VectorCalculus.work
 
+/-- Integrate a vector field dotted with the curve velocity.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * work (fun p => (![p 0, 0, 0] : Vec)) (fun t : ℝ => (![t, 0, 0] : Vec)) 0 2 = (2 : ℝ) * 2 := by
+  have established := exercise_PathIntegralTrails_3
+  rw [established]
+``` -/
+TheoremDoc exercise_PathIntegralTrails_3 as "exercise_PathIntegralTrails_3" in "[anonymous]"
+
 /-- Integrate a vector field dotted with the curve velocity. -/
 Statement exercise_PathIntegralTrails_3 : work (fun p => ![p 0,0,0]) (fun t => ![t,0,0]) 0 2 = 2 := by
   Hint "1. Compute the field on the path and the component velocity."

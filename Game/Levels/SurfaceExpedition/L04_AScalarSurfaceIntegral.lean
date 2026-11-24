@@ -16,6 +16,23 @@ Introduction "Objective: Integrate a scalar density with the area factor.\n\nMat
 DefinitionDoc VectorCalculus.surfaceIntegral as "surfaceIntegral" in "Calculus notation"
 NewDefinition VectorCalculus.surfaceIntegral
 
+/-- Integrate a scalar density with the area factor.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * surfaceIntegral (fun p => p 0) patch 0 1 0 1 = (2 : ℝ) * (1 / 2) := by
+  have established := exercise_SurfaceExpedition_4
+  rw [established]
+``` -/
+TheoremDoc exercise_SurfaceExpedition_4 as "exercise_SurfaceExpedition_4" in "[anonymous]"
+
 /-- Integrate a scalar density with the area factor. -/
 Statement exercise_SurfaceExpedition_4 : surfaceIntegral (fun p => p 0) patch 0 1 0 1 = 1/2 := by
   Hint "1. Calculate the parameter normal and hence its length."

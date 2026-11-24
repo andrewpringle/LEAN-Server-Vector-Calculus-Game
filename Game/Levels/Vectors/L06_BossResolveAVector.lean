@@ -16,6 +16,23 @@ Introduction "Objective: Compute a projection and show its remainder is orthogon
 DefinitionDoc VectorCalculus.projection as "projection" in "Calculus notation"
 NewDefinition VectorCalculus.projection
 
+/-- Compute a projection and show its remainder is orthogonal.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Scale both vectors by two, using the established vector equality inside the new goal.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) • projection (![3, 1, 2] : Vec) (![1, 1, 0] : Vec) = (2 : ℝ) • (![2, 2, 0] : Vec) := by
+  have established := exercise_Vectors_6.left
+  rw [established]
+``` -/
+TheoremDoc exercise_Vectors_6 as "exercise_Vectors_6" in "[anonymous]"
+
 /-- Compute a projection and show its remainder is orthogonal. -/
 Statement exercise_Vectors_6 : projection ![3, 1, 2] ![1, 1, 0] = (![2, 2, 0] : Vec) ∧ dot (![3, 1, 2] - projection ![3, 1, 2] ![1, 1, 0]) ![1, 1, 0] = 0 := by
   Hint "1. First prove and name the projected vector using `vector_eq`."

@@ -35,11 +35,12 @@ lake build
 lake build GameServer
 lake test
 node scripts/check-curriculum.mjs
+node scripts/check-tool-examples.mjs
 ```
 
 The initial Mathlib cache extraction can take several minutes on Windows. Do not run `lake update` just to build: it can change locked versions. Only update dependencies deliberately when upgrading Lean; the checked-in manifest records the compatible revisions.
 
-The Lean test target explicitly includes the verification and player-runner tests. The existing hidden `.sofi-test-folders` files are shell-script fixtures containing deliberately invalid Lean and are preserved outside that target.
+The Lean test target explicitly includes the verification, player-runner, and displayed-tool-example tests. The existing hidden `.sofi-test-folders` files are shell-script fixtures containing deliberately invalid Lean and are preserved outside that target.
 
 The existing development container builds the game and starts the existing Lean4Game client on port 3000. Open the local URL printed by `.devcontainer/start-server.sh`; its route includes `/g/local/` and the checkout folder name. That shell script expects the container's sibling `/workspaces/leangame` installation; the native Windows launcher is `scripts/start-local-game.ps1`. After edits, run `lake build` and refresh the browser. No publishing step is needed.
 
@@ -69,6 +70,8 @@ Tactics unlock progressively using the framework's `NewTactic` declarations. Nin
 * `Game/Advanced.lean`: explicitly oriented boundary integrals and proved restricted theorem families.
 * `Game/Rules.lean`: proved coordinate comparison, derivative, continuity, limit, and integral rules that keep library implementation details out of player proofs. Its readable limit and regularity names abbreviate the actual underlying conditions.
 * `scripts/curriculum-levels.json`: canonical source for all 96 exercises, explanations, hints, and intended proofs. Edit it and run `node scripts/write-curriculum.mjs` to regenerate the Lean levels and curriculum map. The renderer also maintains registration, inventory documentation, and first-use unlocks. Edit shared Lean modules directly. After compiling changed proofs, run `lake env lean scripts/InventoryAudit.lean`, regenerate again, and rebuild to refresh the compiler-derived inventory in `scripts/used-inventory.json`.
+
+Every registered theorem and visible tactic has a worked usage example in its existing inventory help panel. Examples for completed-level results demonstrate later reuse in a different goal; the runner still rejects using a theorem in its own exercise. The exact displayed code lives in `scripts/theorem-examples.json` and `scripts/tactic-examples.json`. The curriculum renderer also writes `Test/ToolExamples.lean`, which compiles those examples but is never imported by the game. Edit the JSON, regenerate, and run both the Lean tests and `node scripts/check-tool-examples.mjs` when changing help examples.
 
 Instructor proofs use the existing `Statement ... := by` mechanism and are not prefilled into player editors. Every statement has an explicit unique name so the GameServer runner rejects reuse of the current exercise theorem. Earlier completed levels are handled by the framework. The first hint is visible; the next two are revealable progressive hints for the initial proof state. Unregistered HelloWorld template files remain preserved; no tutorial world is imported.
 

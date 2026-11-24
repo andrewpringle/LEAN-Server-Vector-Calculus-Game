@@ -16,6 +16,23 @@ Introduction "Objective: Compute flux directly on the six outward-oriented faces
 DefinitionDoc VectorCalculus.cubeFlux as "cubeFlux" in "Calculus notation"
 NewDefinition VectorCalculus.cubeFlux
 
+/-- Compute flux directly on the six outward-oriented faces.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * cubeFlux radial = (2 : ℝ) * 3 := by
+  have established := exercise_GaussCitadel_3
+  rw [established]
+``` -/
+TheoremDoc exercise_GaussCitadel_3 as "exercise_GaussCitadel_3" in "[anonymous]"
+
 /-- Compute flux directly on the six outward-oriented faces. -/
 Statement exercise_GaussCitadel_3 : cubeFlux radial = 3 := by
   Hint "1. Evaluate one outward-oriented surface integral per face."

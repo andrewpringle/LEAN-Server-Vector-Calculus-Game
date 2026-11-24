@@ -13,6 +13,23 @@ Title "A lamina centroid"
 Introduction "Objective: Compute mass and a normalized first moment.\n\nMathematical prerequisites: Single-variable integration; planar regions; mass and moments. Earlier levels of Double Integral Valley.\n\nThe uniform rectangle [0,2]×[0,1] has positive mass 2. Its centroid coordinates are the first moments divided by that mass. For the x moment, x is constant during the y integration. For the y moment, first integrate y over [0,1]. Keep these two different inner calculations separate.\n\nExercise: prove the statement below."
 
 
+/-- Compute mass and a normalized first moment.
+
+This is an example of reusing a completed-level result in a different goal. You cannot use this theorem while proving its own level.
+
+### Worked usage example
+
+Use the established equality to evaluate twice the quantity. Rewriting replaces the known expression inside a larger calculation.
+
+Examples use the namespaces and notation opened in the calculus levels.
+
+```lean
+example : (2 : ℝ) * ∫ (x : ℝ) in 0..2, ∫ (y : ℝ) in 0..1, (1 : ℝ) = (2 : ℝ) * 2 := by
+  have established := exercise_DoubleIntegralValley_5.left
+  rw [established]
+``` -/
+TheoremDoc exercise_DoubleIntegralValley_5 as "exercise_DoubleIntegralValley_5" in "[anonymous]"
+
 /-- Compute mass and a normalized first moment. -/
 Statement exercise_DoubleIntegralValley_5 : (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, (1:ℝ)) = 2 ∧ (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, x) / 2 = 1 ∧ (∫ x : ℝ in 0..2, ∫ y : ℝ in 0..1, y) / 2 = 1/2 := by
   Hint "1. Calculate the mass, x moment, and y moment separately."
